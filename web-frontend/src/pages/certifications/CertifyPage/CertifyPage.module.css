@@ -1,0 +1,62 @@
+.page {
+  min-height: 100vh;
+  background: var(--gradient-background);
+  position: relative;
+  animation: fadeIn 0.6s ease-out;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+.page::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="bg" cx="50%" cy="50%"><stop offset="0%" stop-color="%23f0f9ff" stop-opacity="0.3"/><stop offset="100%" stop-color="%23f0f9ff" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="400" fill="url(%23bg)"/><circle cx="800" cy="300" r="300" fill="url(%23bg)"/><circle cx="400" cy="800" r="350" fill="url(%23bg)"/></svg>');
+  opacity: 0.6;
+  pointer-events: none;
+  z-index: 1;
+  animation: patternFloat 20s ease-in-out infinite;
+}
+
+@keyframes patternFloat {
+  0%, 100% {
+    transform: translateY(0) scale(1);
+  }
+  50% {
+    transform: translateY(-20px) scale(1.05);
+  }
+}
+
+.page > * {
+  position: relative;
+  z-index: 2;
+}
+
+/* Light mode pattern */
+:global(.light) .page::before {
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="bg" cx="50%" cy="50%"><stop offset="0%" stop-color="%23f0f9ff" stop-opacity="0.3"/><stop offset="100%" stop-color="%23f0f9ff" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="400" fill="url(%23bg)"/><circle cx="800" cy="300" r="300" fill="url(%23bg)"/><circle cx="400" cy="800" r="350" fill="url(%23bg)"/></svg>');
+  opacity: 0.6;
+}
+
+/* Dark mode pattern */
+:global(.dark) .page::before {
+  background: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1000 1000"><defs><radialGradient id="bg" cx="50%" cy="50%"><stop offset="0%" stop-color="%23334155" stop-opacity="0.3"/><stop offset="100%" stop-color="%23334155" stop-opacity="0"/></radialGradient></defs><circle cx="200" cy="200" r="400" fill="url(%23bg)"/><circle cx="800" cy="300" r="300" fill="url(%23bg)"/><circle cx="400" cy="800" r="350" fill="url(%23bg)"/></svg>');
+  opacity: 0.4;
+}
+
+/* Smooth transitions between sections */
+.page > * + * {
+  margin-top: 0;
+}

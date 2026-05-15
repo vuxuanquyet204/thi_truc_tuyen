@@ -1,0 +1,31 @@
+{
+	"java.debug.settings.onBuildFailureProceed": true,
+	"java.compile.nullAnalysis.mode": "automatic",
+	"java.configuration.updateBuildConfiguration": "interactive",
+	"java.jdt.ls.vmargs": "-XX:+UseParallelGC -XX:GCTimeRatio=4 -XX:AdaptiveSizePolicyWeight=90 -Dsun.zip.disableMemoryMapping=true -Xmx4G -Xms100m -Xlog:disable",
+	"typescript.suggestionActions.enabled": false,
+	"javascript.suggestionActions.enabled": false,
+	"typescript.inlayHints.functionLikeReturnTypes.enabled": false,
+	"typescript.inlayHints.parameterTypes.enabled": false,
+	"typescript.inlayHints.variableTypes.suppressWhenTypeMatchesName": true,
+	"typescript.surveys.enabled": false,
+	"typescript.showUnusedServerResults": false,
+	"typescript.tsserver.maxTsServerMemory": 3072,
+	"editor.codeActionsOnSave": {},
+	"editor.suggestOnTriggerCharacters": false,
+	"editor.quickSuggestions": {
+		"other": false,
+		"comments": false,
+		"strings": false
+	},
+	"editor.parameterHints.enabled": false,
+	"editor.hover.enabled": false,
+	"editor.inlineSuggest.enabled": false,
+	"editor.inlineCompletion.enabled": false,
+	"editor.quickCompletion": false,
+	"editor.wordBasedSuggestions": "off",
+	"editor.tabCompletion": "off",
+	"editor.snippetsSuggestions": "none",
+	"editor.tokenColorCustomizations": {},
+	"editor.semanticTokenColorCustomizations": {}
+}

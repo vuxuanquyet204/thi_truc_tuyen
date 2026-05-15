@@ -1,0 +1,410 @@
+/* Profile Page Specific Styles */
+.profilePage {
+  min-height: 100vh;
+  background: linear-gradient(180deg, var(--gradient-background) 0%, var(--card) 100%);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  position: relative;
+  overflow-x: hidden;
+  padding-top: clamp(60px, 10vw, 80px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.profilePage::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: radial-gradient(circle at 30% 20%, var(--primary) 0%, transparent 50%),
+              radial-gradient(circle at 70% 80%, var(--accent) 0%, transparent 50%);
+  opacity: 0.06;
+  pointer-events: none;
+  z-index: 1;
+  animation: floatBackground 20s ease-in-out infinite;
+}
+
+@keyframes floatBackground {
+  0%, 100% { transform: translate(0, 0); }
+  50% { transform: translate(20px, -20px); }
+}
+
+.profileContainer {
+  max-width: min(1400px, 100%);
+  margin: 0 auto;
+  padding: clamp(16px, 3vw, 32px) clamp(12px, 2.5vw, 24px);
+  background: transparent;
+  position: relative;
+  z-index: 2;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.profileGrid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(24px, 3vw, 40px);
+  align-items: start;
+  width: 100%;
+}
+
+.profilePageHeader {
+  margin-bottom: clamp(24px, 3vw, 40px);
+  text-align: center;
+  position: relative;
+  width: 100%;
+}
+
+.profilePageHeader::after {
+  content: '';
+  position: absolute;
+  bottom: clamp(-12px, -1.5vw, -16px);
+  left: 50%;
+  transform: translateX(-50%);
+  width: clamp(60px, 8vw, 100px);
+  height: clamp(3px, 0.5vw, 4px);
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  border-radius: 2px;
+}
+
+.profilePageTitle {
+  font-size: clamp(28px, 5vw, 48px);
+  font-weight: 900;
+  margin: 0 0 clamp(8px, 1.2vw, 12px) 0;
+  background: linear-gradient(135deg, var(--foreground) 0%, var(--primary) 50%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  letter-spacing: -0.02em;
+  animation: gradientShift 8s ease infinite;
+  background-size: 200% 200%;
+  word-break: break-word;
+}
+
+@keyframes gradientShift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.profilePageSubtitle {
+  font-size: clamp(14px, 2.5vw, 18px);
+  color: var(--muted-foreground);
+  margin: 0;
+  font-weight: 500;
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+/* Enhanced Card Styles */
+.profileCard {
+  background: linear-gradient(135deg, var(--card) 0%, var(--muted) 100%);
+  border: 2px solid var(--border);
+  border-radius: clamp(12px, 2vw, 16px);
+  padding: clamp(16px, 2.5vw, 32px);
+  margin-bottom: clamp(16px, 2.5vw, 24px);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.profileCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 4px;
+  height: 100%;
+  background: linear-gradient(180deg, var(--primary) 0%, var(--accent) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.profileCard:hover {
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+  transform: translateY(-4px);
+  border-color: var(--primary);
+}
+
+.profileCard:hover::before {
+  opacity: 1;
+}
+
+.profileCardHeader {
+  background: linear-gradient(135deg, var(--card) 0%, var(--muted) 100%);
+  border: 2px solid var(--border);
+  border-radius: clamp(12px, 2vw, 16px);
+  padding: clamp(16px, 2.3vw, 28px);
+  margin-bottom: clamp(16px, 2.5vw, 24px);
+  position: relative;
+  overflow: hidden;
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.profileCardHeader:hover {
+  box-shadow: 0 12px 48px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+/* Enhanced Info Cards */
+.infoCard {
+  background: linear-gradient(135deg, var(--card) 0%, var(--muted) 100%);
+  border: 2px solid var(--border);
+  border-radius: clamp(10px, 1.8vw, 14px);
+  padding: clamp(16px, 2.5vw, 24px);
+  position: relative;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.08);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.infoCard:hover {
+  box-shadow: 0 8px 32px rgba(0, 0, 0, 0.12);
+  transform: translateY(-3px);
+  border-color: var(--accent);
+}
+
+/* Enhanced Content Areas */
+.contentCard {
+  padding: clamp(12px, 2vw, 18px);
+  background: linear-gradient(135deg, var(--muted) 0%, var(--card) 100%);
+  border-radius: clamp(10px, 1.5vw, 12px);
+  border: 2px solid var(--border);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.05);
+  margin-bottom: clamp(12px, 1.5vw, 16px);
+  transition: all 0.3s ease;
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.contentCard::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.contentCard:hover {
+  border-color: var(--primary);
+  transform: translateX(4px);
+}
+
+.contentCard:hover::after {
+  opacity: 1;
+}
+
+.contentCard:last-child {
+  margin-bottom: 0;
+}
+
+/* Enhanced Input Fields */
+.infoField {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1.2vw, 10px);
+  padding: clamp(10px, 1.5vw, 14px) clamp(12px, 1.8vw, 16px);
+  background: var(--muted);
+  border: 2px solid var(--border);
+  border-radius: clamp(8px, 1.2vw, 10px);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+.infoField::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  bottom: 0;
+  width: 3px;
+  background: linear-gradient(180deg, var(--primary) 0%, var(--accent) 100%);
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.infoField:hover {
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
+  transform: translateX(4px);
+}
+
+.infoField:hover::before {
+  opacity: 1;
+}
+
+/* Enhanced Buttons */
+.actionButton {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  color: white;
+  border: none;
+  border-radius: clamp(8px, 1.2vw, 10px);
+  padding: clamp(10px, 1.5vw, 12px) clamp(16px, 2.5vw, 24px);
+  font-size: clamp(13px, 2vw, 15px);
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 1vw, 8px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+  justify-content: center;
+}
+
+.actionButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.6s ease;
+}
+
+.actionButton:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.25);
+}
+
+.actionButton:hover::before {
+  left: 100%;
+}
+
+.actionButton:active {
+  transform: translateY(-1px);
+}
+
+/* Enhanced Tags */
+.skillTag {
+  font-size: clamp(11px, 1.5vw, 12px);
+  padding: clamp(5px, 0.8vw, 6px) clamp(10px, 1.5vw, 12px);
+  background: linear-gradient(135deg, var(--accent) 0%, var(--primary) 100%);
+  color: white;
+  border-radius: clamp(6px, 1vw, 8px);
+  font-weight: 600;
+  border: 2px solid transparent;
+  transition: all 0.3s ease;
+  display: inline-block;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  word-break: break-word;
+  white-space: nowrap;
+}
+
+.skillTag:hover {
+  transform: translateY(-2px) scale(1.05);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+  border-color: var(--accent);
+}
+
+/* Enhanced Progress Bar */
+.progressBar {
+  width: 100%;
+  height: clamp(8px, 1.2vw, 10px);
+  background: var(--muted);
+  border-radius: clamp(8px, 1.2vw, 10px);
+  overflow: hidden;
+  margin-bottom: clamp(8px, 1.2vw, 10px);
+  box-shadow: inset 0 2px 4px rgba(0, 0, 0, 0.1);
+  position: relative;
+  box-sizing: border-box;
+}
+
+.progressBar::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: linear-gradient(90deg,
+    transparent 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    transparent 100%);
+  animation: shimmer 2s infinite;
+}
+
+@keyframes shimmer {
+  0% { transform: translateX(-100%); }
+  100% { transform: translateX(100%); }
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary) 0%, var(--accent) 50%, var(--primary) 100%);
+  background-size: 200% 100%;
+  transition: width 0.8s cubic-bezier(0.4, 0, 0.2, 1);
+  border-radius: clamp(8px, 1.2vw, 10px);
+  box-shadow: 0 0 10px rgba(var(--primary), 0.5);
+  animation: gradientMove 3s ease infinite;
+  position: relative;
+}
+
+@keyframes gradientMove {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.progressFill::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 20px;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.4));
+  border-radius: 0 10px 10px 0;
+}
+
+/* Responsive Design */
+@media (min-width: 1024px) {
+  .profileGrid {
+    grid-template-columns: clamp(320px, 28vw, 400px) 1fr;
+  }
+}
+
+@media (max-width: 1023px) {
+  .profileGrid {
+    grid-template-columns: 1fr;
+    gap: clamp(20px, 2.5vw, 32px);
+  }
+}
+
+@media (max-width: 768px) {
+  .actionButton {
+    width: 100%;
+    max-width: 400px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .profilePage {
+    padding-top: clamp(50px, 8vw, 60px);
+  }
+
+  .actionButton {
+    width: 100%;
+  }
+}

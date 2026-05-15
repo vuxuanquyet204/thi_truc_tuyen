@@ -1,0 +1,176 @@
+spring:
+  application:
+    name: api-gateway
+  codec:
+    max-in-memory-size: 200MB
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: true
+      # Enable WebSocket support for Socket.IO proxy
+      httpclient:
+        websocket:
+          enabled: true
+        responseTimeout: 60000
+        connectTimeout: 10000
+      globalcors:
+        corsConfigurations:
+          '[/**]':
+            allowedOrigins: "*"
+            allowedMethods: "*"
+            allowedHeaders: "*"
+      routes:
+        - id: identity-service
+          uri: lb://identity-service
+          predicates:
+            - Path=/identity/**
+          filters:
+            - StripPrefix=1
+
+        - id: profile-service
+          uri: lb://profile-service
+          predicates:
+            - Path=/profile/**
+          filters:
+            - StripPrefix=1
+        - id: file-service
+          uri: lb://file-service
+          predicates:
+            - Path=/files/**
+          filters:
+            - RewritePath=/files(?<segment>/.*), /api/public/files${segment}
+        - id: copyright-service
+          uri: lb://copyright-service
+          predicates:
+            - Path=/api/copyrights/**
+          filters:
+            - StripPrefix=1
+        - id: exam-questions-service
+          uri: lb://exam-service
+          predicates:
+            - Path=/exam/api/v1/questions/**
+          filters:
+            - RewritePath=/exam/api/v1/questions(?<segment>.*), /api/questions${segment}
+        - id: exam-service
+          uri: lb://exam-service
+          predicates:
+            - Path=/exam/api/v1/exams/**
+          filters:
+            - StripPrefix=3
+        - id: course-service
+          uri: lb://course-service
+          predicates:
+            - Path=/course/**
+          filters:
+            - StripPrefix=1
+        - id: token-reward-service
+          uri: http://localhost:3001
+          predicates:
+            - Path=/api/tokens/**
+          filters:
+            - StripPrefix=0
+        - id: proctoring-ws
+          uri: ws://localhost:8082
+          predicates:
+            - Path=/ws/**
+          filters:
+            - StripPrefix=0
+        - id: proctoring-socketio
+          uri: http://localhost:8082
+          predicates:
+            - Path=/socket.io/**
+          filters:
+            - StripPrefix=0
+            - RewriteLocationResponseHeader=AS_IN_REQUEST, ''
+        - id: proctoring-http
+          uri: http://localhost:8082
+          predicates:
+            - Path=/api/proctoring/**
+          filters:
+            - RewritePath=/api/proctoring(?<segment>/.*), /api/proctoring${segment}
+        - id: online-exam-service
+          uri: http://localhost:9004
+          predicates:
+            - Path=/api/exam/**
+          filters:
+            - RewritePath=/api/exam(?<segment>/?.*), /api${segment}
+        - id: multisig-service
+          uri: http://localhost:3003
+          predicates:
+            - Path=/api/v1/multisig/**
+          filters:
+            - StripPrefix=0
+
+        - id: user-service
+          uri: lb://user-service
+          predicates:
+            - Path=/user/**
+          filters:
+            - StripPrefix=1
+        - id: organization-service
+          uri: http://localhost:8008
+          predicates:
+            - Path=/api/organization,/api/organization/**
+          filters:
+            - RewritePath=/api/organization(?<path>/?.*), /api/v1/organization/${path}
+        - id: notification-service
+          uri: http://localhost:9009
+          predicates:
+            - Path=/api/v1/notifications/**
+          filters:
+            - RewritePath=/api/v1/notifications(?<segment>.*), /api/v1/notifications${segment}
+        - id: analytics-service
+          uri: lb://analytics-service
+          predicates:
+            - Path=/analytics/**
+          filters:
+            - StripPrefix=0
+        - id: ai-service
+          uri: http://localhost:3002
+          predicates:
+            - Path=/api/v1/ai/**
+          filters:
+            - StripPrefix=0
+            - PreserveHostHeader
+
+        - id: leaderboard-service
+          uri: http://localhost:9018
+          predicates:
+            - Path=/api/leaderboard/**
+          filters:
+            - StripPrefix=0
+
+  data:
+    redis:
+      host: localhost
+      port: 6379
+  main:
+    web-application-type: reactive
+
+server:
+  port: 8080
+
+eureka:
+  client:
+    service-url:
+      defaultZone: ${EUREKA_URL:http://localhost:9999/eureka/}
+
+springdoc:
+  api-docs:
+    path: /v3/api-docs
+  swagger-ui:
+    path: /swagger-ui.html
+    urls:
+      - name: api-gateway
+        url: /v3/api-docs
+      - name: identity
+        url: /identity/v3/api-docs
+      - name: profile
+        url: /profile/v3/api-docs
+      - name: copyright
+        url: /copyrights/v3/api-docs
+
+app:
+  jwt:
+    secret: ${JWT_SECRET:mySecretKey12345678901234567890123456789012345678901234567890}

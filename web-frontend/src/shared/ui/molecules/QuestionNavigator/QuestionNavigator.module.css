@@ -1,0 +1,126 @@
+.navigator {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  padding: var(--space-5);
+}
+
+.title {
+  font-size: 16px;
+  font-weight: 600;
+  margin-bottom: var(--space-4);
+  color: var(--foreground);
+}
+
+.questionGrid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: var(--space-2);
+}
+
+.questionButton {
+  width: 100%;
+  aspect-ratio: 1;
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--background);
+  color: var(--foreground);
+  font-weight: 600;
+  font-size: 14px;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.questionButton:hover {
+  transform: scale(1.05);
+}
+
+.questionButton.current {
+  border-color: var(--primary);
+  background: var(--gradient-primary);
+  color: white;
+}
+
+.questionButton.answered {
+  border-color: #10b981;
+  background: #d1fae5;
+  color: #065f46;
+}
+
+.questionButton.flagged {
+  border-color: #f59e0b;
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.questionButton.current.answered,
+.questionButton.current.flagged {
+  background: var(--gradient-primary);
+  color: white;
+}
+
+.flagIcon {
+  width: 12px;
+  height: 12px;
+  position: absolute;
+  top: 4px;
+  right: 4px;
+  fill: #f59e0b;
+}
+
+.questionButton.current .flagIcon {
+  fill: white;
+}
+
+.legend {
+  margin-top: var(--space-4);
+  padding-top: var(--space-4);
+  border-top: 1px solid var(--border);
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--space-2);
+  font-size: 12px;
+}
+
+.legendItem {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+}
+
+.legendItem span {
+  color: var(--muted-foreground);
+}
+
+.legendBox {
+  width: 16px;
+  height: 16px;
+  border-radius: 4px;
+  border: 2px solid;
+}
+
+.legendAnswered {
+  background: #d1fae5;
+  border-color: #10b981;
+}
+
+.legendNotViewed {
+  background: var(--background);
+  border-color: var(--border);
+}
+
+.legendFlagged {
+  background: #fef3c7;
+  border-color: #f59e0b;
+}
+
+.legendCurrent {
+  background: var(--gradient-primary);
+  border-color: var(--primary);
+}
+

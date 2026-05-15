@@ -1,0 +1,97 @@
+/* Admin Table Styles */
+.admin-table {
+	width: 100%;
+	border-collapse: collapse;
+	background: var(--card);
+	border-radius: var(--radius-lg);
+	overflow: hidden;
+	box-shadow: var(--shadow-sm);
+}
+
+.admin-table thead {
+	background: var(--muted);
+	border-bottom: 2px solid var(--border);
+}
+
+.admin-table th {
+	padding: 16px;
+	text-align: left;
+	font-weight: 600;
+	font-size: 14px;
+	color: var(--foreground);
+	white-space: nowrap;
+}
+
+.admin-table th.sortable {
+	cursor: pointer;
+	user-select: none;
+	transition: background var(--transition-normal);
+}
+
+.admin-table th.sortable:hover {
+	background: var(--accent);
+	color: var(--accent-foreground);
+}
+
+.admin-table tbody tr {
+	border-bottom: 1px solid var(--border);
+	transition: background var(--transition-normal);
+}
+
+.admin-table tbody tr:hover {
+	background: var(--muted);
+}
+
+.admin-table tbody tr:last-child {
+	border-bottom: none;
+}
+
+.admin-table tbody tr.loading {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+.admin-table td {
+	padding: 16px;
+	font-size: 14px;
+	color: var(--foreground);
+}
+
+.admin-table td.text-center {
+	text-align: center;
+}
+
+.admin-table td.text-right {
+	text-align: right;
+}
+
+.empty-state {
+	padding: 48px;
+	text-align: center;
+	color: var(--muted-foreground);
+}
+
+.empty-state-icon {
+	font-size: 48px;
+	margin-bottom: 16px;
+	opacity: 0.5;
+}
+
+.empty-state-text {
+	font-size: 16px;
+	font-weight: 500;
+}
+
+@media (max-width: 768px) {
+	.admin-table {
+		display: block;
+		overflow-x: auto;
+		white-space: nowrap;
+	}
+
+	.admin-table th,
+	.admin-table td {
+		padding: 12px;
+		font-size: 13px;
+	}
+}

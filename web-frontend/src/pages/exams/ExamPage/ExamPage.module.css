@@ -1,0 +1,308 @@
+/* Exam Page Styles */
+
+.page {
+  min-height: 100vh;
+  background: var(--background);
+  padding: clamp(16px, 3vw, 24px);
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: min(1200px, 100%);
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.header {
+  margin-bottom: clamp(24px, 4vw, 32px);
+  width: 100%;
+}
+
+.title {
+  font-size: clamp(24px, 4.5vw, 32px);
+  font-weight: 700;
+  margin-bottom: clamp(6px, 1vw, 8px);
+  color: var(--foreground);
+  word-break: break-word;
+}
+
+.subtitle {
+  color: var(--muted-foreground);
+  font-size: clamp(14px, 2.5vw, 16px);
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+.examsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 300px), 1fr));
+  gap: clamp(16px, 3vw, 24px);
+  width: 100%;
+}
+
+.examCard {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  padding: clamp(16px, 3vw, 24px);
+  transition: all 0.2s;
+  cursor: pointer;
+  width: 100%;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+}
+
+.examCard:hover {
+  box-shadow: var(--shadow-lg);
+  transform: translateY(-4px);
+}
+
+.statusBadgeContainer {
+  margin-bottom: clamp(12px, 2vw, 16px);
+  width: 100%;
+}
+
+.statusBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(3px, 0.8vw, 4px);
+  padding: clamp(3px, 0.8vw, 4px) clamp(10px, 1.5vw, 12px);
+  border-radius: clamp(10px, 1.5vw, 12px);
+  font-size: clamp(11px, 1.8vw, 12px);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.statusBadge svg {
+  width: clamp(12px, 2vw, 14px);
+  height: clamp(12px, 2vw, 14px);
+  flex-shrink: 0;
+}
+
+.statusBadge.completed {
+  background: #dcfce7;
+  color: #166534;
+}
+
+.statusBadge.inProgress {
+  background: #fef3c7;
+  color: #92400e;
+}
+
+.statusBadge.notStarted {
+  background: #e5e7eb;
+  color: #374151;
+}
+
+.examTitle {
+  font-size: clamp(18px, 3vw, 20px);
+  font-weight: 600;
+  margin-bottom: clamp(6px, 1vw, 8px);
+  color: var(--foreground);
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+.examDescription {
+  color: var(--muted-foreground);
+  font-size: clamp(13px, 2vw, 14px);
+  margin-bottom: clamp(12px, 2vw, 16px);
+  line-height: 1.5;
+  min-height: clamp(40px, 6vw, 42px);
+  word-break: break-word;
+}
+
+.examInfo {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 1vw, 8px);
+  margin-bottom: clamp(16px, 2.5vw, 20px);
+  padding: clamp(10px, 1.5vw, 12px);
+  background: var(--muted);
+  border-radius: var(--radius-md);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.examInfoItem {
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 1vw, 8px);
+  width: 100%;
+}
+
+.examInfoItem svg {
+  width: clamp(14px, 2vw, 16px);
+  height: clamp(14px, 2vw, 16px);
+  flex-shrink: 0;
+}
+
+.examInfoItem span {
+  font-size: clamp(12px, 2vw, 14px);
+  color: var(--muted-foreground);
+  word-break: break-word;
+}
+
+.examInfoItem .score {
+  font-weight: 600;
+  color: #10b981;
+}
+
+.examInfoItem .scoreIcon {
+  color: #10b981;
+}
+
+.examActions {
+  display: flex;
+  gap: clamp(10px, 1.5vw, 12px);
+  width: 100%;
+  margin-top: auto;
+}
+
+.examActions button {
+  flex: 1;
+  min-width: 0;
+}
+
+.emptyState {
+  background: var(--card);
+  padding: clamp(40px, 10vw, 60px) clamp(20px, 3vw, 24px);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  border: 1px solid var(--border);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.emptyState svg {
+  width: clamp(48px, 8vw, 64px);
+  height: clamp(48px, 8vw, 64px);
+  color: var(--muted-foreground);
+  margin-bottom: clamp(12px, 2vw, 16px);
+}
+
+.emptyState h3 {
+  margin-bottom: clamp(6px, 1vw, 8px);
+  color: var(--foreground);
+  font-size: clamp(18px, 3vw, 20px);
+  word-break: break-word;
+}
+
+.emptyState p {
+  color: var(--muted-foreground);
+  font-size: clamp(13px, 2.5vw, 15px);
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+/* Loading State */
+.loadingContainer {
+  min-height: 100vh;
+  background: var(--background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(20px, 4vw, 24px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.loadingContent {
+  text-align: center;
+}
+
+.spinner {
+  width: clamp(40px, 6vw, 48px);
+  height: clamp(40px, 6vw, 48px);
+  border: clamp(3px, 0.5vw, 3px) solid var(--muted);
+  border-top: clamp(3px, 0.5vw, 3px) solid var(--primary);
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+  margin: 0 auto clamp(12px, 2vw, 16px);
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+.loadingText {
+  color: var(--muted-foreground);
+  font-size: clamp(14px, 2.5vw, 16px);
+  word-break: break-word;
+}
+
+/* Error State */
+.errorContainer {
+  min-height: 100vh;
+  background: var(--background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(20px, 4vw, 24px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.errorCard {
+  background: var(--card);
+  padding: clamp(32px, 5vw, 40px);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  border: 1px solid var(--border);
+  max-width: min(400px, 100%);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.errorIcon {
+  width: clamp(40px, 6vw, 48px);
+  height: clamp(40px, 6vw, 48px);
+  color: #ef4444;
+  margin-bottom: clamp(12px, 2vw, 16px);
+}
+
+.errorTitle {
+  margin-bottom: clamp(6px, 1vw, 8px);
+  color: var(--foreground);
+  font-size: clamp(20px, 3.5vw, 24px);
+  font-weight: 700;
+  word-break: break-word;
+}
+
+.errorMessage {
+  color: var(--muted-foreground);
+  margin-bottom: clamp(20px, 3vw, 24px);
+  font-size: clamp(14px, 2.5vw, 16px);
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .examsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .examActions {
+    flex-direction: column;
+  }
+
+  .examActions button {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .examCard {
+    padding: clamp(12px, 2.5vw, 16px);
+  }
+
+  .examInfo {
+    padding: clamp(8px, 1.2vw, 10px);
+  }
+}
+

@@ -1,0 +1,77 @@
+/* TopicCard.module.css */
+
+.card {
+  padding: clamp(16px, 2.5vw, 20px);
+  text-align: center;
+  cursor: pointer;
+  background: var(--card);
+  border: 1px solid oklch(0.25 0 0);
+  border-radius: var(--radius-lg);
+  transition: transform 0.2s ease-out, box-shadow 0.2s ease-out;
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+}
+
+.card:active {
+  transform: translateY(-2px) scale(1.01);
+}
+
+/* Icon */
+.icon {
+  width: clamp(32px, 5vw, 40px);
+  height: clamp(32px, 5vw, 40px);
+  margin: 0 auto clamp(10px, 1.5vw, 12px);
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+/* Title */
+.title {
+  font-weight: 600;
+  margin: 0;
+  font-size: clamp(14px, 1.875vw, 16px);
+  color: var(--foreground);
+  word-break: break-word;
+  line-height: 1.4;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .card {
+    padding: clamp(14px, 2vw, 16px);
+  }
+
+  .icon {
+    width: clamp(28px, 4vw, 32px);
+    height: clamp(28px, 4vw, 32px);
+    margin-bottom: clamp(8px, 1.25vw, 10px);
+  }
+
+  .title {
+    font-size: clamp(13px, 1.625vw, 14px);
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: clamp(12px, 1.5vw, 14px);
+  }
+
+  .icon {
+    width: clamp(24px, 3vw, 28px);
+    height: clamp(24px, 3vw, 28px);
+    margin-bottom: clamp(6px, 1vw, 8px);
+  }
+
+  .title {
+    font-size: clamp(12px, 1.5vw, 13px);
+  }
+}

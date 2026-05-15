@@ -1,0 +1,112 @@
+.header {
+  background: var(--card);
+  border-bottom: 2px solid var(--border);
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  box-shadow: var(--shadow-md);
+}
+
+.headerContainer {
+  max-width: 1400px;
+  margin: 0 auto;
+  padding: var(--space-4) var(--space-6);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: var(--space-4);
+}
+
+.examTitle {
+  font-size: 18px;
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0;
+}
+
+.questionBadge {
+  background: var(--accent);
+  color: var(--accent-foreground);
+  padding: 4px 12px;
+  border-radius: var(--radius-md);
+  font-size: 14px;
+  font-weight: 600;
+}
+
+.headerRight {
+  display: flex;
+  align-items: center;
+  gap: var(--space-6);
+}
+
+.progressSection {
+  display: flex;
+  align-items: center;
+  gap: var(--space-3);
+}
+
+.progressText {
+  font-size: 14px;
+  color: var(--muted-foreground);
+}
+
+.progressText strong {
+  color: var(--foreground);
+}
+
+.progressBar {
+  width: 120px;
+  height: 8px;
+  background: var(--muted);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: var(--gradient-accent);
+  transition: width 0.3s ease;
+}
+
+.timerContainer {
+  display: flex;
+  align-items: center;
+  gap: var(--space-2);
+  background: var(--background);
+  padding: 8px 16px;
+  border-radius: var(--radius-lg);
+  border: 2px solid var(--border);
+}
+
+.timerWarning {
+  background: #fee2e2;
+  border-color: #f87171;
+  box-shadow: 0 0 20px rgba(239, 68, 68, 0.3);
+}
+
+.timerIcon {
+  width: 20px;
+  height: 20px;
+  color: var(--primary);
+}
+
+.timerWarning .timerIcon {
+  color: #dc2626;
+}
+
+.timerText {
+  font-size: 18px;
+  font-weight: 700;
+  font-family: var(--font-mono);
+  color: var(--foreground);
+}
+
+.timerWarning .timerText {
+  color: #dc2626;
+}
+

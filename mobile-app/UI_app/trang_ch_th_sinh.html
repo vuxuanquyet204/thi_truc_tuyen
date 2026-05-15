@@ -1,0 +1,286 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Academic Luminary - Candidate Home</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<!-- Material Symbols -->
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#1e333c",
+                    "outline-variant": "#c3c6d4",
+                    "surface-container-highest": "#cfe6f2",
+                    "surface-tint": "#2b5bb5",
+                    "error": "#ba1a1a",
+                    "secondary-container": "#90efef",
+                    "on-primary": "#ffffff",
+                    "on-surface": "#071e27",
+                    "surface": "#f3faff",
+                    "outline": "#737783",
+                    "on-secondary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#dbf1fe",
+                    "on-background": "#071e27",
+                    "surface-dim": "#c7dde9",
+                    "surface-container-low": "#e6f6ff",
+                    "inverse-on-surface": "#dff4ff",
+                    "primary": "#003178",
+                    "on-tertiary-container": "#eeb300",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed": "#001945",
+                    "surface-bright": "#f3faff",
+                    "secondary": "#006a6a",
+                    "inverse-primary": "#b0c6ff",
+                    "tertiary": "#453200",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#d9e2ff",
+                    "on-tertiary-fixed": "#261a00",
+                    "primary-fixed-dim": "#b0c6ff",
+                    "on-secondary-container": "#006e6e",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#93f2f2",
+                    "on-secondary-fixed-variant": "#004f4f",
+                    "surface-variant": "#cfe6f2",
+                    "secondary-fixed-dim": "#76d6d5",
+                    "on-error-container": "#93000a",
+                    "on-surface-variant": "#434652",
+                    "surface-container-high": "#d5ecf8",
+                    "tertiary-container": "#614800",
+                    "on-tertiary-fixed-variant": "#5b4300",
+                    "primary-container": "#0d47a1",
+                    "tertiary-fixed": "#ffdf9e",
+                    "tertiary-fixed-dim": "#fabd00",
+                    "on-primary-fixed-variant": "#00429c",
+                    "background": "#f3faff",
+                    "on-primary-container": "#a1bbff",
+                    "on-secondary-fixed": "#002020"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="fixed top-0 w-full z-50 bg-[#f3faff] dark:bg-slate-950 flex justify-between items-center px-6 py-4 w-full">
+<div class="flex items-center gap-3">
+<div class="w-10 h-10 rounded-full overflow-hidden">
+<img alt="User Profile" class="w-full h-full object-cover" data-alt="Close-up portrait of a professional young man in a library setting with soft natural lighting and warm tones" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBaqOJeFc9oYVVWB5jyy1MdfwE06uO8UCAfDPrP4grgtmjnNEzcZTnGMQ7TQjJFEVexhgP7JlqJQYIZOrj-bM3Gmxl3WUS2zDBlFRJa4KwwUL67oRWoyqFs8hfDEoH8Lxtc6HhQK3tfFdFAY-3_CZkGeReHgUUOodSREX-FA-W5ZwWM0LVvzkBLY9Pw4IiVom-KiZcSHX7i8Rni-Iw6u998h5DlTxf5w5U28Rff-ys9sIaC1hBbha-CD4p6Lip6yRmZMHa5l08O_CU"/>
+</div>
+<span class="text-xl font-bold text-[#003178] dark:text-blue-400 font-['Manrope'] tracking-tight">Academic Luminary</span>
+</div>
+<div class="flex items-center gap-2 px-4 py-2 bg-tertiary-fixed-dim text-on-tertiary-fixed rounded-full font-semibold text-sm">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">stars</span>
+<span>1,250 LT</span>
+</div>
+</header>
+<!-- Main Content Canvas -->
+<main class="pt-24 px-6 max-w-5xl mx-auto space-y-8">
+<!-- Next Exam Notification (Urgent) -->
+<section class="relative overflow-hidden rounded-xl bg-primary-container p-6 text-on-primary shadow-lg">
+<div class="flex flex-col md:flex-row md:items-center justify-between gap-4 relative z-10">
+<div class="space-y-1">
+<div class="flex items-center gap-2 text-sm font-medium text-on-primary-container uppercase tracking-wider">
+<span class="w-2 h-2 rounded-full bg-secondary"></span>
+                        Next Exam Starting Soon
+                    </div>
+<h2 class="text-2xl font-extrabold tracking-tight">Advanced Quantum Mechanics IV</h2>
+<p class="text-on-primary-container text-sm">Scheduled for Today at 14:30 PM • Proctoring Ready</p>
+</div>
+<button class="bg-secondary text-white px-8 py-3 rounded-full font-bold hover:bg-on-secondary-container transition-all flex items-center gap-2 self-start md:self-center">
+                    Check System
+                    <span class="material-symbols-outlined">arrow_forward</span>
+</button>
+</div>
+<!-- Decorative Ghost Image -->
+<div class="absolute right-0 top-0 h-full w-1/3 opacity-20 pointer-events-none">
+<img alt="Physics pattern" class="w-full h-full object-cover" data-alt="abstract mathematical equations and geometric shapes glowing softly on a dark blue background with depth of field" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB2PSm_6FZcAErVBEOkuXq5k31dPD_-XtGQaoUh1TqOqnmvLeCnDKukVsGvU6SbXDKEIEybqWE3ggrjs_elmUya9AzSfv1jJMKO--rXXKrRKu9pLJzF4WGQFOW9xFe1ouD0lRi3UGKn1QAz4JEkFfNh6IcoGKl-ZCXKVNmzlqLIBemtEhaIjX2ojczKBXUe8GLrCQQkI5W1lWyMIWi-Kjz1aYtbmMPw2qqns22D5nTVFhRzrQ5RBOmD0c_dtpXMCA_ZsHzv1tiS-zw"/>
+</div>
+</section>
+<!-- Bento Grid: Summary & Stats -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Summary Card -->
+<div class="md:col-span-2 bg-surface-container-low rounded-xl p-8 space-y-6">
+<div class="flex justify-between items-end">
+<div>
+<h3 class="text-headline-md font-bold text-primary">Academic Journey</h3>
+<p class="text-on-surface-variant text-sm">Your performance overview for the current semester.</p>
+</div>
+<span class="material-symbols-outlined text-primary-fixed-dim text-4xl">analytics</span>
+</div>
+<div class="grid grid-cols-2 sm:grid-cols-3 gap-4">
+<div class="bg-surface-container-lowest p-4 rounded-xl">
+<p class="text-xs text-outline font-medium uppercase tracking-widest">Active Exams</p>
+<p class="text-2xl font-extrabold text-on-surface">04</p>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl">
+<p class="text-xs text-outline font-medium uppercase tracking-widest">Completed</p>
+<p class="text-2xl font-extrabold text-on-surface">12</p>
+</div>
+<div class="bg-surface-container-lowest p-4 rounded-xl col-span-2 sm:col-span-1">
+<p class="text-xs text-outline font-medium uppercase tracking-widest">Global Rank</p>
+<p class="text-2xl font-extrabold text-secondary">#142</p>
+</div>
+</div>
+</div>
+<!-- LearnTokens (Achievement Card) -->
+<div class="bg-surface-container-highest rounded-xl p-8 flex flex-col justify-between relative overflow-hidden group">
+<div>
+<h3 class="text-lg font-bold text-tertiary-container">LearnTokens</h3>
+<p class="text-on-tertiary-fixed-variant text-sm mt-1">Earned through excellence</p>
+</div>
+<div class="mt-8">
+<div class="text-5xl font-black text-on-tertiary-fixed-variant tracking-tighter">1,250</div>
+<p class="text-on-tertiary-fixed-variant font-bold text-sm">LT BALANCE</p>
+</div>
+<div class="mt-6 flex gap-2">
+<button class="bg-tertiary-fixed-dim text-on-tertiary-fixed px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wide hover:opacity-90 transition-opacity">
+                        Redeem
+                    </button>
+<button class="bg-white/40 text-on-tertiary-fixed px-4 py-2 rounded-full text-xs font-bold uppercase tracking-wide hover:bg-white/60 transition-colors">
+                        History
+                    </button>
+</div>
+<!-- Glass Coin Icon -->
+<span class="material-symbols-outlined absolute -right-4 -bottom-4 text-9xl text-tertiary-fixed opacity-20 rotate-12 group-hover:rotate-0 transition-transform duration-500" style="font-variation-settings: 'FILL' 1;">monetization_on</span>
+</div>
+</div>
+<!-- Horizontal Scroll: Certificates -->
+<section class="space-y-4">
+<div class="flex justify-between items-center">
+<h3 class="text-xl font-bold text-primary">Credential Vault</h3>
+<button class="text-secondary text-sm font-bold flex items-center gap-1 hover:underline">
+                    View All <span class="material-symbols-outlined text-base">open_in_new</span>
+</button>
+</div>
+<div class="flex gap-4 overflow-x-auto pb-4 no-scrollbar">
+<!-- Certificate 1 -->
+<div class="flex-shrink-0 w-72 bg-surface-container-lowest p-5 rounded-xl flex items-center gap-4 border border-outline-variant/10 shadow-sm">
+<div class="w-14 h-14 bg-secondary-container rounded-lg flex items-center justify-center text-on-secondary-container">
+<span class="material-symbols-outlined text-3xl">verified</span>
+</div>
+<div>
+<p class="font-bold text-on-surface line-clamp-1">Data Ethics &amp; Privacy</p>
+<p class="text-xs text-outline">Issued: Oct 2023</p>
+</div>
+</div>
+<!-- Certificate 2 -->
+<div class="flex-shrink-0 w-72 bg-surface-container-lowest p-5 rounded-xl flex items-center gap-4 border border-outline-variant/10 shadow-sm">
+<div class="w-14 h-14 bg-primary-fixed rounded-lg flex items-center justify-center text-on-primary-fixed">
+<span class="material-symbols-outlined text-3xl">terminal</span>
+</div>
+<div>
+<p class="font-bold text-on-surface line-clamp-1">Algorithmic Logic</p>
+<p class="text-xs text-outline">Issued: Sep 2023</p>
+</div>
+</div>
+<!-- Certificate 3 -->
+<div class="flex-shrink-0 w-72 bg-surface-container-lowest p-5 rounded-xl flex items-center gap-4 border border-outline-variant/10 shadow-sm">
+<div class="w-14 h-14 bg-surface-container-highest rounded-lg flex items-center justify-center text-on-surface-variant">
+<span class="material-symbols-outlined text-3xl">history_edu</span>
+</div>
+<div>
+<p class="font-bold text-on-surface line-clamp-1">Humanities Master</p>
+<p class="text-xs text-outline">Issued: Aug 2023</p>
+</div>
+</div>
+</div>
+</section>
+<!-- Upcoming Schedule (Asymmetric List) -->
+<section class="space-y-6">
+<h3 class="text-xl font-bold text-primary">Upcoming Assessments</h3>
+<div class="space-y-3">
+<div class="group flex items-center justify-between p-6 bg-surface-container-low hover:bg-surface-container transition-colors rounded-xl cursor-pointer">
+<div class="flex items-center gap-6">
+<div class="text-center w-16">
+<p class="text-xs font-bold text-secondary uppercase tracking-widest">Nov</p>
+<p class="text-2xl font-black text-on-surface">18</p>
+</div>
+<div>
+<p class="font-bold text-lg text-on-surface">Structural Engineering Dynamics</p>
+<p class="text-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">schedule</span> 09:00 AM - 11:30 AM
+                            </p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary group-hover:translate-x-2 transition-all">chevron_right</span>
+</div>
+<div class="group flex items-center justify-between p-6 bg-surface-container-low hover:bg-surface-container transition-colors rounded-xl cursor-pointer">
+<div class="flex items-center gap-6">
+<div class="text-center w-16">
+<p class="text-xs font-bold text-secondary uppercase tracking-widest">Nov</p>
+<p class="text-2xl font-black text-on-surface">22</p>
+</div>
+<div>
+<p class="font-bold text-lg text-on-surface">Cognitive Psychology Foundations</p>
+<p class="text-sm text-outline flex items-center gap-1">
+<span class="material-symbols-outlined text-xs">schedule</span> 14:00 PM - 16:00 PM
+                            </p>
+</div>
+</div>
+<span class="material-symbols-outlined text-outline group-hover:text-primary group-hover:translate-x-2 transition-all">chevron_right</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pb-6 pt-3 px-4 bg-white/20 dark:bg-slate-900/20 backdrop-blur-lg rounded-t-3xl shadow-[0_12px_40px_rgba(7,30,39,0.06)]">
+<!-- Home (Active) -->
+<a class="flex flex-col items-center justify-center bg-[#cfe6f2] dark:bg-blue-900/40 text-[#003178] dark:text-blue-100 rounded-full px-5 py-1 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">home</span>
+<span class="font-['Inter'] text-xs font-medium">Home</span>
+</a>
+<!-- Exams -->
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 p-2 hover:opacity-80 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">quiz</span>
+<span class="font-['Inter'] text-xs font-medium">Exams</span>
+</a>
+<!-- Results -->
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 p-2 hover:opacity-80 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">analytics</span>
+<span class="font-['Inter'] text-xs font-medium">Results</span>
+</a>
+<!-- Profile -->
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 p-2 hover:opacity-80 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined">person</span>
+<span class="font-['Inter'] text-xs font-medium">Profile</span>
+</a>
+</nav>
+<!-- Progress Ribbon -->
+<div class="fixed top-0 left-0 w-full h-1 bg-secondary opacity-50 z-[60]">
+<div class="h-full bg-secondary w-2/3 shadow-[0_0_8px_rgba(0,106,106,0.5)]"></div>
+</div>
+</body></html>

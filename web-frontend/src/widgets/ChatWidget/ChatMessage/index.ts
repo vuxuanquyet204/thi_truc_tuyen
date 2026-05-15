@@ -1,0 +1,1 @@
+export { default as ChatMessage } from '@/shared/ui/molecules/ChatMessage/ChatMessage'

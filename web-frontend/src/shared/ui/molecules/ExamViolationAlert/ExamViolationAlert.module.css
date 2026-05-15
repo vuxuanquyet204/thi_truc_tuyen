@@ -1,0 +1,272 @@
+/* ExamViolationAlert Styles */
+
+.examViolationAlertOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.2s ease-out;
+}
+
+.examViolationAlertOverlay.stopping {
+  background: rgba(220, 38, 38, 0.9);
+  animation: fadeInRed 0.3s ease-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
+
+@keyframes fadeInRed {
+  from { opacity: 0; background: rgba(0, 0, 0, 0.75); }
+  to { opacity: 1; background: rgba(220, 38, 38, 0.9); }
+}
+
+.examViolationAlertContainer {
+  background: #fff;
+  border-radius: 16px;
+  width: 90%;
+  max-width: 480px;
+  border-left: 6px solid #ef4444;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  overflow: hidden;
+  animation: slideIn 0.3s ease-out;
+}
+
+.examViolationAlertContainer.low { border-left-color: #10b981; }
+.examViolationAlertContainer.medium { border-left-color: #f59e0b; }
+.examViolationAlertContainer.high { border-left-color: #ef4444; }
+.examViolationAlertContainer.critical { border-left-color: #dc2626; }
+
+@keyframes slideIn {
+  from { transform: translateY(-20px); opacity: 0; }
+  to { transform: translateY(0); opacity: 1; }
+}
+
+.examViolationAlertHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 20px 24px 16px;
+  border-bottom: 1px solid #f3f4f6;
+}
+
+.examViolationAlertTitle {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.examViolationSeverityIcon {
+  display: flex;
+  align-items: center;
+}
+
+.examViolationTitleContent {
+  display: flex;
+  flex-direction: column;
+  gap: 2px;
+}
+
+.examViolationTitle {
+  margin: 0;
+  font-size: 18px;
+  font-weight: 700;
+  color: #111827;
+}
+
+.examViolationSubtitle {
+  margin: 0;
+  font-size: 13px;
+  color: #6b7280;
+}
+
+.examViolationAlertActions {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.examViolationCountdown {
+  display: flex;
+  align-items: center;
+  gap: 4px;
+  font-size: 16px;
+  font-weight: 700;
+  color: #ef4444;
+  background: #fef2f2;
+  padding: 6px 12px;
+  border-radius: 8px;
+}
+
+.examViolationCountdownText {
+  min-width: 24px;
+  text-align: center;
+}
+
+.examViolationDismissButton {
+  background: none;
+  border: none;
+  padding: 8px;
+  cursor: pointer;
+  color: #6b7280;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  transition: background 0.15s;
+}
+
+.examViolationDismissButton:hover {
+  background: #f3f4f6;
+  color: #374151;
+}
+
+.examViolationAlertContent {
+  padding: 20px 24px;
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.examViolationInfo {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+}
+
+.examViolationDetectionIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  background: #fef2f2;
+  border-radius: 12px;
+  color: #ef4444;
+  flex-shrink: 0;
+}
+
+.examViolationDetails {
+  flex: 1;
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+}
+
+.examViolationDescription {
+  margin: 0;
+  font-size: 14px;
+  color: #374151;
+  line-height: 1.5;
+}
+
+.examViolationConfidence {
+  font-size: 12px;
+  color: #9ca3af;
+}
+
+.examViolationWarningMessage {
+  display: flex;
+  align-items: flex-start;
+  gap: 10px;
+  padding: 14px 16px;
+  background: #fffbeb;
+  border: 1px solid #fcd34d;
+  border-radius: 10px;
+  color: #92400e;
+}
+
+.examViolationWarningMessage svg {
+  color: #d97706;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.examViolationWarningText {
+  font-size: 13px;
+  line-height: 1.6;
+}
+
+.examViolationAlertFooter {
+  padding: 16px 24px 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  border-top: 1px solid #f3f4f6;
+}
+
+.examViolationActionButtons {
+  display: flex;
+  gap: 10px;
+  justify-content: flex-end;
+}
+
+.examViolationAcknowledgeButton {
+  padding: 10px 20px;
+  background: #f3f4f6;
+  color: #374151;
+  border: 1px solid #d1d5db;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.examViolationAcknowledgeButton:hover {
+  background: #e5e7eb;
+}
+
+.examViolationStopExamButton {
+  padding: 10px 20px;
+  background: #dc2626;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.15s;
+}
+
+.examViolationStopExamButton:hover {
+  background: #b91c1c;
+}
+
+.examViolationAutoStopWarning {
+  text-align: center;
+  font-size: 12px;
+}
+
+.examViolationCriticalWarning {
+  color: #dc2626;
+  font-weight: 600;
+  animation: pulse 1s infinite;
+}
+
+.examViolationNormalWarning {
+  color: #6b7280;
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50% { opacity: 0.6; }
+}
+
+.examViolationProgressContainer {
+  height: 4px;
+  background: #f3f4f6;
+  width: 100%;
+}
+
+.examViolationProgressBar {
+  height: 100%;
+  transition: width 1s linear, background-color 0.3s;
+}

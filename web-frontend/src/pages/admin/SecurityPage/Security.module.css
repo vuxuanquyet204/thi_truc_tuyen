@@ -1,0 +1,343 @@
+/* Security Module Styles */
+
+/* Module Status Card */
+.moduleStatusCard {
+	padding: 20px;
+	background: var(--card);
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-sm);
+	transition: all var(--transition-normal);
+}
+
+.moduleStatusCard:hover {
+	box-shadow: var(--shadow-md);
+}
+
+/* Stats Grid */
+.statsGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 20px;
+	margin-bottom: 24px;
+}
+
+.statCard {
+	padding: 20px;
+	background: var(--card);
+	border: 1px solid var(--border);
+	border-radius: var(--radius-lg);
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	transition: all var(--transition-normal);
+}
+
+.statCard:hover {
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-md);
+}
+
+.statIcon {
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 24px;
+}
+
+.statContent {
+	flex: 1;
+}
+
+.statLabel {
+	font-size: 14px;
+	color: var(--muted-foreground);
+	margin-bottom: 4px;
+}
+
+.statValue {
+	font-size: 28px;
+	font-weight: 700;
+}
+
+.statChange {
+	font-size: 12px;
+	margin-top: 4px;
+}
+
+.statChangePositive {
+	color: #10b981;
+}
+
+.statChangeNegative {
+	color: #ef4444;
+}
+
+.statChangeNeutral {
+	color: var(--muted-foreground);
+}
+
+/* Real-time indicator */
+.realtimeIndicator {
+	display: inline-flex;
+	align-items: center;
+	gap: 8px;
+	padding: 8px 12px;
+	background: var(--accent);
+	color: var(--accent-foreground);
+	border-radius: var(--radius-md);
+	font-size: 13px;
+	font-weight: 600;
+}
+
+.realtimePulse {
+	width: 8px;
+	height: 8px;
+	background: currentColor;
+	border-radius: 50%;
+	animation: pulse 2s cubic-bezier(0.4, 0, 0.6, 1) infinite;
+}
+
+@keyframes pulse {
+	0%, 100% { opacity: 1; }
+	50% { opacity: 0.5; }
+}
+
+/* Security Score */
+.securityScoreExcellent {
+	color: #10b981;
+}
+
+.securityScoreGood {
+	color: #f59e0b;
+}
+
+.securityScorePoor {
+	color: #ef4444;
+}
+
+/* Module Type */
+.moduleTypeAntiCheat {
+	border-left: 4px solid #3b82f6;
+}
+
+.moduleTypeCopyrightProtection {
+	border-left: 4px solid #10b981;
+}
+
+.moduleTypeTokenRewards {
+	border-left: 4px solid #f59e0b;
+}
+
+.moduleTypeMultisigWallet {
+	border-left: 4px solid #8b5cf6;
+}
+
+/* Network Badges */
+.networkEthereum {
+	background: #627eea;
+	color: white;
+}
+
+.networkPolygon {
+	background: #8247e5;
+	color: white;
+}
+
+.networkBsc {
+	background: #f0b90b;
+	color: black;
+}
+
+.networkLocal {
+	background: #6b7280;
+	color: white;
+}
+
+/* Alert Severity */
+.alertCritical {
+	border-left: 4px solid #dc2626;
+	background: #fef2f2;
+}
+
+.alertHigh {
+	border-left: 4px solid #ef4444;
+	background: #fef2f2;
+}
+
+.alertMedium {
+	border-left: 4px solid #f59e0b;
+	background: #fffbeb;
+}
+
+.alertLow {
+	border-left: 4px solid #10b981;
+	background: #f0fdf4;
+}
+
+/* Activity Log */
+.activityLogItem {
+	padding: 12px;
+	border-left: 3px solid var(--border);
+	margin-bottom: 8px;
+	background: var(--background);
+	border-radius: var(--radius-md);
+	transition: all var(--transition-fast);
+}
+
+.activityLogItem:hover {
+	background: var(--muted);
+	border-left-color: var(--accent);
+}
+
+.activityLogItemTransaction {
+	border-left-color: #3b82f6;
+}
+
+.activityLogItemSecurityAlert {
+	border-left-color: #f59e0b;
+}
+
+.activityLogItemError {
+	border-left-color: #ef4444;
+}
+
+.activityLogItemAudit {
+	border-left-color: #10b981;
+}
+
+/* Contract Address */
+.contractAddress {
+	font-family: 'Monaco', 'Menlo', 'Ubuntu Mono', monospace;
+	font-size: 12px;
+	background: var(--muted);
+	padding: 8px 12px;
+	border-radius: var(--radius-md);
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	overflow: hidden;
+}
+
+.contractAddress span {
+	flex: 1;
+	overflow: hidden;
+	text-overflow: ellipsis;
+	white-space: nowrap;
+}
+
+/* Performance Metrics */
+.performanceMetric {
+	text-align: center;
+	padding: 8px;
+}
+
+.performanceMetricExcellent {
+	color: #10b981;
+}
+
+.performanceMetricGood {
+	color: #f59e0b;
+}
+
+.performanceMetricPoor {
+	color: #ef4444;
+}
+
+/* Audit Info */
+.auditInfo {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	padding: 8px 12px;
+	border-radius: var(--radius-md);
+	font-size: 13px;
+	font-weight: 500;
+}
+
+.auditInfoExcellent {
+	background: #f0fdf4;
+	border: 1px solid #bbf7d0;
+	color: #166534;
+}
+
+.auditInfoGood {
+	background: #fffbeb;
+	border: 1px solid #fed7aa;
+	color: #92400e;
+}
+
+.auditInfoPoor {
+	background: #fef2f2;
+	border: 1px solid #fecaca;
+	color: #991b1b;
+}
+
+/* Token Info */
+.tokenInfo {
+	display: flex;
+	align-items: center;
+	gap: 12px;
+	padding: 16px;
+	background: var(--card);
+	border: 1px solid var(--border);
+	border-radius: var(--radius-lg);
+}
+
+.tokenSymbol {
+	font-size: 18px;
+	font-weight: 700;
+	color: var(--accent);
+}
+
+.tokenDetails {
+	flex: 1;
+}
+
+.tokenName {
+	font-size: 14px;
+	font-weight: 500;
+	margin-bottom: 4px;
+}
+
+.tokenPrice {
+	font-size: 16px;
+	font-weight: 600;
+	color: #10b981;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	.statsGrid {
+		grid-template-columns: 1fr;
+	}
+
+	.moduleStatusCard {
+		padding: 16px;
+	}
+
+	.statCard {
+		padding: 16px;
+	}
+
+	.statValue {
+		font-size: 24px;
+	}
+
+	.tokenInfo {
+		padding: 12px;
+	}
+}
+
+/* Dark mode */
+@media (prefers-color-scheme: dark) {
+	.contractAddress {
+		background: rgba(255, 255, 255, 0.1);
+	}
+
+	.activityLogItem {
+		background: rgba(255, 255, 255, 0.05);
+	}
+}

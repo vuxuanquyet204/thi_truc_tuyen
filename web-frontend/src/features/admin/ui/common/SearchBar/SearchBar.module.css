@@ -1,0 +1,38 @@
+/* SearchBar Component Styles */
+
+.searchBar {
+	position: relative;
+	width: 100%;
+	max-width: 400px;
+}
+
+.searchBar input {
+	width: 100%;
+	padding: 10px 16px 10px 42px;
+	border: 1px solid var(--border);
+	border-radius: var(--radius-md);
+	background: var(--background);
+	color: var(--foreground);
+	font-size: 14px;
+	transition: all var(--transition-normal);
+}
+
+.searchBar input:focus {
+	outline: none;
+	border-color: var(--accent);
+	box-shadow: 0 0 0 3px rgba(var(--accent-rgb), 0.1);
+}
+
+.searchBar input::placeholder {
+	color: var(--muted-foreground);
+}
+
+.icon {
+	position: absolute;
+	left: 26px;
+	top: 50%;
+	transform: translateY(-50%);
+	color: var(--muted-foreground);
+	pointer-events: none;
+	z-index: 1;
+}

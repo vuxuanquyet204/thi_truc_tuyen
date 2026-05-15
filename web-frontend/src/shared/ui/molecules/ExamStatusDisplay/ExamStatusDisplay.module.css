@@ -1,0 +1,64 @@
+.container {
+  min-height: 100vh;
+  background: var(--background);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.card {
+  background: var(--card);
+  padding: 40px;
+  border-radius: var(--radius-lg);
+  text-align: center;
+  border: 1px solid var(--border);
+  max-width: 400px;
+}
+
+.errorCard {
+  border-color: var(--destructive);
+}
+
+.spinner {
+  width: 48px;
+  height: 48px;
+  border: 3px solid var(--muted);
+  border-top: 3px solid var(--primary);
+  border-radius: 50%;
+  margin: 0 auto 20px;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  0% {
+    transform: rotate(0deg);
+  }
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+.errorIcon {
+  width: 64px;
+  height: 64px;
+  color: var(--destructive);
+  margin: 0 auto 20px;
+}
+
+.title {
+  font-size: 20px;
+  font-weight: 600;
+  margin-bottom: 12px;
+  color: var(--foreground);
+}
+
+.description {
+  color: var(--muted-foreground);
+  font-size: 14px;
+  margin-bottom: 24px;
+}
+
+.errorCard .description {
+  margin-bottom: 24px;
+}
+

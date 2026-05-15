@@ -1,0 +1,360 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Academic Luminary - Admin Dashboard</title>
+<!-- Fonts -->
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&amp;family=Manrope:wght@700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<!-- Tailwind CSS -->
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#1e333c",
+                    "outline-variant": "#c3c6d4",
+                    "surface-container-highest": "#cfe6f2",
+                    "surface-tint": "#2b5bb5",
+                    "error": "#ba1a1a",
+                    "secondary-container": "#90efef",
+                    "on-primary": "#ffffff",
+                    "on-surface": "#071e27",
+                    "surface": "#f3faff",
+                    "outline": "#737783",
+                    "on-secondary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#dbf1fe",
+                    "on-background": "#071e27",
+                    "surface-dim": "#c7dde9",
+                    "surface-container-low": "#e6f6ff",
+                    "inverse-on-surface": "#dff4ff",
+                    "primary": "#003178",
+                    "on-tertiary-container": "#eeb300",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed": "#001945",
+                    "surface-bright": "#f3faff",
+                    "secondary": "#006a6a",
+                    "inverse-primary": "#b0c6ff",
+                    "tertiary": "#453200",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#d9e2ff",
+                    "on-tertiary-fixed": "#261a00",
+                    "primary-fixed-dim": "#b0c6ff",
+                    "on-secondary-container": "#006e6e",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#93f2f2",
+                    "on-secondary-fixed-variant": "#004f4f",
+                    "surface-variant": "#cfe6f2",
+                    "secondary-fixed-dim": "#76d6d5",
+                    "on-error-container": "#93000a",
+                    "on-surface-variant": "#434652",
+                    "surface-container-high": "#d5ecf8",
+                    "tertiary-container": "#614800",
+                    "on-tertiary-fixed-variant": "#5b4300",
+                    "primary-container": "#0d47a1",
+                    "tertiary-fixed": "#ffdf9e",
+                    "tertiary-fixed-dim": "#fabd00",
+                    "on-primary-fixed-variant": "#00429c",
+                    "background": "#f3faff",
+                    "on-primary-container": "#a1bbff",
+                    "on-secondary-fixed": "#002020"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+      .material-symbols-outlined {
+        font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+      }
+      body {
+        font-family: 'Inter', sans-serif;
+        background-color: #f3faff;
+        color: #071e27;
+      }
+      .font-manrope { font-family: 'Manrope', sans-serif; }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface antialiased">
+<!-- Admin Navigation Drawer -->
+<aside class="flex flex-col h-screen fixed left-0 top-0 z-40 py-8 bg-[#e6f6ff] dark:bg-slate-900 h-full w-72 rounded-r-2xl shadow-none">
+<div class="px-8 mb-10 flex items-center gap-3">
+<span class="font-['Manrope'] text-lg font-black text-[#003178]">Academic Luminary</span>
+</div>
+<div class="px-6 mb-10 flex items-center space-x-4">
+<img alt="Admin Avatar" class="w-12 h-12 rounded-full object-cover" data-alt="Close up portrait of a professional man in a suit with a kind and authoritative expression, clean studio lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCYGonnh3ygTfb13-paiDjdkXnhBBlBATp7NSmiMeDowR1YJcIpIqjnor9r7eBWUnw8RX1WDnOhxqLvRfoo4hRYUt-VbDuAIAnb8E-s-MTCvYuWy7LMSNzBe2SflhvrdlzxLPF93bDiR8WqcUeJUjGVUfCCXZ57rSGF5cgo5Iwwqzpjqnj-7lxGM-uNHfVR88aKw1o3c2L00D8bh78duwHw2AtkNrot4Cc5OsUmx0BLGp5cMezIYQ3F1PHwryjS7ZErJc0zhV5r8Qc"/>
+<div class="flex flex-col">
+<span class="font-['Inter'] font-semibold text-[#003178] dark:text-blue-400">Admin Portal</span>
+<span class="text-xs text-slate-500 dark:text-slate-400">Institutional Lead</span>
+</div>
+</div>
+<nav class="flex-1 space-y-2">
+<!-- Active: Dashboard -->
+<a class="flex items-center gap-4 text-[#003178] dark:text-blue-300 border-l-4 border-[#003178] pl-4 py-3 bg-[#cfe6f2] dark:bg-slate-800 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">dashboard</span>
+<span class="font-['Inter'] font-semibold">Dashboard</span>
+</a>
+<a class="flex items-center gap-4 text-slate-500 dark:text-slate-400 pl-5 py-3 hover:bg-[#cfe6f2] dark:hover:bg-slate-800 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">edit_note</span>
+<span class="font-['Inter'] font-semibold">Management</span>
+</a>
+<a class="flex items-center gap-4 text-slate-500 dark:text-slate-400 pl-5 py-3 hover:bg-[#cfe6f2] dark:hover:bg-slate-800 transition-transform duration-200" href="#">
+<span class="material-symbols-outlined">visibility</span>
+<span class="font-['Inter'] font-semibold">Monitoring</span>
+</a>
+</nav>
+<div class="mt-auto px-6">
+<div class="bg-surface-container-highest p-4 rounded-xl flex items-center justify-between">
+<div>
+<p class="text-[10px] uppercase tracking-widest text-on-surface-variant font-bold">System Status</p>
+<p class="text-sm font-semibold text-secondary">Optimal</p>
+</div>
+<div class="w-3 h-3 bg-secondary rounded-full animate-pulse"></div>
+</div>
+</div>
+</aside>
+<!-- Main Content Canvas -->
+<main class="ml-72 min-h-screen p-8 lg:p-12">
+<!-- Header / Top Bar -->
+<header class="flex justify-between items-center mb-12">
+<div>
+<h1 class="text-4xl font-headline font-extrabold tracking-tight text-primary">Institutional Analytics</h1>
+<p class="text-on-surface-variant mt-1">Real-time performance metrics and candidate engagement.</p>
+</div>
+<div class="flex items-center gap-4">
+<button class="bg-surface-container-lowest backdrop-blur-lg px-6 py-2 rounded-full text-primary font-semibold text-sm transition-all hover:bg-surface-container-highest">
+                    Export Report
+                </button>
+<div class="bg-tertiary-fixed-dim px-4 py-2 rounded-full flex items-center gap-2">
+<span class="material-symbols-outlined text-on-tertiary-fixed" style="font-variation-settings: 'FILL' 1;">generating_tokens</span>
+<span class="font-bold text-on-tertiary-fixed">1,250 LT</span>
+</div>
+</div>
+</header>
+<!-- Bento Grid Statistics -->
+<section class="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6 mb-12">
+<!-- Active Candidates -->
+<div class="md:col-span-2 bg-primary rounded-[2rem] p-8 text-on-primary flex flex-col justify-between relative overflow-hidden group">
+<div class="relative z-10">
+<span class="text-sm font-medium opacity-80 uppercase tracking-widest">Active Candidates</span>
+<h2 class="text-6xl font-headline font-bold mt-2">12,482</h2>
+<div class="mt-6 flex items-center gap-2 text-secondary-container">
+<span class="material-symbols-outlined">trending_up</span>
+<span class="text-sm font-bold">+12% from last term</span>
+</div>
+</div>
+<!-- Abstract Deco -->
+<div class="absolute -right-10 -bottom-10 w-48 h-48 bg-primary-container rounded-full opacity-20 transition-transform group-hover:scale-125 duration-500"></div>
+<div class="absolute right-20 top-10 w-24 h-24 border-4 border-white/10 rounded-full"></div>
+</div>
+<!-- Average Scores -->
+<div class="bg-surface-container-lowest rounded-[2rem] p-8 flex flex-col justify-between shadow-[0_12px_40px_rgba(7,30,39,0.06)]">
+<div>
+<span class="text-sm font-medium text-on-surface-variant uppercase tracking-widest">Average Proficiency</span>
+<h2 class="text-5xl font-headline font-bold text-primary mt-2">84.2%</h2>
+</div>
+<div class="mt-8 space-y-3">
+<div class="h-2 w-full bg-surface-container-low rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[84.2%] rounded-full"></div>
+</div>
+<p class="text-xs text-on-surface-variant flex justify-between font-medium">
+<span>Current Mean</span>
+<span>Goal: 90%</span>
+</p>
+</div>
+</div>
+<!-- LearnToken Circulation -->
+<div class="bg-tertiary-fixed rounded-[2rem] p-8 flex flex-col justify-between text-on-tertiary-fixed">
+<div>
+<span class="text-sm font-medium opacity-70 uppercase tracking-widest">Token Velocity</span>
+<h2 class="text-5xl font-headline font-bold mt-2">4.2k</h2>
+<p class="text-sm font-medium mt-1">Daily LT Claims</p>
+</div>
+<div class="flex -space-x-2 mt-4 overflow-hidden">
+<img alt="User 1" class="inline-block h-8 w-8 rounded-full ring-2 ring-tertiary-fixed" data-alt="Portrait of a young woman with smiling eyes and soft lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBY2z9U5dVE5jKLsa9hezDe1twFXn9aaG9A_TPrWQDmM2W5u5h6noEok0tM6k4UiPs6HGWrTT5SYLAvtjG4ptLAMfZWINgqdLobHsNEr5ocmV2jfGNhoCpeGe_8FYpyVK8xx_8SYehLmIBvl-xXVmbngw_xwgPOaG0dv4QuaS3fTb2CHjhTnNur0Fpol0BFq-uK5dOE7Vd6Hh0pcuDiynUievjGN9M96ybxGtxmllj79VKmScAcqEm0JsviiNFCFG0q7-wCKsozt-c"/>
+<img alt="User 2" class="inline-block h-8 w-8 rounded-full ring-2 ring-tertiary-fixed" data-alt="Portrait of a handsome man with a focused academic expression" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAgXh7aa-9w-McMjQX9NNLdOK8TAEfriYy3bYv21OnOg4PkOTPDLvKzL9X7A0YP0V8vqGStnebya5_7xu1HTIDGzb9jzgwRfzw4T1KWF3dH4MqM1PyKjmoYdaoLBKNWS-d01RC9hMWawZYSmRB267-DEe8DjFrHzbJDEz2xUL4SMo4wC9q5FZVibfNrD5vN7i61xcfuftYU749CoF14ns8wtAnRCv8Z2qPy_b8t0X7cmUI-8hVBe2bb8JrkbouaCn6GOHC72gZBNkE"/>
+<img alt="User 3" class="inline-block h-8 w-8 rounded-full ring-2 ring-tertiary-fixed" data-alt="Joyful woman student in a university library setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDy6sVCwfJ7KRP_x9-Jt2LV969j-1OqjC116wy71ea5Zy1UA2HrXt3C1YO89xj-A-aLJ7HrkmCW8q0Ff1UZZ9-P7oa9QVdpmcu3136sN-nm7_Ldsww0nrkspAISh9WUKiNNmKDtUvGDzkVyB9d5TJdl5VGqvac9FkUK4MtUdWc09jalmRcDUVzU2uOWTT2GFjvo1_qi1Amm3qstkx6Fsjlabk5P5C26ZC4fXSQhTXoljndaHdpF_gcfkddj3-rbLIba0-2mC0mN_sk"/>
+<div class="h-8 w-8 rounded-full bg-tertiary/20 flex items-center justify-center text-[10px] font-bold ring-2 ring-tertiary-fixed">+2k</div>
+</div>
+</div>
+</section>
+<!-- Secondary Data Layer -->
+<section class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+<!-- Visualization: Score Distribution -->
+<div class="lg:col-span-2 bg-surface-container-low rounded-[2rem] p-10">
+<div class="flex justify-between items-center mb-10">
+<h3 class="text-2xl font-headline font-bold text-primary">Candidate Distribution</h3>
+<div class="flex gap-2">
+<span class="px-3 py-1 rounded-full bg-surface-container-highest text-[10px] font-bold text-primary">WEEKLY</span>
+<span class="px-3 py-1 rounded-full text-[10px] font-bold text-outline">MONTHLY</span>
+</div>
+</div>
+<!-- Custom Asymmetric Chart Representation -->
+<div class="flex items-end justify-between h-48 gap-4 px-2">
+<div class="flex-1 bg-primary/10 rounded-t-xl group relative">
+<div class="absolute bottom-0 w-full bg-primary/40 h-[40%] rounded-t-xl transition-all duration-500 group-hover:h-[45%]"></div>
+<span class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[10px] font-bold text-outline">MON</span>
+</div>
+<div class="flex-1 bg-primary/10 rounded-t-xl group relative">
+<div class="absolute bottom-0 w-full bg-primary/40 h-[65%] rounded-t-xl transition-all duration-500 group-hover:h-[70%]"></div>
+<span class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[10px] font-bold text-outline">TUE</span>
+</div>
+<div class="flex-1 bg-primary/10 rounded-t-xl group relative">
+<div class="absolute bottom-0 w-full bg-primary h-[90%] rounded-t-xl transition-all duration-500 group-hover:h-[95%]"></div>
+<span class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[10px] font-bold text-outline">WED</span>
+</div>
+<div class="flex-1 bg-primary/10 rounded-t-xl group relative">
+<div class="absolute bottom-0 w-full bg-primary/40 h-[55%] rounded-t-xl transition-all duration-500 group-hover:h-[60%]"></div>
+<span class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[10px] font-bold text-outline">THU</span>
+</div>
+<div class="flex-1 bg-primary/10 rounded-t-xl group relative">
+<div class="absolute bottom-0 w-full bg-primary/60 h-[75%] rounded-t-xl transition-all duration-500 group-hover:h-[80%]"></div>
+<span class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[10px] font-bold text-outline">FRI</span>
+</div>
+<div class="flex-1 bg-primary/10 rounded-t-xl group relative">
+<div class="absolute bottom-0 w-full bg-primary/20 h-[30%] rounded-t-xl transition-all duration-500 group-hover:h-[35%]"></div>
+<span class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[10px] font-bold text-outline">SAT</span>
+</div>
+<div class="flex-1 bg-primary/10 rounded-t-xl group relative">
+<div class="absolute bottom-0 w-full bg-primary/20 h-[25%] rounded-t-xl transition-all duration-500 group-hover:h-[30%]"></div>
+<span class="absolute -bottom-8 left-1/2 -translate-x-1/2 text-[10px] font-bold text-outline">SUN</span>
+</div>
+</div>
+<div class="mt-16 grid grid-cols-3 gap-4 border-t border-primary/5 pt-8">
+<div>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter">Peak Volume</p>
+<p class="text-xl font-bold text-primary">14:00 - 16:00</p>
+</div>
+<div>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter">Avg. Session</p>
+<p class="text-xl font-bold text-primary">48.2 min</p>
+</div>
+<div>
+<p class="text-[10px] text-on-surface-variant font-bold uppercase tracking-tighter">Concurrency</p>
+<p class="text-xl font-bold text-primary">1,204 ops/s</p>
+</div>
+</div>
+</div>
+<!-- Recent Activities List -->
+<div class="bg-surface-container-lowest rounded-[2rem] p-10 shadow-[0_12px_40px_rgba(7,30,39,0.06)] relative overflow-hidden">
+<div class="relative z-10 h-full flex flex-col">
+<h3 class="text-2xl font-headline font-bold text-primary mb-8">Recent Activity</h3>
+<div class="space-y-8 flex-1">
+<div class="flex gap-4">
+<div class="mt-1 w-2 h-2 rounded-full bg-secondary flex-shrink-0"></div>
+<div>
+<p class="text-sm font-semibold text-on-surface">Law Exam Finalized</p>
+<p class="text-xs text-on-surface-variant">2,400 scripts verified by AI engine.</p>
+<span class="text-[10px] text-outline font-medium">Just now</span>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="mt-1 w-2 h-2 rounded-full bg-tertiary-fixed-dim flex-shrink-0"></div>
+<div>
+<p class="text-sm font-semibold text-on-surface">Token Batch Minted</p>
+<p class="text-xs text-on-surface-variant">Admin issued 50,000 LearnTokens.</p>
+<span class="text-[10px] text-outline font-medium">14 min ago</span>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="mt-1 w-2 h-2 rounded-full bg-error flex-shrink-0"></div>
+<div>
+<p class="text-sm font-semibold text-on-surface">Integrity Alert</p>
+<p class="text-xs text-on-surface-variant">Candidate ID #8492 flagged for review.</p>
+<span class="text-[10px] text-outline font-medium">2 hours ago</span>
+</div>
+</div>
+<div class="flex gap-4">
+<div class="mt-1 w-2 h-2 rounded-full bg-primary flex-shrink-0"></div>
+<div>
+<p class="text-sm font-semibold text-on-surface">New Proctor Assigned</p>
+<p class="text-xs text-on-surface-variant">Sarah Jenkins joined the monitoring pool.</p>
+<span class="text-[10px] text-outline font-medium">Yesterday</span>
+</div>
+</div>
+</div>
+<button class="w-full mt-10 py-4 text-primary text-sm font-bold bg-surface-container rounded-2xl hover:bg-surface-container-highest transition-colors">
+                        View Audit Log
+                    </button>
+</div>
+</div>
+</section>
+<!-- LearnToken Distribution Deep-Dive -->
+<section class="mt-12 bg-white rounded-[2rem] p-10 border border-primary/5">
+<div class="flex flex-col md:flex-row justify-between items-start md:items-center gap-6 mb-12">
+<div>
+<h3 class="text-3xl font-headline font-bold text-primary">LearnToken Economy</h3>
+<p class="text-on-surface-variant mt-1">Monitoring the distribution and utility of platform rewards.</p>
+</div>
+<div class="flex gap-4">
+<div class="text-right">
+<p class="text-[10px] font-bold text-on-tertiary-fixed-variant uppercase tracking-widest">Total Issued</p>
+<p class="text-2xl font-headline font-black text-on-tertiary-fixed-variant">8.4M LT</p>
+</div>
+<div class="w-px h-10 bg-outline-variant opacity-30"></div>
+<div class="text-right">
+<p class="text-[10px] font-bold text-on-secondary-container uppercase tracking-widest">Circulating</p>
+<p class="text-2xl font-headline font-black text-on-secondary-container">1.2M LT</p>
+</div>
+</div>
+</div>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-4">
+<div class="p-6 rounded-2xl bg-surface transition-all hover:bg-surface-container">
+<span class="text-xs font-bold text-outline uppercase">Performance Bonus</span>
+<p class="text-2xl font-bold text-primary mt-2">42%</p>
+<div class="w-full bg-primary/10 h-1 mt-4 rounded-full">
+<div class="bg-primary h-full w-[42%] rounded-full"></div>
+</div>
+</div>
+<div class="p-6 rounded-2xl bg-surface transition-all hover:bg-surface-container">
+<span class="text-xs font-bold text-outline uppercase">Peer Mentorship</span>
+<p class="text-2xl font-bold text-primary mt-2">18%</p>
+<div class="w-full bg-primary/10 h-1 mt-4 rounded-full">
+<div class="bg-primary h-full w-[18%] rounded-full"></div>
+</div>
+</div>
+<div class="p-6 rounded-2xl bg-surface transition-all hover:bg-surface-container">
+<span class="text-xs font-bold text-outline uppercase">Resource Creation</span>
+<p class="text-2xl font-bold text-primary mt-2">25%</p>
+<div class="w-full bg-primary/10 h-1 mt-4 rounded-full">
+<div class="bg-primary h-full w-[25%] rounded-full"></div>
+</div>
+</div>
+<div class="p-6 rounded-2xl bg-surface transition-all hover:bg-surface-container">
+<span class="text-xs font-bold text-outline uppercase">Streak Rewards</span>
+<p class="text-2xl font-bold text-primary mt-2">15%</p>
+<div class="w-full bg-primary/10 h-1 mt-4 rounded-full">
+<div class="bg-primary h-full w-[15%] rounded-full"></div>
+</div>
+</div>
+</div>
+</section>
+</main>
+<!-- Floating System Monitor FAB (Suppressed based on context but showing for Admin dashboard utility as an exception for "Monitoring") -->
+<button class="fixed bottom-10 right-10 bg-primary w-16 h-16 rounded-full flex items-center justify-center text-white shadow-xl hover:scale-110 transition-transform active:scale-95 group">
+<span class="material-symbols-outlined text-3xl">insights</span>
+<span class="absolute -top-12 right-0 bg-inverse-surface text-inverse-on-surface text-[10px] py-1 px-3 rounded-full whitespace-nowrap opacity-0 group-hover:opacity-100 transition-opacity">Quick Insights</span>
+</button>
+</body></html>

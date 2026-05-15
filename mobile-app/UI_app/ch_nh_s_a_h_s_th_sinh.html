@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+
+<html class="light" lang="vi"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&amp;family=Inter:wght@400;500;600&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "primary-container": "#0d47a1",
+                    "outline": "#737783",
+                    "on-secondary-container": "#006e6e",
+                    "on-background": "#071e27",
+                    "background": "#f3faff",
+                    "secondary-container": "#90efef",
+                    "error": "#ba1a1a",
+                    "on-secondary": "#ffffff",
+                    "surface-bright": "#f3faff",
+                    "on-tertiary-container": "#eeb300",
+                    "on-primary-fixed-variant": "#00429c",
+                    "tertiary-container": "#614800",
+                    "secondary": "#006a6a",
+                    "error-container": "#ffdad6",
+                    "on-primary-container": "#a1bbff",
+                    "surface-dim": "#c7dde9",
+                    "on-error": "#ffffff",
+                    "primary": "#003178",
+                    "surface-container-lowest": "#ffffff",
+                    "on-surface": "#071e27",
+                    "surface-container": "#dbf1fe",
+                    "on-primary": "#ffffff",
+                    "inverse-on-surface": "#dff4ff",
+                    "secondary-fixed": "#93f2f2",
+                    "tertiary": "#453200",
+                    "on-error-container": "#93000a",
+                    "secondary-fixed-dim": "#76d6d5",
+                    "inverse-surface": "#1e333c",
+                    "tertiary-fixed": "#ffdf9e",
+                    "on-secondary-fixed-variant": "#004f4f",
+                    "tertiary-fixed-dim": "#fabd00",
+                    "outline-variant": "#c3c6d4",
+                    "surface-container-highest": "#cfe6f2",
+                    "primary-fixed-dim": "#b0c6ff",
+                    "on-tertiary-fixed-variant": "#5b4300",
+                    "surface-variant": "#cfe6f2",
+                    "surface-tint": "#2b5bb5",
+                    "surface-container-low": "#e6f6ff",
+                    "on-surface-variant": "#434652",
+                    "primary-fixed": "#d9e2ff",
+                    "on-secondary-fixed": "#002020",
+                    "surface-container-high": "#d5ecf8",
+                    "on-tertiary-fixed": "#261a00",
+                    "surface": "#f3faff",
+                    "inverse-primary": "#b0c6ff",
+                    "on-primary-fixed": "#001945",
+                    "on-tertiary": "#ffffff"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.7);
+            backdrop-filter: blur(12px);
+            -webkit-backdrop-filter: blur(12px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-background text-on-surface font-body min-h-screen pb-24">
+<!-- TopAppBar -->
+<header class="w-full top-0 sticky z-50 bg-[#f3faff] dark:bg-slate-950">
+<div class="flex items-center justify-between px-6 h-16 w-full max-w-screen-xl mx-auto">
+<div class="flex items-center gap-4">
+<button class="p-2 rounded-full hover:bg-[#cfe6f2] transition-colors active:scale-95 duration-150">
+<span class="material-symbols-outlined text-[#003178]" data-icon="arrow_back">arrow_back</span>
+</button>
+<h1 class="font-headline font-bold tracking-tight text-slate-900 text-xl">Edit Profile</h1>
+</div>
+<button class="px-6 py-2 rounded-full bg-primary text-on-primary font-headline font-bold text-sm active:scale-95 duration-150 transition-colors hover:bg-primary-container">
+                Save
+            </button>
+</div>
+</header>
+<main class="max-w-2xl mx-auto px-6 mt-8">
+<!-- Profile Header / Avatar Section -->
+<div class="relative flex flex-col items-center mb-10">
+<div class="relative group">
+<div class="w-32 h-32 rounded-full overflow-hidden border-4 border-surface-container-highest shadow-xl">
+<img alt="Profile Avatar" class="w-full h-full object-cover" data-alt="Close-up portrait of a young male student in a bright academic setting with soft natural light and modern library background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBVFWw2Mc1CB9oiBFGsp7VafAEHtYWDXOMFXwBWILYZR4AuUYHfBDOFSgkvq13JnCum1el0Y6Uh3nQPAP7sKSpFgEvz8RhyQdTsNXOdFy_Q4wtPp777V5TXdJAGrhNqsOITeh0RFNmwj1g0lLCtBnK629EhMB1V2oLmxzYOlP_OJzZSN5oiSInxJfYCoFgYWHvigp6ESaWSMGrb20TbbNMC3zgKbMOOiTlzb8gvVUzbIz4Yf2RCFmn7rUzgDFP1HbzgHMmiHVI3G8k"/>
+</div>
+<label class="absolute bottom-0 right-0 p-2 bg-primary text-on-primary rounded-full cursor-pointer shadow-lg active:scale-90 transition-transform hover:bg-primary-container" for="avatar-upload">
+<span class="material-symbols-outlined text-lg" data-icon="photo_camera">photo_camera</span>
+<input accept="image/*" class="hidden" id="avatar-upload" type="file"/>
+</label>
+</div>
+<p class="mt-4 font-headline font-semibold text-slate-500 text-sm">Update profile photo</p>
+</div>
+<!-- Edit Form -->
+<div class="grid grid-cols-1 gap-y-6">
+<!-- Full Name -->
+<div class="space-y-2">
+<label class="block font-headline font-bold text-sm text-primary ml-1" for="full-name">Họ và tên</label>
+<div class="relative group">
+<input class="w-full bg-surface-container-low border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-primary-container text-on-surface placeholder:text-outline/50 transition-all font-body" id="full-name" placeholder="Nhập họ và tên của bạn" type="text" value="Nguyễn Minh Khôi"/>
+<div class="absolute inset-y-0 right-4 flex items-center pointer-events-none">
+<span class="material-symbols-outlined text-outline/40" data-icon="person">person</span>
+</div>
+</div>
+</div>
+<!-- Email (Read-only styling) -->
+<div class="space-y-2">
+<label class="block font-headline font-bold text-sm text-primary ml-1" for="email">Email</label>
+<div class="relative">
+<input class="w-full bg-surface-dim/40 border-none rounded-xl px-4 py-4 text-on-surface-variant font-body cursor-not-allowed" id="email" readonly="" type="email" value="khoi.nm214532@sis.hust.edu.vn"/>
+<div class="absolute inset-y-0 right-4 flex items-center">
+<span class="material-symbols-outlined text-outline/40" data-icon="lock">lock</span>
+</div>
+</div>
+<p class="text-[11px] text-slate-500 italic ml-1">Email sinh viên không thể thay đổi trực tiếp.</p>
+</div>
+<!-- Double Column for Phone and MSSV -->
+<div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+<!-- Phone -->
+<div class="space-y-2">
+<label class="block font-headline font-bold text-sm text-primary ml-1" for="phone">Số điện thoại</label>
+<input class="w-full bg-surface-container-low border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-primary-container text-on-surface placeholder:text-outline/50 transition-all font-body" id="phone" placeholder="0xxx xxx xxx" type="tel" value="0912345678"/>
+</div>
+<!-- MSSV -->
+<div class="space-y-2">
+<label class="block font-headline font-bold text-sm text-primary ml-1" for="mssv">Mã số sinh viên (MSSV)</label>
+<input class="w-full bg-surface-container-low border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-primary-container text-on-surface placeholder:text-outline/50 transition-all font-body" id="mssv" placeholder="2021xxxx" type="text" value="20214532"/>
+</div>
+</div>
+<!-- Faculty / School -->
+<div class="space-y-2">
+<label class="block font-headline font-bold text-sm text-primary ml-1" for="faculty">Khoa/Viện</label>
+<select class="w-full bg-surface-container-low border-none rounded-xl px-4 py-4 focus:ring-2 focus:ring-primary-container text-on-surface transition-all font-body appearance-none" id="faculty">
+<option selected="" value="soict">Trường Công nghệ Thông tin và Truyền thông</option>
+<option value="see">Trường Điện - Điện tử</option>
+<option value="sme">Trường Cơ khí</option>
+<option value="sbft">Viện Công nghệ Sinh học và Thực phẩm</option>
+</select>
+</div>
+<!-- Action Area -->
+<div class="pt-8 space-y-4">
+<button class="w-full py-4 bg-primary text-on-primary rounded-full font-headline font-bold text-lg shadow-lg shadow-primary/20 active:scale-[0.98] transition-all hover:bg-primary-container flex items-center justify-center gap-2">
+                    Lưu thay đổi
+                </button>
+<button class="w-full py-3 bg-transparent text-error font-headline font-semibold text-sm hover:bg-error-container/20 rounded-full transition-colors">
+                    Hủy bỏ và quay lại
+                </button>
+</div>
+</div>
+</main>
+<!-- BottomNavBar (Suppressed for focused task: Edit Profile) -->
+<!-- Rule applied: Navigation suppressed for Task-Focused pages -->
+<!-- Ambient Shadow for depth without borders -->
+<div class="fixed inset-0 pointer-events-none shadow-[inset_0_0_100px_rgba(13,71,161,0.03)]"></div>
+</body></html>

@@ -1,0 +1,142 @@
+/* PracticeSkills.module.css */
+
+.container {
+  animation-delay: 200ms;
+  padding: clamp(12px, 2vw, 16px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: clamp(16px, 2.5vw, 20px);
+  gap: clamp(12px, 2vw, 16px);
+  flex-wrap: wrap;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 1vw, 8px);
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: clamp(18px, 3vw, 24px);
+  font-weight: 700;
+  margin: 0;
+  word-break: break-word;
+}
+
+.viewAllButton {
+  color: var(--foreground);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color var(--transition-normal);
+  font-size: clamp(12px, 1.75vw, 14px);
+  padding: clamp(4px, 0.75vw, 8px);
+  white-space: nowrap;
+}
+
+.viewAllButton:hover {
+  color: var(--primary);
+  text-decoration: underline;
+}
+
+/* Skills Grid */
+.skillsGrid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: clamp(10px, 1.5vw, 12px);
+  width: 100%;
+}
+
+/* Load More Button */
+.loadMoreContainer {
+  text-align: center;
+  margin-top: clamp(16px, 2.5vw, 20px);
+  width: 100%;
+}
+
+.loadMoreButton {
+  padding: clamp(8px, 1.5vw, 10px) clamp(20px, 3vw, 24px);
+  border: 1px solid var(--border);
+  color: var(--primary);
+  border-radius: 8px;
+  background: transparent;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+  overflow: hidden;
+  font-weight: 500;
+  font-size: clamp(12px, 1.75vw, 14px);
+  width: 100%;
+  max-width: 300px;
+}
+
+.loadMoreButton:hover {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+.loadMoreButton:active {
+  transform: translateY(0);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .skillsGrid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .headerLeft {
+    width: 100%;
+  }
+
+  .viewAllButton {
+    align-self: flex-end;
+  }
+
+  .skillsGrid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: clamp(8px, 1.25vw, 10px);
+  }
+
+  .loadMoreButton {
+    width: 100%;
+    max-width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: clamp(10px, 1.5vw, 12px);
+  }
+
+  .header {
+    margin-bottom: clamp(12px, 2vw, 16px);
+  }
+
+  .skillsGrid {
+    grid-template-columns: 1fr;
+    gap: clamp(8px, 1.25vw, 10px);
+  }
+
+  .loadMoreContainer {
+    margin-top: clamp(12px, 2vw, 16px);
+  }
+}
+

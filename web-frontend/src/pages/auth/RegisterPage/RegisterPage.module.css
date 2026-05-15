@@ -1,0 +1,52 @@
+/* Register Page Styles */
+
+.page {
+  width: 100%;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: clamp(16px, 3vw, 24px);
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.container {
+  width: 100%;
+  max-width: min(500px, 100%);
+  box-sizing: border-box;
+}
+
+/* Footer Link */
+.footerLink {
+  background: none;
+  border: none;
+  color: var(--primary);
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: inherit;
+  font-family: inherit;
+  transition: color var(--transition-fast);
+}
+
+.footerLink:hover {
+  color: var(--primary-hover);
+}
+
+.footerLink:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 2px;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .page {
+    padding: clamp(12px, 2.5vw, 16px);
+  }
+
+  .container {
+    max-width: 100%;
+  }
+}
+

@@ -1,0 +1,1 @@
+export { CopyrightPage } from './CopyrightPage'

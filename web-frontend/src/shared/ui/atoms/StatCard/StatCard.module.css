@@ -1,0 +1,124 @@
+/* StatCard.module.css */
+
+.card {
+  padding: clamp(12px, 2vw, 16px);
+  border-radius: var(--radius-md);
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: var(--shadow-lg);
+}
+
+.card:active {
+  transform: translateY(-2px) scale(1.01);
+}
+
+.cardPrimary {
+  background: var(--gradient-primary);
+  color: var(--primary-foreground);
+}
+
+.cardAccent {
+  background: var(--gradient-accent);
+  color: var(--accent-foreground);
+}
+
+/* Content Layout */
+.content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(8px, 1.25vw, 12px);
+  width: 100%;
+}
+
+.contentLeft {
+  flex: 1;
+  min-width: 0;
+}
+
+.contentRight {
+  flex-shrink: 0;
+}
+
+/* Title */
+.title {
+  font-size: clamp(12px, 1.75vw, 14px);
+  font-weight: 500;
+  margin: 0;
+  word-break: break-word;
+}
+
+/* Value */
+.value {
+  font-size: clamp(20px, 3vw, 24px);
+  font-weight: 700;
+  margin: 0;
+  word-break: break-word;
+  line-height: 1.2;
+}
+
+/* Subtitle */
+.subtitle {
+  font-size: clamp(11px, 1.5vw, 12px);
+  font-weight: 400;
+  margin: clamp(3px, 0.5vw, 4px) 0 0;
+  opacity: 0.8;
+  word-break: break-word;
+}
+
+/* Icon Container */
+.iconContainer {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .content {
+    gap: clamp(6px, 1vw, 8px);
+  }
+
+  .title {
+    font-size: clamp(11px, 1.5vw, 12px);
+  }
+
+  .value {
+    font-size: clamp(18px, 2.75vw, 20px);
+  }
+
+  .subtitle {
+    font-size: clamp(10px, 1.25vw, 11px);
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: clamp(10px, 1.5vw, 12px);
+  }
+
+  .title {
+    font-size: clamp(10px, 1.25vw, 11px);
+  }
+
+  .value {
+    font-size: clamp(16px, 2.5vw, 18px);
+  }
+
+  .subtitle {
+    font-size: clamp(9px, 1.25vw, 10px);
+  }
+
+  .content {
+    gap: clamp(6px, 1vw, 8px);
+  }
+}

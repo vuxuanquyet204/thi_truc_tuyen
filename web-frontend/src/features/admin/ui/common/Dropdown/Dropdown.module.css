@@ -1,0 +1,111 @@
+/* Dropdown Component Styles */
+
+.dropdown {
+	position: relative;
+	display: inline-block;
+	width: 100%;
+}
+
+.trigger {
+	width: 100%;
+	padding: 8px 12px;
+	border: 1px solid var(--border);
+	border-radius: var(--radius-md);
+	background: var(--background);
+	color: var(--foreground);
+	font-size: 14px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	transition: border-color var(--transition-fast);
+}
+
+.trigger:hover {
+	border-color: var(--primary);
+}
+
+.trigger:focus {
+	outline: none;
+	border-color: var(--primary);
+}
+
+.trigger.open {
+	border-color: var(--primary);
+}
+
+.trigger.disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.value {
+	flex: 1;
+	text-align: left;
+}
+
+.iconLeft {
+	flex-shrink: 0;
+}
+
+.icon {
+	transition: transform var(--transition-fast);
+	flex-shrink: 0;
+}
+
+.icon.rotated {
+	transform: rotate(180deg);
+}
+
+.menu {
+	position: absolute;
+	top: 100%;
+	left: 0;
+	right: 0;
+	z-index: 1000;
+	background: var(--card);
+	border: 1px solid var(--border);
+	border-radius: var(--radius-md);
+	box-shadow: var(--shadow-lg);
+	margin-top: 4px;
+	max-height: 200px;
+	overflow-y: auto;
+}
+
+.list {
+	padding: 4px 0;
+}
+
+.option {
+	padding: 8px 12px;
+	cursor: pointer;
+	display: flex;
+	align-items: center;
+	justify-content: space-between;
+	gap: 8px;
+	transition: background-color var(--transition-fast);
+}
+
+.option:hover {
+	background: var(--muted);
+}
+
+.option.selected {
+	background: var(--primary);
+	color: white;
+}
+
+.option.disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.optionLabel {
+	flex: 1;
+	text-align: left;
+}
+
+.optionCheck {
+	flex-shrink: 0;
+}

@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<title>Academic Luminary | Admin Portal</title>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@700;800&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script id="tailwind-config">
+        tailwind.config = {
+            darkMode: "class",
+            theme: {
+                extend: {
+                    "colors": {
+                        "inverse-surface": "#1e333c",
+                        "outline-variant": "#c3c6d4",
+                        "surface-container-highest": "#cfe6f2",
+                        "surface-tint": "#2b5bb5",
+                        "error": "#ba1a1a",
+                        "secondary-container": "#90efef",
+                        "on-primary": "#ffffff",
+                        "on-surface": "#071e27",
+                        "surface": "#f3faff",
+                        "outline": "#737783",
+                        "on-secondary": "#ffffff",
+                        "error-container": "#ffdad6",
+                        "surface-container": "#dbf1fe",
+                        "on-background": "#071e27",
+                        "surface-dim": "#c7dde9",
+                        "surface-container-low": "#e6f6ff",
+                        "inverse-on-surface": "#dff4ff",
+                        "primary": "#003178",
+                        "on-tertiary-container": "#eeb300",
+                        "surface-container-lowest": "#ffffff",
+                        "on-primary-fixed": "#001945",
+                        "surface-bright": "#f3faff",
+                        "secondary": "#006a6a",
+                        "inverse-primary": "#b0c6ff",
+                        "tertiary": "#453200",
+                        "on-tertiary": "#ffffff",
+                        "primary-fixed": "#d9e2ff",
+                        "on-tertiary-fixed": "#261a00",
+                        "primary-fixed-dim": "#b0c6ff",
+                        "on-secondary-container": "#006e6e",
+                        "on-error": "#ffffff",
+                        "secondary-fixed": "#93f2f2",
+                        "on-secondary-fixed-variant": "#004f4f",
+                        "surface-variant": "#cfe6f2",
+                        "secondary-fixed-dim": "#76d6d5",
+                        "on-error-container": "#93000a",
+                        "on-surface-variant": "#434652",
+                        "surface-container-high": "#d5ecf8",
+                        "tertiary-container": "#614800",
+                        "on-tertiary-fixed-variant": "#5b4300",
+                        "primary-container": "#0d47a1",
+                        "tertiary-fixed": "#ffdf9e",
+                        "tertiary-fixed-dim": "#fabd00",
+                        "on-primary-fixed-variant": "#00429c",
+                        "background": "#f3faff",
+                        "on-primary-container": "#a1bbff",
+                        "on-secondary-fixed": "#002020"
+                    },
+                    "borderRadius": {
+                        "DEFAULT": "0.25rem",
+                        "lg": "0.5rem",
+                        "xl": "0.75rem",
+                        "full": "9999px"
+                    },
+                    "fontFamily": {
+                        "headline": ["Manrope"],
+                        "body": ["Inter"],
+                        "label": ["Inter"]
+                    }
+                },
+            },
+        }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        body { font-family: 'Inter', sans-serif; }
+        h1, h2, h3 { font-family: 'Manrope', sans-serif; }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(16px);
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface text-on-surface">
+<!-- NavigationDrawer Shell (Active: Monitoring) -->
+<aside class="flex flex-col h-screen fixed left-0 top-0 z-40 py-8 bg-[#e6f6ff] dark:bg-slate-900 h-full w-72 rounded-r-2xl font-['Inter'] font-semibold">
+<div class="px-8 mb-10">
+<h1 class="font-['Manrope'] text-lg font-black text-[#003178]">Academic Luminary</h1>
+</div>
+<div class="px-6 mb-8 flex items-center gap-4">
+<div class="w-12 h-12 rounded-full overflow-hidden bg-surface-container-highest">
+<img alt="Admin Avatar" data-alt="Professional portrait of a male administrator in a clean office setting, soft natural lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAQZmXpu7LFIAW_WqMeYO58vNJAQVb4Xpa67y57LHNE64iB121LVn6vfTz1fiqdIOz1vqjQMLkWn5ao_emmYGzNsD086dTjAR99QJkT0ZB74vNJYyDgyh0vJcDjNKDUU7tzk9MKpsnco7ANLVUKqMhipZb-ZBOt8aRSLwpUO-1jiL6DE05wXsyUiYU0RN-zGd1FGx-egXhZ7yyy2TKgHLcukMJoELdZdJ_sWRjbMhQzajq6Hicqm7aX1DU00FvKD3mNmt8edjsPRRQ"/>
+</div>
+<div>
+<p class="text-sm font-bold text-[#003178]">Admin Portal</p>
+<p class="text-xs text-slate-500 font-normal">Institutional Lead</p>
+</div>
+</div>
+<nav class="flex-1">
+<ul class="space-y-2">
+<li>
+<a class="flex items-center gap-3 text-slate-500 dark:text-slate-400 pl-5 hover:bg-[#cfe6f2] dark:hover:bg-slate-800 transition-transform duration-200 py-3" href="#">
+<span class="material-symbols-outlined">dashboard</span>
+<span>Dashboard</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-slate-500 dark:text-slate-400 pl-5 hover:bg-[#cfe6f2] dark:hover:bg-slate-800 transition-transform duration-200 py-3" href="#">
+<span class="material-symbols-outlined">edit_note</span>
+<span>Management</span>
+</a>
+</li>
+<li>
+<a class="flex items-center gap-3 text-[#003178] dark:text-blue-300 border-l-4 border-[#003178] pl-4 hover:bg-[#cfe6f2] dark:hover:bg-slate-800 transition-transform duration-200 py-3" href="#">
+<span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;">visibility</span>
+<span>Monitoring</span>
+</a>
+</li>
+</ul>
+</nav>
+</aside>
+<!-- Main Canvas -->
+<main class="ml-72 min-h-screen">
+<!-- TopAppBar (Active: 1,250 LT) -->
+<header class="flex justify-between items-center px-8 py-6 w-full bg-[#f3faff] dark:bg-slate-950 font-['Manrope'] tracking-tight font-bold sticky top-0 z-30">
+<div class="flex items-center gap-4">
+<h2 class="text-2xl text-[#003178] dark:text-blue-400">Live Session Monitor</h2>
+</div>
+<div class="flex items-center gap-6">
+<div class="bg-surface-container-highest px-4 py-2 rounded-full text-[#003178] flex items-center gap-2">
+<span class="material-symbols-outlined text-sm">circle</span>
+<span class="text-sm">42 Active Exams</span>
+</div>
+<button class="bg-tertiary-fixed-dim text-on-tertiary-fixed px-6 py-2 rounded-full font-bold transition-all hover:scale-95 duration-150">
+                    1,250 LT
+                </button>
+</div>
+</header>
+<!-- Monitoring Dashboard Content -->
+<div class="p-8">
+<!-- Filter & Status Bar (Asymmetric Layout) -->
+<div class="flex flex-col md:flex-row justify-between items-end mb-8 gap-6">
+<div class="max-w-xl">
+<h3 class="text-3xl font-extrabold text-on-surface mb-2">Real-time Integrity Oversight</h3>
+<p class="text-on-surface-variant font-body">Supervising active candidate streams. Use the filters to isolate high-risk indicators or specific subject areas.</p>
+</div>
+<div class="flex gap-3">
+<div class="bg-surface-container-low px-4 py-3 rounded-xl flex items-center gap-2 text-on-surface-variant">
+<span class="material-symbols-outlined text-xl">filter_list</span>
+<span class="text-sm font-medium">All Subjects</span>
+</div>
+<div class="bg-error-container text-on-error-container px-4 py-3 rounded-xl flex items-center gap-2">
+<span class="material-symbols-outlined text-xl">warning</span>
+<span class="text-sm font-bold">5 Alerts Active</span>
+</div>
+</div>
+</div>
+<!-- Monitoring Grid (Bento Style) -->
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+<!-- Session Card 1: ALERT -->
+<div class="bg-surface-container-lowest rounded-xl p-4 overflow-hidden shadow-[0_12px_40px_rgba(7,30,39,0.06)] relative group cursor-pointer border border-error/10">
+<div class="absolute top-4 right-4 z-10">
+<span class="bg-error text-white text-[10px] px-2 py-1 rounded-full animate-pulse flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">error</span>
+                            FLAGGED
+                        </span>
+</div>
+<div class="relative w-full aspect-video rounded-lg overflow-hidden mb-4 bg-slate-200">
+<img class="w-full h-full object-cover" data-alt="Young man sitting at a desk with a laptop, looking suspiciously to the side, dimly lit bedroom setting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA1bBKsobaqdFOpKnsKlMKcN6QiZWQWD3ZV4aIZM8towJE2Qu-gl_5KQCHzDxB_QhmoH1CIvjKlg5p2CeU10nM18zsbFdh3dYu4KE-n337a4oosedHGObVyLdVRltQDgLilz9cIb5g2L9Rt8HOBmlMdKxkrB5j7ipQv_o4sWas82Ul6zfS852SBDEOnsw7HYNEExiP2ftxhHegptrL0zGiD7APftNlyLHeuOteaGCZ0E56q9QNuB_h03OsFLvrigqmFPzICbRxuk1s"/>
+<div class="absolute inset-0 ring-4 ring-error/50 rounded-lg"></div>
+<div class="absolute bottom-2 left-2 flex gap-1">
+<div class="bg-black/60 backdrop-blur-md px-2 py-0.5 rounded text-[10px] text-white">CAM 01</div>
+<div class="bg-black/60 backdrop-blur-md px-2 py-0.5 rounded text-[10px] text-white">DESK</div>
+</div>
+</div>
+<div class="space-y-1">
+<h4 class="font-bold text-on-surface truncate">Benjamin Carter</h4>
+<p class="text-xs text-on-surface-variant">Advanced Microeconomics • Sec 4</p>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant/10 flex justify-between items-center">
+<span class="text-[10px] font-bold text-error tracking-wider uppercase">Multiple Faces Detected</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+<!-- Session Card 2: NORMAL -->
+<div class="bg-surface-container-lowest rounded-xl p-4 overflow-hidden shadow-[0_12px_40px_rgba(7,30,39,0.06)] group cursor-pointer">
+<div class="absolute top-4 right-4 z-10">
+<span class="bg-secondary text-white text-[10px] px-2 py-1 rounded-full flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            NORMAL
+                        </span>
+</div>
+<div class="relative w-full aspect-video rounded-lg overflow-hidden mb-4 bg-slate-200">
+<img class="w-full h-full object-cover" data-alt="Young woman focused on computer screen, headphones on, bright library background with soft bokeh" src="https://lh3.googleusercontent.com/aida-public/AB6AXuDrwiToE0AydR3akDEUxF7tQBnVP4e3_zdcyQjK3fvlYSmmloYfQLZWlOzs7k4-c-ZfWPvURZdAQ1c2goYz48Qx0hTHpjdxE9VOzSRwQ_PWnx7tm7pa21F1dAYsNrOQaNwUzoLCqjKBL-mN1zDRmwJL0VOVhvVinbiiS0bTD6ftFzQ-OvGs5B_kqULptcyX4M2sKefWrPpo1ZhHbN3AQR-PW9-Im-JIbnTlNyXB0zNpGo857ohNwhwvxeZ8Mb_Xf1Daf-a4NoGGJIU"/>
+<div class="absolute inset-0 ring-8 ring-secondary/10 blur-xl opacity-0 group-hover:opacity-100 transition-opacity rounded-lg"></div>
+</div>
+<div class="space-y-1">
+<h4 class="font-bold text-on-surface truncate">Sarah Jenkins</h4>
+<p class="text-xs text-on-surface-variant">Modern World History • Sec 1</p>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant/10 flex justify-between items-center">
+<span class="text-[10px] font-bold text-secondary tracking-wider uppercase">Verified Session</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+<!-- Session Card 3: NORMAL -->
+<div class="bg-surface-container-lowest rounded-xl p-4 overflow-hidden shadow-[0_12px_40px_rgba(7,30,39,0.06)] group cursor-pointer">
+<div class="absolute top-4 right-4 z-10">
+<span class="bg-secondary text-white text-[10px] px-2 py-1 rounded-full flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            NORMAL
+                        </span>
+</div>
+<div class="relative w-full aspect-video rounded-lg overflow-hidden mb-4 bg-slate-200">
+<img class="w-full h-full object-cover" data-alt="Male student working diligently, glasses reflecting monitor light, clean minimalist home office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAJOkERMwZz7Gf2YuVHOZ8rvwFKLM0MbW4iss0KSqQU-0ytnzHbaLxuzWfH2NdtU6kTMAy7Jp05FPjUFvqKfRCEVQK0054QAG-lmPUI3NRQnfVe242iGb2mVrF1OJr4cmATS0eop7K60RS_qaxyZCP_BrdkAl_2TZKScK_GHG1GSX8mGGTiWTT6YkS3VRptQFqsUymFbYYhebH_kOBl5JiFOSdIUwDWRwHa_BWzbv_paZATVX-eOBh0TxxeotRSMqSBUug5zmtexx0"/>
+</div>
+<div class="space-y-1">
+<h4 class="font-bold text-on-surface truncate">David Chen</h4>
+<p class="text-xs text-on-surface-variant">Quantum Physics I • Sec 2</p>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant/10 flex justify-between items-center">
+<span class="text-[10px] font-bold text-secondary tracking-wider uppercase">Verified Session</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+<!-- Session Card 4: WARNING -->
+<div class="bg-surface-container-lowest rounded-xl p-4 overflow-hidden shadow-[0_12px_40px_rgba(7,30,39,0.06)] relative group cursor-pointer border border-tertiary-fixed-dim/20">
+<div class="absolute top-4 right-4 z-10">
+<span class="bg-tertiary-fixed-dim text-on-tertiary-fixed text-[10px] px-2 py-1 rounded-full flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">report</span>
+                            WARNING
+                        </span>
+</div>
+<div class="relative w-full aspect-video rounded-lg overflow-hidden mb-4 bg-slate-200">
+<img class="w-full h-full object-cover" data-alt="Student looking down at lap repeatedly, low angle shot from laptop camera, natural window light" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAC481O7IAzKoa3VH6MtAjjBB-MhHMsFDFHeFDY7DkpKYZh6LCsY38Im_7gs1A5S1S7tAkilWa6yBBD0EoRJzhzGpNkerZsG0RQNaGnlVsDsWZIXr5sDWKwab0EaefjsRCeJ70qPdU_vqNfyoV0nr4SoJ4jYycNQL4OFmlsizhogt8Gaid9LQzpTrDu5bjiFXtJU-q2GyslAVGDlr90-O7NatSaMQNdfnnaEbytbO_M_alA823ZDqOfECZvAGnxsCShHpi9mxxo6TQ"/>
+</div>
+<div class="space-y-1">
+<h4 class="font-bold text-on-surface truncate">Elena Rodriguez</h4>
+<p class="text-xs text-on-surface-variant">Cognitive Neuroscience • Sec 1</p>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant/10 flex justify-between items-center">
+<span class="text-[10px] font-bold text-on-tertiary-fixed-variant tracking-wider uppercase">Gaze Deviation</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+<!-- Repeat Cards for Grid Density -->
+<!-- Session Card 5: NORMAL -->
+<div class="bg-surface-container-lowest rounded-xl p-4 overflow-hidden shadow-[0_12px_40px_rgba(7,30,39,0.06)] group cursor-pointer">
+<div class="absolute top-4 right-4 z-10">
+<span class="bg-secondary text-white text-[10px] px-2 py-1 rounded-full flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            NORMAL
+                        </span>
+</div>
+<div class="relative w-full aspect-video rounded-lg overflow-hidden mb-4 bg-slate-200">
+<img class="w-full h-full object-cover" data-alt="Smiling female student at laptop, neutral background, bright airy lighting" src="https://lh3.googleusercontent.com/aida-public/AB6AXuB9AS3dTfEi9G3rYGZEq8YwwZRhIY3iQoSDipIiZBDqJeZIFjRXtUV8-obHbf_EGGhGOysZjapVcVT2lRnX9HPzCG4voSItmdnfni7Enqf2S2BOziQL1OfQipFs30NkaDthOD5Na_ZZnbXTJdq7bpNH8wPNhrQJspBIWmYKQxXRwvdu2-3T2tIRH8Ku8RwZ1EOApydUuc-pDCvwzUh2aGTsIJWUG6romARumDw2F8d11Wc6IBwJIrQcaexr38pINmAKnNWjnbI3hxk"/>
+</div>
+<div class="space-y-1">
+<h4 class="font-bold text-on-surface truncate">Maya Thompson</h4>
+<p class="text-xs text-on-surface-variant">Organic Chemistry II • Sec 5</p>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant/10 flex justify-between items-center">
+<span class="text-[10px] font-bold text-secondary tracking-wider uppercase">Verified Session</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+<!-- Session Card 6: ALERT -->
+<div class="bg-surface-container-lowest rounded-xl p-4 overflow-hidden shadow-[0_12px_40px_rgba(7,30,39,0.06)] relative group cursor-pointer border border-error/10">
+<div class="absolute top-4 right-4 z-10">
+<span class="bg-error text-white text-[10px] px-2 py-1 rounded-full animate-pulse flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">error</span>
+                            FLAGGED
+                        </span>
+</div>
+<div class="relative w-full aspect-video rounded-lg overflow-hidden mb-4 bg-slate-200">
+<img class="w-full h-full object-cover" data-alt="Candidate speaking while looking at screen, hand gestures visible, darker office environment" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAeXZVRDPC7_oZD1-NK9UUMUGTLAaZ-ipOv8Z3FjjOUvfO852eH5jk3MP5HshnSch_7ek9gUB7bNoJf2o0gEif9u0Tof7a_4GIlx77HoEte1TkQsyDe2eCC01Vc4KrevAyRW0-WKG97s2AnQQ-4NFLUUGx7BSspcl5E6HHQm4cLdU82Ntjw4H3AvtwhXUV45u1iyEz0Vm-oD6PPhD3aK4ti2YTHyhG0X1sxLp7VpzgvriNHui5OsAxcKxEMRgy8IYc__1f1UhmuRLk"/>
+<div class="absolute inset-0 ring-4 ring-error/50 rounded-lg"></div>
+</div>
+<div class="space-y-1">
+<h4 class="font-bold text-on-surface truncate">James Wilson</h4>
+<p class="text-xs text-on-surface-variant">Ethics in AI • Sec 1</p>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant/10 flex justify-between items-center">
+<span class="text-[10px] font-bold text-error tracking-wider uppercase">Audio Detected</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+<!-- Session Card 7: NORMAL -->
+<div class="bg-surface-container-lowest rounded-xl p-4 overflow-hidden shadow-[0_12px_40px_rgba(7,30,39,0.06)] group cursor-pointer">
+<div class="absolute top-4 right-4 z-10">
+<span class="bg-secondary text-white text-[10px] px-2 py-1 rounded-full flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            NORMAL
+                        </span>
+</div>
+<div class="relative w-full aspect-video rounded-lg overflow-hidden mb-4 bg-slate-200">
+<img class="w-full h-full object-cover" data-alt="Young man focusing intensely on screen, clean study room with books in background" src="https://lh3.googleusercontent.com/aida-public/AB6AXuAnhyh1ATmyjdwlRAYgdkR6nNMx_Ojd2OOzmRxqeSgmSIQoqRx5Dld4pzuNBmF1aLmhINgGmO_xBa7zsYoGPUHjlysJHs1OlmMzyjvBmqB2OF3NMF316sTF_ffz6khw5m_iqA7Rh9IM8UI5qsPha6vDmU8rNBcRYD_Se29zpVte-udHZ1V9Gmk-3SXjgcbRf-2vQh830ELYcKHZn6pyubssYrxTy2KO-R5fjVNKIaZIbkTF3NWLRUX3zafeskAHyq4svaJKssyuRx0"/>
+</div>
+<div class="space-y-1">
+<h4 class="font-bold text-on-surface truncate">Lucas Miller</h4>
+<p class="text-xs text-on-surface-variant">Data Structures • Sec 3</p>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant/10 flex justify-between items-center">
+<span class="text-[10px] font-bold text-secondary tracking-wider uppercase">Verified Session</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+<!-- Session Card 8: NORMAL -->
+<div class="bg-surface-container-lowest rounded-xl p-4 overflow-hidden shadow-[0_12px_40px_rgba(7,30,39,0.06)] group cursor-pointer">
+<div class="absolute top-4 right-4 z-10">
+<span class="bg-secondary text-white text-[10px] px-2 py-1 rounded-full flex items-center gap-1 font-bold">
+<span class="material-symbols-outlined text-[12px]" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                            NORMAL
+                        </span>
+</div>
+<div class="relative w-full aspect-video rounded-lg overflow-hidden mb-4 bg-slate-200">
+<img class="w-full h-full object-cover" data-alt="Female candidate in home office, neutral expression, daylight through side window" src="https://lh3.googleusercontent.com/aida-public/AB6AXuBAnKxBhI53fqej1XRMVCIPh8JZ2mu66EoJU-uRygZAaRFkVMZzrrwVy2nSlMJ_kVuc-z3woPPvemusfcUeg_Ii7A-a6603ZoaQ4ZBtk_WyJ0g61t9cQtP5fub0tW7ERBeWnLCEQcFDInyZcuR-46LQVHbiru97sV_P_VGKam7NvHNppDY5ek11EGKnSgkMZT3nFbp7Rq-htivMGcfZlz6XKsOFYPlWEms0jPhBgYqiQl97tx7yLtaBfGeVzhGuXXM8dVgNG-dXL54"/>
+</div>
+<div class="space-y-1">
+<h4 class="font-bold text-on-surface truncate">Sophie Laurent</h4>
+<p class="text-xs text-on-surface-variant">Civil Law Fundamentals • Sec 2</p>
+</div>
+<div class="mt-4 pt-4 border-t border-outline-variant/10 flex justify-between items-center">
+<span class="text-[10px] font-bold text-secondary tracking-wider uppercase">Verified Session</span>
+<span class="material-symbols-outlined text-on-surface-variant group-hover:translate-x-1 transition-transform">chevron_right</span>
+</div>
+</div>
+</div>
+<!-- Footer Pagination / Status Summary -->
+<footer class="mt-12 flex justify-between items-center bg-surface-container-low p-6 rounded-2xl">
+<div class="flex items-center gap-4">
+<div class="flex -space-x-3">
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-slate-300"></div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-slate-400"></div>
+<div class="w-8 h-8 rounded-full border-2 border-surface bg-slate-500 text-[10px] flex items-center justify-center text-white">+12</div>
+</div>
+<span class="text-xs font-medium text-on-surface-variant">4 Active proctors online</span>
+</div>
+<div class="flex gap-2">
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-white/50 text-outline hover:bg-white transition-colors">
+<span class="material-symbols-outlined">chevron_left</span>
+</button>
+<button class="px-4 h-10 rounded-full bg-primary text-on-primary text-xs font-bold">1</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-white/50 text-on-surface hover:bg-white transition-colors text-xs font-medium">2</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-white/50 text-on-surface hover:bg-white transition-colors text-xs font-medium">3</button>
+<button class="w-10 h-10 rounded-full flex items-center justify-center bg-white/50 text-outline hover:bg-white transition-colors">
+<span class="material-symbols-outlined">chevron_right</span>
+</button>
+</div>
+</footer>
+</div>
+</main>
+<!-- Global Progress Ribbon (4px slim at top) -->
+<div class="fixed top-0 left-0 w-full h-1 bg-secondary/20 z-[100]">
+<div class="h-full bg-secondary w-3/4"></div>
+</div>
+</body></html>

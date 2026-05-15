@@ -1,0 +1,54 @@
+/* Pagination Component Styles */
+
+.pagination {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	justify-content: center;
+	margin-top: 24px;
+}
+
+.button {
+	padding: 8px 12px;
+	border: 1px solid var(--border);
+	border-radius: var(--radius-md);
+	background: var(--card);
+	color: var(--foreground);
+	font-size: 14px;
+	cursor: pointer;
+	transition: all var(--transition-normal);
+}
+
+.button:hover:not(:disabled) {
+	background: var(--accent);
+	color: var(--accent-foreground);
+	border-color: var(--accent);
+}
+
+.button:disabled {
+	opacity: 0.5;
+	cursor: not-allowed;
+}
+
+.button.active {
+	background: var(--accent);
+	color: var(--accent-foreground);
+	border-color: var(--accent);
+}
+
+.info {
+	padding: 8px 16px;
+	font-size: 14px;
+	color: var(--muted-foreground);
+}
+
+@media (max-width: 768px) {
+	.pagination {
+		flex-wrap: wrap;
+	}
+
+	.info {
+		width: 100%;
+		text-align: center;
+	}
+}

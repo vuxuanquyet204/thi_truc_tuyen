@@ -1,0 +1,65 @@
+.slideIn {
+  animation: slideIn 0.3s ease-out;
+}
+
+@keyframes slideIn {
+  from { transform: translateX(-100%); }
+  to { transform: translateX(0); }
+}
+
+.menuItem {
+  display: flex;
+  align-items: center;
+  padding: var(--space-3) var(--space-4);
+  border-radius: var(--radius-md);
+  color: var(--sidebar-foreground);
+  margin-bottom: var(--space-1);
+  text-decoration: none;
+  font-size: 15px;
+  font-weight: 400;
+  transition: background var(--transition-normal), color var(--transition-normal), transform var(--transition-normal);
+  position: relative;
+  overflow: hidden;
+}
+
+.menuItem:hover {
+  background: var(--sidebar-hover);
+  color: var(--sidebar-hover-foreground);
+  transform: translateX(4px);
+}
+
+.menuItem.active {
+  background: var(--sidebar-accent);
+  color: var(--sidebar-accent-foreground);
+  font-weight: 500;
+}
+
+.menuItem.active::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 3px;
+  height: 60%;
+  background: var(--sidebar-accent-foreground);
+  border-radius: 0 2px 2px 0;
+}
+
+.menuItemLabel {
+  margin-left: var(--space-3);
+}
+
+/* Scrollbar */
+.slideIn::-webkit-scrollbar {
+  width: 4px;
+}
+
+.slideIn::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.slideIn::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 4px;
+}

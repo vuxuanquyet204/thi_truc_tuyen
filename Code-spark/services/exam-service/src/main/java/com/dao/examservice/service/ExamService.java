@@ -1,0 +1,539 @@
+package com.dao.examservice.service;
+
+import com.dao.common.notification.NotificationMessage;
+import com.dao.common.notification.NotificationProducerService;
+import com.dao.examservice.client.CourseServiceClient;
+import com.dao.examservice.dto.request.ExamConfigRequest;
+import com.dao.examservice.dto.request.ExamCreationRequest;
+import com.dao.examservice.dto.request.ExamScheduleRequest;
+import com.dao.examservice.dto.request.ExamUpdateRequest;
+import com.dao.examservice.dto.request.GenerateQuestionsRequest;
+import com.dao.examservice.dto.request.UpdateProgressRequest;
+import com.dao.examservice.dto.response.EnumOptionResponse;
+import com.dao.examservice.entity.Exam;
+import com.dao.examservice.entity.ExamQuestion;
+import com.dao.examservice.entity.ExamRegistration;
+import com.dao.examservice.entity.ExamTag;
+import com.dao.examservice.entity.Question;
+import com.dao.examservice.exception.ResourceNotFoundException;
+import com.dao.examservice.exception.ValidationException;
+import com.dao.examservice.repository.*;
+import lombok.RequiredArgsConstructor;
+import lombok.extern.slf4j.Slf4j;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
+import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
+
+import java.time.Instant;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.UUID;
+
+@Service
+@RequiredArgsConstructor
+@Slf4j
+public class ExamService {
+
+    private final ExamRepository examRepository;
+    private final ExamRegistrationRepository registrationRepository;
+    private final ExamQuestionRepository examQuestionRepository;
+    private final ExamTagRepository examTagRepository;
+    private final QuestionRepository questionRepository;
+    private final QuestionService questionService;
+    private final CourseServiceClient courseServiceClient;
+    private final NotificationService notificationService;
+    private final NotificationProducerService notificationProducerService;
+
+    @Transactional
+    public Exam createExam(ExamCreationRequest request) {
+        validateExamDates(request.startAt, request.endAt);
+        validateExamConfig(request.durationMinutes, request.passScore, request.maxAttempts);
+
+        Exam exam = new Exam();
+        exam.setCourseId(request.courseId);
+        exam.setOrgId(request.orgId);
+        exam.setTitle(request.title);
+        exam.setDescription(request.description);
+        exam.setStartAt(request.startAt);
+        exam.setEndAt(request.endAt);
+        exam.setDurationMinutes(request.durationMinutes);
+        exam.setPassScore(request.passScore);
+        exam.setMaxAttempts(request.maxAttempts);
+        exam.setTotalQuestions(request.totalQuestions);
+        exam.setCreatedBy(request.createdBy);
+
+        if (request.examType != null) {
+            exam.setExamType(request.examType);
+        }
+        if (request.difficulty != null) {
+            exam.setDifficulty(request.difficulty);
+        }
+
+        if (request.examStatus != null) {
+            exam.setStatus(request.examStatus);
+        }
+        if (request.randomizeQuestionOrder != null) {
+            exam.setRandomizeQuestionOrder(request.randomizeQuestionOrder);
+        }
+        if (request.randomizeOptionOrder != null) {
+            exam.setRandomizeOptionOrder(request.randomizeOptionOrder);
+        }
+        if (request.showCorrectAnswers != null) {
+            exam.setShowCorrectAnswers(request.showCorrectAnswers);
+        }
+        if (request.partialScoringEnabled != null) {
+            exam.setPartialScoringEnabled(request.partialScoringEnabled);
+        }
+
+        Exam savExam = examRepository.save(exam);
+
+        // Save tags
+        if (request.tags != null && !request.tags.isEmpty()) {
+            for (String tag : request.tags) {
+                ExamTag examTag = new ExamTag();
+                examTag.setExam(savExam);
+                examTag.setTag(tag);
+                examTagRepository.save(examTag);
+            }
+            log.info("Created exam {} with tags: {}", savExam.getId(), request.tags);
+        }
+
+        log.info("Successfully created exam with ID: {}", savExam.getId());
+
+        NotificationMessage msg = new NotificationMessage();
+        msg.setRecipientUserId(request.createdBy.toString());
+        msg.setTitle("Bài kiểm tra đã được tạo");
+
+        msg.setContent("Bạn đã tạo thành công bài kiểm tra '" + exam.getTitle() + "'. Bạn có thể tiếp tục thêm câu hỏi và lên lịch thi.");
+
+        msg.setType("INFO");
+        msg.setSeverity("Trung bình");
+        notificationProducerService.sendNotification(msg);
+
+        // Refetch to ensure tags are loaded for response
+        return examRepository.findByIdWithTags(savExam.getId())
+                .orElse(savExam);
+    }
+
+    @Transactional
+    public Exam updateConfig(UUID id, ExamConfigRequest request) {
+        Exam exam = examRepository.findByIdWithTags(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Exam not found with id: " + id));
+
+        if (request.durationMinutes != null) {
+            validateDuration(request.durationMinutes);
+            exam.setDurationMinutes(request.durationMinutes);
+        }
+        if (request.passScore != null) {
+            validatePassScore(request.passScore);
+            exam.setPassScore(request.passScore);
+        }
+        if (request.maxAttempts != null) {
+            validateMaxAttempts(request.maxAttempts);
+            exam.setMaxAttempts(request.maxAttempts);
+        }
+
+        exam.setUpdatedAt(Instant.now());
+        return examRepository.save(exam);
+    }
+
+    @Transactional
+    public Exam updateExam(UUID id, ExamUpdateRequest request) {
+        Exam exam = examRepository.findByIdWithTags(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Exam not found with id: " + id));
+
+        if (request.title != null) {
+            exam.setTitle(request.title);
+        }
+        if (request.description != null) {
+            exam.setDescription(request.description);
+        }
+        if (request.startAt != null || request.endAt != null) {
+            validateExamDates(
+                    request.startAt != null ? request.startAt : exam.getStartAt(),
+                    request.endAt != null ? request.endAt : exam.getEndAt()
+            );
+            if (request.startAt != null) {
+                exam.setStartAt(request.startAt);
+            }
+            if (request.endAt != null) {
+                exam.setEndAt(request.endAt);
+            }
+        }
+        if (request.durationMinutes != null) {
+            validateDuration(request.durationMinutes);
+            exam.setDurationMinutes(request.durationMinutes);
+        }
+        if (request.passScore != null) {
+            validatePassScore(request.passScore);
+            exam.setPassScore(request.passScore);
+        }
+        if (request.maxAttempts != null) {
+            validateMaxAttempts(request.maxAttempts);
+            exam.setMaxAttempts(request.maxAttempts);
+        }
+        if (request.totalQuestions != null) {
+            exam.setTotalQuestions(request.totalQuestions);
+        }
+
+        exam.setUpdatedAt(Instant.now());
+        return examRepository.save(exam);
+    }
+
+    @Transactional(readOnly = true)
+    public Exam get(UUID id) {
+        return examRepository.findByIdWithTags(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Exam not found with id: " + id));
+    }
+
+    @Transactional(readOnly = true)
+    public Exam getWithQuestions(UUID id) {
+        return examRepository.findByIdWithQuestions(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Exam not found with id: " + id));
+    }
+
+    @Transactional(readOnly = true)
+    public Exam getActive(UUID id) {
+        return examRepository.findActiveById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Exam not found with id: " + id));
+    }
+
+    @Transactional
+    public Exam scheduleAndRegister(UUID examId, ExamScheduleRequest request) {
+        Exam exam = examRepository.findByIdWithTags(examId)
+                .orElseThrow(() -> new ResourceNotFoundException("Exam not found with id: " + examId));
+
+        if (request.startAt != null && request.endAt != null) {
+            validateExamDates(request.startAt, request.endAt);
+            exam.setStartAt(request.startAt);
+            exam.setEndAt(request.endAt);
+        } else if (request.startAt != null) {
+            exam.setStartAt(request.startAt);
+        } else if (request.endAt != null) {
+            exam.setEndAt(request.endAt);
+        }
+
+        if (request.candidateIds != null && !request.candidateIds.isEmpty()) {
+            List<ExamRegistration> registrations = new ArrayList<>();
+            for (UUID candidateId : request.candidateIds) {
+                ExamRegistration reg = new ExamRegistration();
+                reg.setExam(exam);
+                reg.setUserId(candidateId);
+                registrations.add(reg);
+
+                if (exam.getCourseId() != null) {
+                    NotificationMessage msg = new NotificationMessage();
+                    msg.setRecipientUserId(candidateId.toString());
+                    msg.setTitle("Exam Scheduled");
+                    String startTime = exam.getStartAt() != null ? exam.getStartAt().toString() : "N/A";
+                    msg.setContent("Bạn đã được đăng ký thi. '" + exam.getTitle() + "'. Thời gian bắt đầu: " + startTime);
+                    msg.setType("INFO");
+                    msg.setSeverity("Trung bình");
+                    notificationProducerService.sendNotification(msg);
+                }
+            }
+            registrationRepository.saveAll(registrations);
+        }
+
+        exam.setUpdatedAt(Instant.now());
+        
+        Exam savedExam = examRepository.saveAndFlush(exam);
+        log.info("Đã lên lịch và cập nhật thành công kỳ thi với ID: {}", savedExam.getId());
+        
+        return savedExam;
+    }
+
+    @Transactional(readOnly = true)
+    public List<Exam> getSchedules(Instant start, Instant end) {
+        if (start != null && end != null) {
+            return examRepository.findByStartAtGreaterThanEqualAndEndAtLessThanEqualWithTags(start, end);
+        } else if (start != null) {
+            return examRepository.findByStartAtGreaterThanEqualWithTags(start);
+        } else if (end != null) {
+            return examRepository.findByEndAtLessThanEqualWithTags(end);
+        } else {
+            return examRepository.findAllActiveWithTags();
+        }
+    }
+
+    @Transactional(readOnly = true)
+    public Page<Exam> getSchedules(Instant start, Instant end, Pageable pageable) {
+        if (start != null && end != null) {
+            return examRepository.findByStartAtGreaterThanEqualAndEndAtLessThanEqualWithTags(start, end, pageable);
+        } else if (start != null) {
+            return examRepository.findByStartAtGreaterThanEqualWithTags(start, pageable);
+        } else if (end != null) {
+            return examRepository.findByEndAtLessThanEqualWithTags(end, pageable);
+        } else {
+            return examRepository.findByDeletedAtIsNullWithTags(pageable);
+        }
+    }
+
+    @Transactional(readOnly = true)
+    public Page<Exam> searchExams(Exam.ExamStatus status, String title, Pageable pageable) {
+        return examRepository.searchExamsWithTags(status, title, pageable);
+    }
+
+    @Transactional
+    public void delete(UUID id) {
+        Exam exam = examRepository.findById(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Exam not found with id: " + id));
+        exam.softDelete();
+        examRepository.save(exam);
+    }
+
+    @Transactional
+    public void hardDelete(UUID id) {
+        examRepository.deleteById(id);
+    }
+
+    @Transactional
+    public Exam restore(UUID id) {
+        Exam exam = examRepository.findByIdWithTags(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Exam not found with id: " + id));
+        exam.restore();
+        return examRepository.save(exam);
+    }
+
+    @Transactional
+    public Exam updateStatus(UUID id, String statusString) {
+        Exam exam = examRepository.findByIdWithTags(id)
+                .orElseThrow(() -> new ResourceNotFoundException("Exam not found with id: " + id));
+
+        try {
+            String normalized = statusString.toUpperCase();
+            Exam.ExamStatus newStatus = Exam.ExamStatus.valueOf(normalized);
+
+            if ((newStatus == Exam.ExamStatus.PUBLISHED || newStatus == Exam.ExamStatus.OPEN)
+                    && exam.getPublishedAt() == null) {
+                exam.setPublishedAt(Instant.now());
+            }
+
+            exam.setStatus(newStatus);
+            exam.setUpdatedAt(Instant.now());
+
+            Exam savedExam = examRepository.saveAndFlush(exam);
+            log.info("Successfully updated exam status to {} for id: {}", newStatus, savedExam.getId());
+
+            if (newStatus == Exam.ExamStatus.OPEN || newStatus == Exam.ExamStatus.CANCELLED) {
+
+                List<ExamRegistration> registrations = registrationRepository.findByExamId(savedExam.getId());
+
+                for (ExamRegistration reg : registrations) {
+                    try {
+                        NotificationMessage msg = new NotificationMessage();
+                        msg.setRecipientUserId(reg.getUserId().toString());
+
+                        if (newStatus == Exam.ExamStatus.OPEN) {
+                            msg.setTitle("Exam Opened");
+                            msg.setContent("Exam '" + savedExam.getTitle() + "' is now open. You can start your exam.");
+                            msg.setType("INFO");
+                            msg.setSeverity("high");
+                        } else {
+                            msg.setTitle("Exam Cancelled");
+                            msg.setContent("Exam '" + savedExam.getTitle() + "' has been cancelled.");
+                            msg.setType("ERROR");
+                            msg.setSeverity("high");
+                        }
+
+                        notificationProducerService.sendNotification(msg);
+                    } catch (Exception e) {
+
+                        log.error("Failed to send status update notification to user {}: {}", reg.getUserId(), e.getMessage());
+                    }
+                }
+            }
+            return savedExam;
+        } catch (IllegalArgumentException e) {
+            throw new ValidationException("Invalid status: " + statusString + ". Valid values: DRAFT, SCHEDULED, PUBLISHED, OPEN, CLOSED, CANCELLED");
+        }
+    }
+
+    @Transactional
+    public List<UUID> generateAndSaveQuestions(UUID examId, GenerateQuestionsRequest request) {
+        Exam exam = examRepository.findById(examId)
+                .orElseThrow(() -> new ResourceNotFoundException("Exam not found with id: " + examId));
+
+        List<UUID> questionIds = questionService.generateRandomIds(request);
+
+        if (questionIds.isEmpty()) {
+            throw new ValidationException(
+                "No questions found matching criteria: tags=" + request.tags +
+                ", difficulty=" + request.minDifficulty + "-" + request.maxDifficulty
+            );
+        }
+
+        examQuestionRepository.deleteByExamId(examId);
+
+        List<ExamQuestion> examQuestions = new ArrayList<>();
+        for (int i = 0; i < questionIds.size(); i++) {
+            UUID questionId = questionIds.get(i);
+            Question question = questionRepository.findById(questionId)
+                    .orElseThrow(() -> new ResourceNotFoundException("Question not found with id: " + questionId));
+
+            ExamQuestion examQuestion = new ExamQuestion(exam, question, i + 1);
+            examQuestions.add(examQuestion);
+        }
+
+        examQuestionRepository.saveAll(examQuestions);
+
+        exam.setTotalQuestions(questionIds.size());
+        exam.setUpdatedAt(Instant.now());
+        examRepository.save(exam);
+
+        try {
+            NotificationMessage msg = new NotificationMessage();
+            
+            // Ưu tiên 1: Lấy user đang đăng nhập (người bấm nút random đề)
+            org.springframework.security.core.Authentication auth = org.springframework.security.core.context.SecurityContextHolder.getContext().getAuthentication();
+            if (auth != null && auth.isAuthenticated() && !auth.getName().equals("anonymousUser")) {
+                msg.setRecipientUserId(auth.getName()); 
+            } 
+            // Ưu tiên 2: Nếu không có token, lấy ID của người đã tạo ra cái bài thi này
+            else if (exam.getCreatedBy() != null) {
+                msg.setRecipientUserId(exam.getCreatedBy().toString());
+            } else {
+                msg.setRecipientUserId("SYSTEM");
+            }
+            
+            msg.setTitle("Tạo Đề Tự Động Thành Công");
+            msg.setContent("Hệ thống đã chọn ngẫu nhiên thành công " + questionIds.size() + " câu hỏi cho đề thi '" + exam.getTitle() + "'.");
+            msg.setType("SUCCESS");
+            msg.setSeverity("low");
+            
+            notificationProducerService.sendNotification(msg);
+            log.info("Bắn thông báo tạo đề tự động thành công cho exam: {}", exam.getId());
+        } catch (Exception e) {
+            log.error("Lỗi khi gửi thông báo generate questions: {}", e.getMessage());
+        }
+
+        return questionIds;
+    }
+
+    @Transactional(readOnly = true)
+    public List<ExamQuestion> getExamQuestions(UUID examId) {
+        examRepository.findById(examId)
+                .orElseThrow(() -> new ResourceNotFoundException("Exam not found with id: " + examId));
+
+        return examQuestionRepository.findByExamIdOrderByDisplayOrder(examId);
+    }
+
+    @Transactional(readOnly = true)
+    public long getQuestionCount(UUID examId) {
+        return examQuestionRepository.countByExamId(examId);
+    }
+
+    /**
+     * Xử lý khi hoàn thành bài thi - cập nhật progress và gửi notification.
+     */
+    @Transactional
+    public void onExamCompleted(UUID examId, UUID userId, int score) {
+        Exam exam = examRepository.findByIdWithQuestionsAndRegistrations(examId)
+                .orElseThrow(() -> new ResourceNotFoundException("Exam not found with id: " + examId));
+
+        boolean passed = exam.getPassScore() != null && score >= exam.getPassScore();
+
+        if (exam.getCourseId() != null) {
+            try {
+                UpdateProgressRequest progressRequest = new UpdateProgressRequest();
+                progressRequest.setScore(score);
+                progressRequest.setCompleted(passed);
+                progressRequest.setExamId(examId.toString());
+
+                courseServiceClient.updateCourseProgress(exam.getCourseId(), userId, progressRequest);
+                log.info("Updated course progress for user {} in course {}", userId, exam.getCourseId());
+            } catch (Exception e) {
+                log.warn("Failed to update course progress for user {} in course {}: {}", userId, exam.getCourseId(), e.getMessage());
+            }
+        }
+
+        NotificationMessage msg = new NotificationMessage();
+        msg.setRecipientUserId(userId.toString());
+        msg.setTitle("Bạn đã hoàn thành kì thi");
+
+        String resulstText = passed ? "đạt" : "không đạt";
+        msg.setContent("Bạn đã hoàn thành kỳ thi '" + exam.getTitle() + "' với số điểm: " + score + ". " + (passed ? "Chúc mừng bạn đã vượt qua!" : "Rất tiếc, bạn chưa đạt điểm yêu cầu."));
+
+        msg.setType(passed ? "đạt" : "không đạt");
+        msg.setSeverity(passed ? "high" : "medium");
+        notificationProducerService.sendNotification(msg);
+        log.info("Sent exam completion notification to user {} for exam {}", userId, exam.getTitle());
+        
+        notificationService.sendExamResultNotification(userId, exam.getTitle(), score, passed);
+    }
+
+    // ==================== Enum Lookup Methods ====================
+
+    @Transactional(readOnly = true)
+    public List<EnumOptionResponse> getAllExamTypes() {
+        return List.of(
+            new EnumOptionResponse("PRACTICE", "Practice", "Luyện tập", "Practice exam for learning", 1),
+            new EnumOptionResponse("QUIZ", "Quiz", "Bài kiểm tra", "Short quiz exam", 2),
+            new EnumOptionResponse("MIDTERM", "Midterm", "Giữa kỳ", "Midterm exam", 3),
+            new EnumOptionResponse("FINAL", "Final", "Cuối kỳ", "Final exam", 4),
+            new EnumOptionResponse("MOCK", "Mock", "Thi thử", "Mock exam", 5)
+        );
+    }
+
+    @Transactional(readOnly = true)
+    public List<EnumOptionResponse> getAllExamDifficulties() {
+        return List.of(
+            new EnumOptionResponse("EASY", "Easy", "Dễ", "Easy difficulty", 1),
+            new EnumOptionResponse("MEDIUM", "Medium", "Trung bình", "Medium difficulty", 2),
+            new EnumOptionResponse("HARD", "Hard", "Khó", "Hard difficulty", 3)
+        );
+    }
+
+    @Transactional(readOnly = true)
+    public List<EnumOptionResponse> getAllExamStatuses() {
+        return List.of(
+            new EnumOptionResponse("DRAFT", "Draft", "Nháp", "Exam is being prepared", 1),
+            new EnumOptionResponse("PUBLISHED", "Published", "Đã xuất bản", "Exam is published", 2),
+            new EnumOptionResponse("SCHEDULED", "Scheduled", "Đã lên lịch", "Exam is scheduled", 3),
+            new EnumOptionResponse("OPEN", "Open", "Mở đăng ký", "Exam is open for registration", 4),
+            new EnumOptionResponse("CLOSED", "Closed", "Đóng đăng ký", "Exam registration closed", 5),
+            new EnumOptionResponse("CANCELLED", "Cancelled", "Đã hủy", "Exam is cancelled", 6)
+        );
+    }
+
+    // ==================== Validation Methods ====================
+
+    private void validateExamDates(Instant startAt, Instant endAt) {
+        if (startAt != null && endAt != null && endAt.isBefore(startAt)) {
+            throw new ValidationException("End time must be after start time");
+        }
+    }
+
+    private void validateExamConfig(Integer durationMinutes, Integer passScore, Integer maxAttempts) {
+        validateDuration(durationMinutes);
+        validatePassScore(passScore);
+        validateMaxAttempts(maxAttempts);
+    }
+
+    private void validateDuration(Integer duration) {
+        if (duration != null && duration <= 0) {
+            throw new ValidationException("Duration must be greater than 0");
+        }
+        if (duration != null && duration > 480) {
+            throw new ValidationException("Duration cannot exceed 480 minutes (8 hours)");
+        }
+    }
+
+    private void validatePassScore(Integer passScore) {
+        if (passScore != null && (passScore < 0 || passScore > 100)) {
+            throw new ValidationException("Pass score must be between 0 and 100");
+        }
+    }
+
+    private void validateMaxAttempts(Integer maxAttempts) {
+        if (maxAttempts != null && maxAttempts < 1) {
+            throw new ValidationException("Max attempts must be at least 1");
+        }
+        if (maxAttempts != null && maxAttempts > 100) {
+            throw new ValidationException("Max attempts cannot exceed 100");
+        }
+    }
+}
+
+

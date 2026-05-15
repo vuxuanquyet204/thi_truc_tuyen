@@ -1,0 +1,365 @@
+/* Exam Schedule Page Styles */
+
+.page {
+  max-width: min(1400px, 100%);
+  margin: 0 auto;
+  padding: clamp(16px, 4vw, 32px) clamp(16px, 4vw, 24px);
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.header {
+  margin-bottom: clamp(24px, 4vw, 32px);
+  width: 100%;
+}
+
+.title {
+  font-size: clamp(24px, 5vw, 32px);
+  font-weight: 700;
+  margin-bottom: clamp(6px, 1vw, 8px);
+  color: var(--foreground);
+  word-break: break-word;
+}
+
+.subtitle {
+  font-size: clamp(14px, 3vw, 16px);
+  color: var(--muted-foreground);
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+/* Filters */
+.filtersContainer {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.5vw, 12px);
+  margin-bottom: clamp(24px, 4vw, 32px);
+  position: relative;
+  z-index: 5;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.searchContainer {
+  width: 100%;
+  position: relative;
+}
+
+.searchIcon {
+  position: absolute;
+  left: clamp(10px, 1.5vw, 12px);
+  top: 50%;
+  transform: translateY(-50%);
+  color: var(--muted-foreground);
+  pointer-events: none;
+  z-index: 1;
+  width: clamp(18px, 2.5vw, 20px);
+  height: clamp(18px, 2.5vw, 20px);
+}
+
+.searchInput {
+  width: 100%;
+  padding: clamp(8px, 1.5vw, 10px) clamp(10px, 1.5vw, 12px) clamp(8px, 1.5vw, 10px) clamp(36px, 4.5vw, 40px);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: clamp(13px, 2vw, 14px);
+  background: var(--card);
+  color: var(--foreground);
+  outline: none;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.searchInput:focus {
+  border-color: var(--primary);
+}
+
+.filterRow {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.5vw, 12px);
+  width: 100%;
+}
+
+.filterSelect {
+  position: relative;
+  width: 100%;
+}
+
+.filterSelect select {
+  padding: clamp(8px, 1.5vw, 10px) clamp(14px, 2vw, 16px);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  font-size: clamp(13px, 2vw, 14px);
+  background: var(--card);
+  color: var(--foreground);
+  cursor: pointer;
+  outline: none;
+  width: 100%;
+  box-sizing: border-box;
+  transition: border-color 0.2s;
+}
+
+.filterSelect select:focus {
+  border-color: var(--primary);
+}
+
+/* Loading State */
+.loadingContainer {
+  text-align: center;
+  padding: clamp(40px, 6vw, 60px) clamp(16px, 2.5vw, 20px);
+  color: var(--muted-foreground);
+  width: 100%;
+}
+
+.loadingSpinner {
+  width: clamp(32px, 5vw, 40px);
+  height: clamp(32px, 5vw, 40px);
+  border: clamp(2px, 0.4vw, 3px) solid var(--border);
+  border-top-color: var(--primary);
+  border-radius: 50%;
+  margin: 0 auto clamp(12px, 2vw, 16px);
+  animation: spin 0.8s linear infinite;
+}
+
+.loadingText {
+  font-size: clamp(13px, 2.5vw, 15px);
+  word-break: break-word;
+}
+
+/* Error State */
+.errorContainer {
+  padding: clamp(12px, 2vw, 16px);
+  background: #ef444414;
+  border: 1px solid #ef4444;
+  border-radius: 8px;
+  color: #ef4444;
+  margin-bottom: clamp(20px, 3vw, 24px);
+  width: 100%;
+  box-sizing: border-box;
+  font-size: clamp(13px, 2vw, 14px);
+  word-break: break-word;
+}
+
+/* Empty State */
+.emptyState {
+  text-align: center;
+  padding: clamp(40px, 6vw, 60px) clamp(16px, 2.5vw, 20px);
+  color: var(--muted-foreground);
+  width: 100%;
+}
+
+.emptyStateIcon {
+  margin: 0 auto clamp(12px, 2vw, 16px);
+  opacity: 0.5;
+  width: clamp(40px, 6vw, 48px);
+  height: clamp(40px, 6vw, 48px);
+}
+
+.emptyStateTitle {
+  font-size: clamp(14px, 2.5vw, 16px);
+  font-weight: 500;
+  margin-bottom: clamp(6px, 1vw, 8px);
+  word-break: break-word;
+}
+
+.emptyStateText {
+  font-size: clamp(12px, 2vw, 14px);
+  margin-top: clamp(6px, 1vw, 8px);
+  word-break: break-word;
+}
+
+/* Exam List */
+.examList {
+  display: grid;
+  gap: clamp(12px, 2vw, 16px);
+  position: relative;
+  z-index: 1;
+  width: 100%;
+}
+
+.examCard {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 12px;
+  padding: clamp(16px, 3vw, 20px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 2vw, 20px);
+  align-items: start;
+  position: relative;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.examCard:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.examCardHeader {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 2vw, 16px);
+  flex-wrap: wrap;
+}
+
+.dateBox {
+  min-width: clamp(60px, 8vw, 70px);
+  text-align: center;
+  padding: clamp(10px, 1.5vw, 12px);
+  background: var(--primary-alpha);
+  border-radius: 8px;
+  border: 1px solid var(--primary);
+  flex-shrink: 0;
+}
+
+.dateNumber {
+  font-size: clamp(20px, 4vw, 24px);
+  font-weight: 700;
+  color: var(--primary);
+  word-break: break-word;
+}
+
+.dateMonth {
+  font-size: clamp(10px, 2vw, 12px);
+  color: var(--primary);
+  text-transform: uppercase;
+  word-break: break-word;
+}
+
+.examTitleSection {
+  flex: 1;
+  min-width: 0;
+}
+
+.examTitleContainer {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 1vw, 8px);
+}
+
+.examTitle {
+  font-size: clamp(16px, 3vw, 18px);
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0;
+  word-break: break-word;
+}
+
+.statusBadge {
+  padding: clamp(3px, 0.5vw, 4px) clamp(10px, 1.5vw, 12px);
+  border-radius: 12px;
+  font-size: clamp(11px, 1.8vw, 12px);
+  font-weight: 500;
+  white-space: nowrap;
+  display: inline-block;
+}
+
+.statusBadge.completed {
+  background: #10b98114;
+  color: #10b981;
+}
+
+.statusBadge.upcoming {
+  background: #3b82f614;
+  color: #3b82f6;
+}
+
+.statusBadge.ongoing {
+  background: #f59e0b14;
+  color: #f59e0b;
+}
+
+.statusBadge.default {
+  background: #6b728014;
+  color: #6b7280;
+}
+
+.examInfo {
+  width: 100%;
+}
+
+.examDescription {
+  font-size: clamp(12px, 2.5vw, 13px);
+  color: var(--muted-foreground);
+  margin-bottom: clamp(10px, 1.5vw, 12px);
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+.examMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: clamp(12px, 2vw, 24px);
+  font-size: clamp(11px, 2.5vw, 12px);
+  color: var(--muted-foreground);
+  width: 100%;
+}
+
+.examMetaItem {
+  display: flex;
+  align-items: center;
+  gap: clamp(4px, 0.8vw, 6px);
+  word-break: break-word;
+}
+
+.examMetaItem svg {
+  width: clamp(14px, 2vw, 16px);
+  height: clamp(14px, 2vw, 16px);
+  flex-shrink: 0;
+}
+
+@keyframes spin {
+  to { transform: rotate(360deg); }
+}
+
+/* Responsive */
+@media (min-width: 640px) {
+  .filterRow {
+    flex-direction: row;
+  }
+
+  .filterSelect {
+    width: auto;
+    flex: 1;
+  }
+}
+
+@media (max-width: 640px) {
+  .examCardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .dateBox {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .examMeta {
+    flex-direction: column;
+    gap: clamp(8px, 1.5vw, 12px);
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: clamp(12px, 3vw, 16px);
+  }
+
+  .examCard {
+    padding: clamp(12px, 2.5vw, 16px);
+  }
+
+  .dateBox {
+    padding: clamp(8px, 1.2vw, 10px);
+  }
+}
+

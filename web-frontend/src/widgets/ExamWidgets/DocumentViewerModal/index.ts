@@ -1,0 +1,1 @@
+export { default as DocumentViewerModal } from '@/shared/ui/molecules/DocumentViewerModal/DocumentViewerModal'

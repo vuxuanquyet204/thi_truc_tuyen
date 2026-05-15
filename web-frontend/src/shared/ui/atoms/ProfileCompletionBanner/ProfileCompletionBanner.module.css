@@ -1,0 +1,13 @@
+/* ProfileCompletionBanner.module.css */
+
+.profileCard {
+  position: relative;
+  padding: clamp(16px, 2.5vw, 24px);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  background: var(--card);
+  box-shadow: var(--shadow-sm);
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}

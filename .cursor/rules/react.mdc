@@ -1,0 +1,207 @@
+```markdown
+---
+alwaysApply: true
+---
+# React Coding Style & Best Practices
+
+> This file defines React-specific rules and best practices. It transforms common "Junior" patterns into "Pro" patterns for clean, performant, scalable, and maintainable React code.
+
+## Mindset & Architecture
+
+Always adopt the **Pro Mindset** instead of the Junior Mindset.
+
+### Pro vs Junior Patterns
+
+- **WRONG (Junior Mindset)**: Manual sync with `useEffect`, scattered state, data fetching inside `useEffect`, copy-paste logic, dependency on objects.
+- **CORRECT (Pro Mindset)**: Use Derived State, Single Object State, React Query / Server Components, Custom Hooks, and primitives (or `useMemo`).
+
+```tsx
+// WRONG: Junior pattern
+useEffect(() => {
+  setTotal(quantity * price);
+}, [quantity, price]);
+
+// CORRECT: Pro pattern
+const totalPrice = quantity * price; // Derived State
+```
+
+### Server-First Architecture
+
+- Server Components are the **default**.
+- Use Client Components (`'use client'`) **only** for interactivity, event listeners, or Browser APIs.
+- Push heavy logic (data fetching, secrets) to the Server.
+
+```tsx
+// Server Component (default) - CORRECT
+const data = await db.post.findMany();
+
+// Client Component - only when needed
+'use client';
+function InteractiveButton() { ... }
+```
+
+## State Management
+
+### Use Derived State Instead of Manual Sync
+
+```tsx
+// WRONG: Redundant useEffect (causes extra renders)
+useEffect(() => {
+  setTotal(quantity * price);
+}, [quantity, price]);
+
+// CORRECT: Derived State (single render, cleaner code)
+const totalPrice = quantity * price;
+```
+
+### Prefer Single Object State (especially for Forms)
+
+```tsx
+// WRONG: Atomic state (hard to maintain)
+const [firstName, setFirstName] = useState('');
+const [email, setEmail] = useState('');
+
+// CORRECT: Single Object State (scalable)
+const [form, setForm] = useState({
+  firstName: '',
+  lastName: '',
+  email: '',
+  password: ''
+});
+
+const handleChange = (e: React.ChangeEvent<HTMLInputElement>) => {
+  setForm({
+    ...form,
+    [e.target.name]: e.target.value
+  });
+};
+```
+
+### Always Use Updater Functions for State Updates
+
+```tsx
+// WRONG: Relying on current state value (batching issue)
+const handleAdd = () => {
+  setCount(count + 1);
+  setCount(count + 1); // still uses stale count
+};
+
+// CORRECT: Updater Function
+const handleAdd = () => {
+  setCount(prev => prev + 1);
+  setCount(prev => prev + 1);
+};
+```
+
+## Data Fetching
+
+### Never Fetch Data Inside useEffect
+
+- **WRONG**: `useEffect` + manual fetch (race conditions, stale data, extra renders).
+- **CORRECT**: Use React Query / SWR **or** Server Components.
+
+```tsx
+// Server Component (Best)
+const data = await db.post.findMany();
+
+// OR with React Query (Better)
+const { data, isLoading } = useQuery({ queryKey: ['posts'], queryFn: fetchPosts });
+```
+
+### Handle Race Conditions Properly
+
+Use `AbortController` (manual) or let React Query / SWR handle deduping and cancellation automatically.
+
+## Hooks & Performance
+
+### Embrace Custom Hooks (DRY Principle)
+
+```tsx
+// WRONG: Copy-paste logic across components
+// Component A & B both have the same window resize code
+
+// CORRECT: Extract to Custom Hook
+function useWindowSize() {
+  const [size, setSize] = useState(window.innerWidth);
+  // ... useEffect logic
+  return size;
+}
+```
+
+### Hooks Rules (Strict Order)
+
+- Always call Hooks at the **top level** of your component.
+- Never call Hooks inside conditions, loops, or early returns.
+
+```tsx
+// WRONG: Early return before all Hooks
+function Component() {
+  if (loading) return <Spinner />;
+  const [count, setCount] = useState(0); // Hook order breaks!
+  useEffect(...);
+}
+
+// CORRECT: All Hooks first
+function Component() {
+  const [count, setCount] = useState(0);
+  useEffect(...);
+  if (loading) return <Spinner />;
+}
+```
+
+### Avoid Reference Trap (Primitive vs Object)
+
+```tsx
+// WRONG: Object in dependency array (infinite re-renders)
+useEffect(() => { ... }, [config]); // config is new object every render
+
+// CORRECT: Use primitives or useMemo
+useEffect(() => { ... }, [config.id]); // primitive
+// OR
+const memoConfig = useMemo(() => config, [config.id]);
+```
+
+### Avoid Stale Closures
+
+```tsx
+// WRONG: Closure captures old state
+useEffect(() => {
+  const id = setInterval(() => setCount(count + 1), 1000); // stale count
+}, []);
+
+// CORRECT: Updater Function
+useEffect(() => {
+  const id = setInterval(() => setCount(prev => prev + 1), 1000);
+  return () => clearInterval(id);
+}, []);
+```
+
+## TypeScript & Initialization
+
+### Initialize State Explicitly
+
+```tsx
+// WRONG: Implicit undefined
+const [user, setUser] = useState();
+
+// CORRECT: Explicit null + generics
+const [user, setUser] = useState<User | null>(null);
+```
+
+### Always Handle Loading and Optional Chaining
+
+```tsx
+// CORRECT
+if (isLoading) return <Spinner />;
+
+return <div>{user?.name}</div>;
+```
+
+## Final Pro Tips
+
+- **React Mastery = JavaScript Mastery**: Most "weird" React bugs are actually JS Reference, Closure, or Async issues.
+- Refactor one component and fix one `useEffect` today — you will immediately level up.
+- Code should be **clean**, **predictable**, and **performant** by default.
+
+Follow these rules consistently and your React code will go from Junior to Pro automatically.
+```

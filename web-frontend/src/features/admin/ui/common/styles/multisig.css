@@ -1,0 +1,245 @@
+/* Multisig Wallet Styles */
+.multisig-page {
+  padding: 24px;
+}
+
+.multisig-header {
+  margin-bottom: 24px;
+}
+
+.multisig-title {
+  font-size: 24px;
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0 0 8px 0;
+}
+
+.multisig-description {
+  font-size: 14px;
+  color: var(--muted-foreground);
+  margin: 0;
+}
+
+.multisig-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+  gap: 16px;
+  margin-bottom: 24px;
+}
+
+.multisig-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+  gap: 20px;
+  margin-bottom: 24px;
+}
+
+.multisig-card {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 20px;
+}
+
+.multisig-card h2 {
+  font-size: 18px;
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0 0 16px 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.multisig-actions {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
+.multisig-alert {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px;
+  border-radius: 8px;
+  margin-bottom: 16px;
+}
+
+.multisig-alert.error {
+  background: rgba(239, 68, 68, 0.1);
+  border: 1px solid rgba(239, 68, 68, 0.3);
+  color: #dc2626;
+}
+
+.multisig-alert.success {
+  background: rgba(16, 185, 129, 0.1);
+  border: 1px solid rgba(16, 185, 129, 0.3);
+  color: #059669;
+}
+
+.multisig-alert.warning {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  color: #d97706;
+}
+
+.multisig-summary-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
+  gap: 16px;
+}
+
+.multisig-summary-card {
+  background: var(--muted);
+  border-radius: 8px;
+  padding: 16px;
+  text-align: center;
+}
+
+.multisig-summary-label {
+  font-size: 12px;
+  color: var(--muted-foreground);
+  margin-bottom: 4px;
+  font-weight: 500;
+}
+
+.multisig-summary-value {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.multisig-summary-extra {
+  font-size: 11px;
+  color: var(--muted-foreground);
+  margin-top: 4px;
+}
+
+.multisig-owners {
+  grid-column: span 2;
+}
+
+.multisig-owner-list {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 16px;
+}
+
+.multisig-owner {
+  display: inline-flex;
+  align-items: center;
+  padding: 6px 12px;
+  background: var(--muted);
+  border-radius: 6px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  color: var(--foreground);
+}
+
+.multisig-owner-warning {
+  background: rgba(245, 158, 11, 0.1);
+  border: 1px solid rgba(245, 158, 11, 0.3);
+  border-radius: 6px;
+  padding: 12px;
+  margin-top: 12px;
+  color: #d97706;
+  font-size: 13px;
+}
+
+.multisig-tracked {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.multisig-tracked-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.multisig-tracked-item {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  cursor: pointer;
+  text-align: left;
+  transition: all 0.2s;
+  width: 100%;
+}
+
+.multisig-tracked-item:hover {
+  border-color: var(--primary);
+  background: var(--background);
+}
+
+.multisig-tracked-item.active {
+  border-color: var(--primary);
+  background: rgba(59, 130, 246, 0.05);
+}
+
+.multisig-empty {
+  text-align: center;
+  padding: 24px;
+  color: var(--muted-foreground);
+  font-size: 14px;
+}
+
+.multisig-filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: 16px;
+  margin-bottom: 24px;
+  flex-wrap: wrap;
+}
+
+.multisig-data {
+  background: var(--muted);
+  border-radius: 6px;
+  overflow-x: auto;
+  margin: 0;
+}
+
+.multisig-transaction-actions {
+  display: flex;
+  gap: 8px;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.multisig-transaction-key {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.multisig-transaction-key label {
+  font-size: 11px;
+  color: var(--muted-foreground);
+}
+
+.btn-link {
+  background: none;
+  border: none;
+  color: var(--primary);
+  cursor: pointer;
+  text-decoration: underline;
+  font-size: inherit;
+}
+
+.spinning {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}

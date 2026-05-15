@@ -1,0 +1,1 @@
+﻿export { SubmitConfirmationModal } from './SubmitConfirmationModal';

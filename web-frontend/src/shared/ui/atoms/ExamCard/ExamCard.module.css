@@ -1,0 +1,208 @@
+/* ExamCard.module.css */
+
+.card {
+  padding: clamp(10px, 1.5vw, 12px);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--card);
+  transition: all 0.2s;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card:hover {
+  border-color: var(--primary);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Content Layout */
+.content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: clamp(8px, 1.25vw, 12px);
+  width: 100%;
+}
+
+.contentLeft {
+  flex: 1;
+  min-width: 0;
+}
+
+.contentRight {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(3px, 0.5vw, 4px);
+  margin-left: clamp(10px, 1.5vw, 12px);
+  flex-shrink: 0;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: clamp(6px, 1vw, 8px);
+  gap: clamp(6px, 1vw, 8px);
+}
+
+.statusIcon {
+  width: clamp(14px, 2vw, 16px);
+  height: clamp(14px, 2vw, 16px);
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: clamp(13px, 1.75vw, 14px);
+  font-weight: 500;
+  margin: 0;
+  word-break: break-word;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Meta Info */
+.meta {
+  display: flex;
+  align-items: center;
+  font-size: clamp(11px, 1.5vw, 12px);
+  color: var(--muted-foreground);
+  margin-bottom: clamp(6px, 1vw, 8px);
+  gap: clamp(3px, 0.5vw, 4px);
+}
+
+.metaIcon {
+  width: clamp(10px, 1.5vw, 12px);
+  height: clamp(10px, 1.5vw, 12px);
+  margin-right: clamp(3px, 0.5vw, 4px);
+  flex-shrink: 0;
+}
+
+/* Score Section */
+.scoreSection {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: clamp(6px, 1vw, 8px);
+}
+
+.scoreLabel {
+  font-size: clamp(11px, 1.5vw, 12px);
+  color: var(--muted-foreground);
+  word-break: break-word;
+}
+
+.scoreValue {
+  font-size: clamp(13px, 1.75vw, 14px);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+/* Certificate Badge */
+.certificateBadge {
+  display: flex;
+  align-items: center;
+  margin-top: clamp(6px, 1vw, 8px);
+}
+
+.certificateLabel {
+  font-size: clamp(11px, 1.5vw, 12px);
+  background: var(--accent);
+  color: var(--accent-foreground);
+  padding: clamp(2px, 0.5vw, 4px) clamp(6px, 1vw, 8px);
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+/* Action Buttons */
+.viewButton {
+  padding: clamp(3px, 0.5vw, 4px);
+  color: var(--accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: color 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.viewButton:hover {
+  color: var(--primary);
+}
+
+.viewButtonIcon {
+  width: clamp(14px, 2vw, 16px);
+  height: clamp(14px, 2vw, 16px);
+}
+
+.retakeButton {
+  font-size: clamp(11px, 1.5vw, 12px);
+  color: var(--accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.2s;
+  padding: clamp(2px, 0.5vw, 4px);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.retakeButton:hover {
+  color: var(--primary);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .contentRight {
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-left: 0;
+    margin-top: clamp(8px, 1.25vw, 12px);
+    width: 100%;
+    gap: clamp(8px, 1.25vw, 12px);
+  }
+
+  .viewButton {
+    padding: clamp(6px, 1vw, 8px) clamp(12px, 2vw, 16px);
+  }
+
+  .retakeButton {
+    padding: clamp(6px, 1vw, 8px) clamp(12px, 2vw, 16px);
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: clamp(8px, 1.25vw, 10px);
+  }
+
+  .header {
+    flex-wrap: wrap;
+  }
+
+  .meta {
+    font-size: clamp(10px, 1.25vw, 11px);
+  }
+
+  .contentRight {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .viewButton,
+  .retakeButton {
+    width: 100%;
+    justify-content: center;
+  }
+}

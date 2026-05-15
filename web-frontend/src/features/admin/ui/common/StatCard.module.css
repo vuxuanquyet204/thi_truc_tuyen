@@ -1,0 +1,105 @@
+.card {
+  padding: var(--space-4);
+  border-radius: var(--radius-md);
+  transition: transform var(--transition-normal), box-shadow var(--transition-normal);
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: translateY(-4px) scale(1.02);
+  box-shadow: var(--shadow-lg);
+}
+
+.card:active {
+  transform: translateY(-2px) scale(1.01);
+}
+
+.card.clickable {
+  cursor: pointer;
+}
+
+.card:not(.clickable) {
+  cursor: default;
+}
+
+/* Variants */
+.primary {
+  background: var(--gradient-primary);
+  color: var(--primary-foreground);
+}
+
+.accent {
+  background: var(--gradient-accent);
+  color: var(--accent-foreground);
+}
+
+.gradient {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  color: white;
+}
+
+/* Layout */
+.inner {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.textGroup {
+  flex: 1;
+}
+
+.title {
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0;
+  line-height: 1.4;
+}
+
+.value {
+  font-size: 24px;
+  font-weight: 700;
+  margin: 0;
+  line-height: 1.2;
+}
+
+.subtitle {
+  font-size: 12px;
+  font-weight: 400;
+  margin: var(--space-1) 0 0;
+  opacity: 0.8;
+}
+
+.trend {
+  display: flex;
+  align-items: center;
+  gap: var(--space-1);
+  margin-top: var(--space-1);
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.trendUp {
+  color: var(--success);
+}
+
+.trendDown {
+  color: var(--destructive);
+}
+
+.icon {
+  flex-shrink: 0;
+}
+
+/* Gradient definitions */
+@supports (background: linear-gradient(red, blue)) {
+  .primary {
+    background: linear-gradient(135deg, var(--primary) 0%, var(--primary-dark) 100%);
+  }
+
+  .accent {
+    background: linear-gradient(135deg, var(--accent) 0%, var(--accent-dark) 100%);
+  }
+}

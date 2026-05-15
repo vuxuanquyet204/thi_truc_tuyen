@@ -1,0 +1,318 @@
+// file: src/controllers/student.quiz.controller.js
+
+// Import "bộ não" chính từ lớp service
+const db = require('../models');
+const quizService = require('../services/quiz.service');
+const { toQuizDetailResponse } = require('../mappers/quiz.mapper');
+
+/**
+ * Controller xử lý yêu cầu bắt đầu bài thi.
+ */
+async function startQuiz(req, res) {
+  try {
+    // Lấy quizId từ URL (ví dụ: /api/quizzes/abc-123/start)
+    const { quizId } = req.params;
+    // Lấy userId từ JWT token (đã được verify bởi auth middleware)
+    const userId = req.userId || req.user?.userId || req.user?.sub || req.user?.id;
+
+    // Validate userId
+    if (!userId) {
+      console.error('❌ userId is undefined. req.user:', req.user);
+      return res.status(401).json({
+        success: false,
+        message: 'User ID not found in token. Please login again.'
+      });
+    }
+
+    // Gọi đến service để xử lý logic
+    const authHeader = req.headers['authorization'] || '';
+    const result = await quizService.startQuiz(userId, quizId, authHeader);
+
+    // Map quiz details để che giấu đáp án và format đúng
+    const mappedQuizDetails = toQuizDetailResponse(result.quizDetails);
+
+    // Trả về kết quả thành công cho Frontend
+    res.status(200).json({
+      success: true,
+      message: "Bắt đầu bài thi thành công.",
+      data: {
+        submissionId: result.submissionId,
+        ...mappedQuizDetails,
+      },
+    });
+  } catch (error) {
+    // <<< PHẦN CẢI THIỆN NẰM Ở ĐÂY >>>
+
+    // Kiểm tra nếu bài thi đã hoàn thành (không cho làm lại)
+    if (error.message.includes('đã hoàn thành bài thi này rồi')) {
+      return res.status(400).json({
+        success: false,
+        error: error.message,
+        message: error.message
+      });
+    }
+
+    // Kiểm tra nếu đã bắt đầu nhưng chưa hoàn thành (cho phép tiếp tục)
+    if (error.message.includes('Bạn đã bắt đầu bài thi này rồi')) {
+      // Map quiz details để che giấu đáp án
+      const mappedQuizDetails = error.quizDetails ? toQuizDetailResponse(error.quizDetails) : null;
+
+      // Nếu là lỗi nghiệp vụ đã biết, trả về 409 Conflict với submission ID và quiz details
+      return res.status(409).json({
+        success: false,
+        message: error.message,
+        data: {
+          submissionId: error.submissionId,
+          ...(mappedQuizDetails || {}),
+        }
+      });
+    }
+
+    // Đối với các lỗi không mong muốn khác, mới trả về 500
+    console.error("Lỗi không xác định trong startQuiz controller:", error);
+    res.status(500).json({ success: false, message: 'An unexpected error occurred on the server.' });
+  }
+}
+
+/**
+ * Controller xử lý yêu cầu nộp bài.
+ */
+async function submitQuiz(req, res) {
+  try {
+    // Lấy submissionId từ URL
+    const { submissionId } = req.params;
+    // Lấy mảng câu trả lời từ body của request
+    const answers = req.body.answers;
+    const authHeader = req.headers['authorization'] || '';
+
+    // Gọi đến service để xử lý logic
+    const result = await quizService.submitQuiz(submissionId, answers, authHeader);
+
+    // Trả về kết quả thành công
+    res.status(200).json({
+      success: true,
+      message: "Nộp bài thành công.",
+      data: result,
+    });
+  } catch (error) {
+    console.error("Lỗi trong submitQuiz controller:", error);
+    res.status(500).json({ success: false, message: error.message });
+  }
+}
+
+/**
+ * Controller xử lý yêu cầu lấy tất cả quiz.
+ */
+async function getAllQuizzes(req, res) {
+  try {
+    console.log('[getAllQuizzes] Request received');
+    console.log('[getAllQuizzes] Request path:', req.path);
+    console.log('[getAllQuizzes] Request originalUrl:', req.originalUrl);
+
+    const quizzes = await quizService.getAllQuizzes();
+
+    console.log('[getAllQuizzes] Found', quizzes?.length || 0, 'quizzes');
+
+    res.status(200).json({
+      success: true,
+      data: quizzes,
+    });
+  } catch (error) {
+    console.error("[getAllQuizzes] Lỗi trong getAllQuizzes controller:", error);
+    console.error("[getAllQuizzes] Error stack:", error.stack);
+    res.status(500).json({
+      success: false,
+      message: error.message,
+      error: process.env.NODE_ENV === 'development' ? error.stack : undefined
+    });
+  }
+}
+
+/**
+ * Controller xử lý yêu cầu lấy chi tiết quiz (không tạo submission).
+ */
+async function getQuizDetails(req, res) {
+  try {
+    const { quizId } = req.params;
+    const quizDetails = await quizService.getQuizDetails(quizId);
+
+    // Map quiz details để che giấu đáp án và format đúng
+    const mappedQuizDetails = toQuizDetailResponse(quizDetails);
+
+    res.status(200).json({
+      success: true,
+      data: mappedQuizDetails,
+    });
+  } catch (error) {
+    console.error("Lỗi trong getQuizDetails controller:", error);
+    res.status(500).json({ success: false, message: error.message });
+  }
+}
+
+/**
+ * Controller xử lý yêu cầu lấy tất cả submissions của student.
+ */
+async function getMySubmissions(req, res) {
+  try {
+    console.log('[getMySubmissions] Request received');
+    console.log('[getMySubmissions] Request path:', req.path);
+    console.log('[getMySubmissions] Request originalUrl:', req.originalUrl);
+
+    // Lấy userId từ JWT token (đã được verify bởi auth middleware)
+    const userId = req.userId || req.user?.userId || req.user?.sub || req.user?.id;
+
+    console.log('[getMySubmissions] userId:', userId);
+    console.log('[getMySubmissions] req.user:', req.user);
+
+    // Validate userId
+    if (!userId) {
+      console.error('❌ userId is undefined. req.user:', req.user);
+      return res.status(401).json({
+        success: false,
+        message: 'User ID not found in token. Please login again.'
+      });
+    }
+
+    const submissions = await quizService.getStudentSubmissions(userId);
+
+    console.log('[getMySubmissions] Found', submissions?.length || 0, 'submissions');
+
+    res.status(200).json({
+      success: true,
+      data: submissions,
+    });
+  } catch (error) {
+    console.error("[getMySubmissions] Lỗi trong getMySubmissions controller:", error);
+    console.error("[getMySubmissions] Error stack:", error.stack);
+    res.status(500).json({
+      success: false,
+      message: error.message,
+      error: process.env.NODE_ENV === 'development' ? error.stack : undefined
+    });
+  }
+}
+
+/**
+ * GET /api/submissions/:submissionId
+ * Lay trang thai chi tiet cua mot submission (bao gom trang thai in-progress)
+ */
+async function getSubmissionStatus(req, res) {
+    try {
+        const { submissionId } = req.params;
+        const userId = req.userId || req.user?.userId || req.user?.sub || req.user?.id;
+
+        if (!userId) {
+            return res.status(401).json({
+                success: false,
+                message: 'User ID not found in token. Please login again.'
+            });
+        }
+
+        const submission = await db.QuizSubmission.findOne({
+            where: { id: submissionId, studentId: userId },
+            include: [{
+                model: db.Quiz,
+                as: 'quiz',
+                attributes: ['id', 'title', 'description', 'durationMinutes', 'timeLimitMinutes']
+            }]
+        });
+
+        if (!submission) {
+            return res.status(404).json({
+                success: false,
+                message: 'Submission not found or access denied.'
+            });
+        }
+
+        res.status(200).json({
+            success: true,
+            data: {
+                id: submission.id,
+                quizId: submission.quizId,
+                studentId: submission.studentId,
+                score: submission.score,
+                submittedAt: submission.submittedAt,
+                answers: submission.answers,
+                status: submission.submittedAt ? 'submitted' : 'in-progress',
+                startedAt: submission.startedAt,
+                timeSpentSeconds: submission.timeSpentSeconds,
+                correctAnswers: submission.correctAnswers,
+                wrongAnswers: submission.wrongAnswers,
+                totalQuestions: submission.totalQuestions,
+                quiz: submission.quiz ? {
+                    id: submission.quiz.id,
+                    title: submission.quiz.title,
+                    description: submission.quiz.description,
+                    durationMinutes: submission.quiz.durationMinutes || submission.quiz.timeLimitMinutes,
+                } : null
+            }
+        });
+
+    } catch (error) {
+        console.error('Error in getSubmissionStatus:', error);
+        res.status(500).json({ success: false, message: 'An unexpected error occurred.' });
+    }
+}
+
+/**
+ * Controller xu ly yeu cau lay ket qua chi tiet cua mot submission.
+ */
+async function getSubmissionResult(req, res) {
+  try {
+    const { submissionId } = req.params;
+    // Lấy userId từ JWT token (đã được verify bởi auth middleware)
+    const userId = req.userId || req.user?.userId || req.user?.sub || req.user?.id;
+
+    // Validate userId
+    if (!userId) {
+      console.error('❌ userId is undefined. req.user:', req.user);
+      return res.status(401).json({
+        success: false,
+        message: 'User ID not found in token. Please login again.'
+      });
+    }
+
+    const result = await quizService.getSubmissionResult(submissionId, userId);
+
+    if (!result) {
+      return res.status(404).json({
+        success: false,
+        message: "Không tìm thấy kết quả bài thi",
+      });
+    }
+
+    res.status(200).json({
+      success: true,
+      data: result,
+    });
+  } catch (error) {
+    console.error("Lỗi trong getSubmissionResult controller:", error);
+
+    // Handle specific errors
+    if (error.message.includes('Không tìm thấy')) {
+      return res.status(404).json({
+        success: false,
+        message: error.message
+      });
+    }
+
+    if (error.message.includes('chưa nộp bài')) {
+      return res.status(400).json({
+        success: false,
+        message: error.message
+      });
+    }
+
+    res.status(500).json({ success: false, message: error.message });
+  }
+}
+
+module.exports = {
+  startQuiz,
+  submitQuiz,
+  getAllQuizzes,
+  getQuizDetails,
+  getMySubmissions,
+  getSubmissionStatus,
+  getSubmissionResult,
+};

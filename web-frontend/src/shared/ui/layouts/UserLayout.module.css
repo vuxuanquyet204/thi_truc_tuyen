@@ -1,0 +1,52 @@
+/* User Layout Styles */
+.layout {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+  position: relative;
+}
+
+.main {
+  flex: 1;
+  padding-top: clamp(60px, 10vw, 80px); /* Responsive padding to account for header height */
+  width: 100%;
+  box-sizing: border-box;
+  position: relative;
+  min-height: calc(100vh - clamp(60px, 10vw, 80px)); /* Ensure content fills viewport */
+}
+
+/* Responsive adjustments */
+@media (max-width: 480px) {
+  .main {
+    padding-top: clamp(56px, 12vw, 64px); /* Smaller padding on very small screens */
+    min-height: calc(100vh - clamp(56px, 12vw, 64px));
+  }
+}
+
+@media (min-width: 481px) and (max-width: 768px) {
+  .main {
+    padding-top: clamp(60px, 10vw, 70px); /* Medium padding on tablets */
+    min-height: calc(100vh - clamp(60px, 10vw, 70px));
+  }
+}
+
+@media (min-width: 769px) and (max-width: 1023px) {
+  .main {
+    padding-top: clamp(70px, 8vw, 80px); /* Larger padding on small desktops */
+    min-height: calc(100vh - clamp(70px, 8vw, 80px));
+  }
+}
+
+@media (min-width: 1024px) {
+  .main {
+    padding-top: 80px; /* Fixed padding on desktop */
+    min-height: calc(100vh - 80px);
+  }
+}
+

@@ -1,0 +1,635 @@
+/* UpcomingExams.module.css */
+
+/* Container */
+.container {
+  animation-delay: 500ms;
+  padding: clamp(12px, 2vw, 16px);
+  min-height: 490px;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.container::-webkit-scrollbar {
+  display: none;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: clamp(16px, 2.5vw, 20px);
+  gap: clamp(12px, 2vw, 16px);
+  flex-wrap: wrap;
+}
+
+.headerTitle {
+  display: flex;
+  align-items: center;
+  font-size: clamp(16px, 2.25vw, 18px);
+  font-weight: 600;
+  margin: 0;
+  gap: clamp(6px, 1vw, 8px);
+}
+
+.headerIcon {
+  width: clamp(18px, 2.5vw, 20px);
+  height: clamp(18px, 2.5vw, 20px);
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.viewScheduleButton {
+  font-size: clamp(12px, 1.75vw, 14px);
+  color: var(--primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: clamp(4px, 1vw, 8px);
+  border-radius: 6px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.viewScheduleButton:hover {
+  background: var(--primary-light);
+  text-decoration: underline;
+}
+
+/* Exam List */
+.examList {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  width: 100%;
+}
+
+.examList::-webkit-scrollbar {
+  display: none;
+}
+
+.examListContainer {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.5vw, 12px);
+  width: 100%;
+}
+
+/* Exam Card */
+.examCard {
+  padding: clamp(10px, 1.5vw, 12px);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--card);
+  transition: all 0.2s ease;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.examCard:hover {
+  border-color: var(--primary);
+  transform: translateX(4px);
+  box-shadow: var(--shadow-md);
+}
+
+.examCardHeader {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: clamp(10px, 1.5vw, 12px);
+  gap: clamp(8px, 1vw, 12px);
+  flex-wrap: wrap;
+}
+
+.examCardContent {
+  flex: 1;
+  margin-right: clamp(6px, 1vw, 8px);
+  min-width: 0;
+}
+
+.examCardTitleRow {
+  display: flex;
+  align-items: center;
+  margin-bottom: clamp(6px, 1vw, 8px);
+  gap: clamp(6px, 1vw, 8px);
+  flex-wrap: wrap;
+}
+
+.statusIcon {
+  width: clamp(14px, 2vw, 16px);
+  height: clamp(14px, 2vw, 16px);
+  flex-shrink: 0;
+}
+
+.examTitle {
+  font-size: clamp(13px, 1.75vw, 14px);
+  font-weight: 500;
+  margin: 0;
+  word-break: break-word;
+  flex: 1;
+  min-width: 0;
+}
+
+.examMeta {
+  display: flex;
+  align-items: center;
+  font-size: clamp(11px, 1.5vw, 12px);
+  color: var(--muted-foreground);
+  margin-bottom: clamp(3px, 0.5vw, 4px);
+  flex-wrap: wrap;
+  gap: clamp(4px, 0.75vw, 6px);
+}
+
+.examMetaIcon {
+  width: clamp(10px, 1.5vw, 12px);
+  height: clamp(10px, 1.5vw, 12px);
+  margin-right: clamp(3px, 0.5vw, 4px);
+  flex-shrink: 0;
+}
+
+.examTypeBadge {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-end;
+  flex-shrink: 0;
+}
+
+.typeLabel {
+  font-size: clamp(10px, 1.4vw, 11px);
+  padding: clamp(3px, 0.75vw, 4px) clamp(8px, 1.25vw, 10px);
+  border-radius: 9999px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.proctoringBadge {
+  margin-left: clamp(6px, 1vw, 8px);
+  padding: clamp(2px, 0.5vw, 4px) clamp(6px, 1vw, 8px);
+  background: var(--destructive);
+  color: white;
+  border-radius: 9999px;
+  font-size: clamp(10px, 1.4vw, 11px);
+  white-space: nowrap;
+}
+
+.examCardActions {
+  display: flex;
+  justify-content: flex-end;
+  width: 100%;
+  margin-top: clamp(8px, 1.25vw, 12px);
+}
+
+/* Action Buttons */
+.actionButton {
+  padding: clamp(6px, 1vw, 8px) clamp(12px, 2vw, 16px);
+  border-radius: var(--radius-md);
+  font-size: clamp(12px, 1.75vw, 14px);
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  min-width: clamp(100px, 15vw, 120px);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.actionButtonPrimary {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: white;
+}
+
+.actionButtonPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.actionButtonAccent {
+  background: linear-gradient(135deg, var(--accent), var(--primary));
+  color: white;
+}
+
+.actionButtonAccent:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.actionButtonStopped {
+  background: var(--muted);
+  color: var(--muted-foreground);
+  border: 1px solid var(--border);
+  cursor: default;
+}
+
+/* Modal Overlay */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease;
+  padding: clamp(16px, 3vw, 24px);
+  box-sizing: border-box;
+}
+
+.modalContent {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  padding: clamp(20px, 3vw, 32px);
+  max-width: min(500px, 100%);
+  width: 100%;
+  position: relative;
+  box-shadow: var(--shadow-xl);
+  animation: slideInUp 0.3s ease;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+  box-sizing: border-box;
+}
+
+.modalContentLarge {
+  max-width: min(600px, 100%);
+}
+
+.modalCloseButton {
+  position: absolute;
+  top: clamp(12px, 2vw, 16px);
+  right: clamp(12px, 2vw, 16px);
+  background: var(--muted);
+  border: none;
+  border-radius: 50%;
+  width: clamp(28px, 4vw, 32px);
+  height: clamp(28px, 4vw, 32px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.modalCloseButton:hover {
+  background: var(--destructive);
+  transform: scale(1.1);
+}
+
+.modalCloseIcon {
+  width: clamp(18px, 2.5vw, 20px);
+  height: clamp(18px, 2.5vw, 20px);
+}
+
+.modalHeader {
+  text-align: center;
+  width: 100%;
+}
+
+.modalIcon {
+  width: clamp(48px, 6vw, 64px);
+  height: clamp(48px, 6vw, 64px);
+  color: var(--primary);
+  margin: 0 auto clamp(12px, 2vw, 16px);
+}
+
+.modalTitle {
+  font-size: clamp(20px, 3vw, 24px);
+  font-weight: 700;
+  margin-bottom: clamp(6px, 1vw, 8px);
+  word-break: break-word;
+}
+
+.modalDescription {
+  color: var(--muted-foreground);
+  margin-bottom: clamp(20px, 3vw, 24px);
+  font-size: clamp(14px, 2vw, 16px);
+  word-break: break-word;
+}
+
+.modalTypeBadge {
+  display: inline-block;
+  font-size: clamp(11px, 1.5vw, 12px);
+  padding: clamp(3px, 0.75vw, 4px) clamp(10px, 1.5vw, 12px);
+  border-radius: 9999px;
+  font-weight: 500;
+  margin-bottom: clamp(20px, 3vw, 24px);
+}
+
+.modalInfoBox {
+  background: var(--muted);
+  padding: clamp(16px, 2.5vw, 20px);
+  border-radius: var(--radius-md);
+  margin-bottom: clamp(20px, 3vw, 24px);
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.modalInfoItem {
+  margin-bottom: clamp(10px, 1.5vw, 12px);
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 1vw, 8px);
+  font-size: clamp(13px, 1.75vw, 14px);
+  word-break: break-word;
+}
+
+.modalInfoItem:last-child {
+  margin-bottom: 0;
+}
+
+.modalInfoIcon {
+  width: clamp(14px, 2vw, 16px);
+  height: clamp(14px, 2vw, 16px);
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.modalInfoIconDestructive {
+  color: var(--destructive);
+}
+
+.modalInfoTitle {
+  font-size: clamp(14px, 2vw, 16px);
+  font-weight: 600;
+  margin-bottom: clamp(10px, 1.5vw, 12px);
+  word-break: break-word;
+}
+
+.modalInfoText {
+  font-size: clamp(12px, 1.75vw, 14px);
+  margin: clamp(3px, 0.5vw, 4px) 0;
+  word-break: break-word;
+}
+
+.modalInfoTextDestructive {
+  color: var(--destructive);
+}
+
+.modalButton {
+  width: 100%;
+  padding: clamp(10px, 1.5vw, 12px);
+  border-radius: var(--radius-md);
+  font-size: clamp(14px, 2vw, 16px);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: none;
+  box-sizing: border-box;
+}
+
+.modalButtonPrimary {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: white;
+}
+
+.modalButtonPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.modalButtonSecondary {
+  background: var(--muted);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+}
+
+.modalButtonSecondary:hover {
+  background: var(--border);
+}
+
+.modalButtonGroup {
+  display: flex;
+  gap: clamp(10px, 1.5vw, 12px);
+  width: 100%;
+}
+
+.modalButtonGroup .modalButton {
+  flex: 1;
+}
+
+/* Pre-Check Modal */
+.checklistContainer {
+  background: var(--muted);
+  padding: clamp(16px, 2.5vw, 20px);
+  border-radius: var(--radius-md);
+  margin-bottom: clamp(20px, 3vw, 24px);
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.checklistItem {
+  display: flex;
+  align-items: center;
+  padding: clamp(10px, 1.5vw, 12px);
+  background: var(--card);
+  border-radius: var(--radius-md);
+  margin-bottom: clamp(10px, 1.5vw, 12px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  border: 2px solid var(--border);
+  width: 100%;
+  box-sizing: border-box;
+  gap: clamp(8px, 1.25vw, 12px);
+}
+
+.checklistItem:last-child {
+  margin-bottom: 0;
+}
+
+.checklistItemChecked {
+  border-color: var(--primary);
+}
+
+.checklistCheckbox {
+  width: clamp(20px, 3vw, 24px);
+  height: clamp(20px, 3vw, 24px);
+  border-radius: 50%;
+  border: 2px solid var(--primary);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: transparent;
+  flex-shrink: 0;
+  transition: all 0.2s ease;
+}
+
+.checklistCheckboxChecked {
+  background: var(--primary);
+}
+
+.checklistCheckIcon {
+  width: clamp(14px, 2vw, 16px);
+  height: clamp(14px, 2vw, 16px);
+  color: white;
+}
+
+.checklistItemIcon {
+  width: clamp(18px, 2.5vw, 20px);
+  height: clamp(18px, 2.5vw, 20px);
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.checklistItemText {
+  flex: 1;
+  font-size: clamp(13px, 1.75vw, 14px);
+  word-break: break-word;
+  min-width: 0;
+}
+
+.checklistWarning {
+  padding: clamp(10px, 1.5vw, 12px);
+  background: var(--destructive);
+  color: white;
+  border-radius: var(--radius-md);
+  font-size: clamp(12px, 1.75vw, 14px);
+  margin-bottom: clamp(12px, 2vw, 16px);
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 1vw, 8px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.checklistWarningIcon {
+  width: clamp(14px, 2vw, 16px);
+  height: clamp(14px, 2vw, 16px);
+  flex-shrink: 0;
+}
+
+.checklistProceedButton {
+  width: 100%;
+  padding: clamp(10px, 1.5vw, 12px);
+  background: var(--muted);
+  color: var(--muted-foreground);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: clamp(14px, 2vw, 16px);
+  font-weight: 600;
+  cursor: not-allowed;
+  transition: all 0.2s ease;
+  opacity: 0.6;
+  box-sizing: border-box;
+}
+
+.checklistProceedButtonEnabled {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: white;
+  cursor: pointer;
+  opacity: 1;
+}
+
+.checklistProceedButtonEnabled:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInUp {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .headerTitle {
+    width: 100%;
+  }
+
+  .viewScheduleButton {
+    align-self: flex-end;
+  }
+
+  .examCardHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .examCardContent {
+    width: 100%;
+    margin-right: 0;
+  }
+
+  .examTypeBadge {
+    align-self: flex-start;
+  }
+
+  .examCardActions {
+    justify-content: flex-start;
+  }
+
+  .actionButton {
+    width: 100%;
+    min-width: auto;
+  }
+
+  .modalContent {
+    padding: clamp(16px, 2.5vw, 20px);
+  }
+
+  .modalButtonGroup {
+    flex-direction: column;
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: clamp(10px, 1.5vw, 12px);
+  }
+
+  .header {
+    margin-bottom: clamp(12px, 2vw, 16px);
+  }
+
+  .examCard {
+    padding: clamp(8px, 1.25vw, 10px);
+  }
+
+  .examCardTitleRow {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .modalContent {
+    padding: clamp(12px, 2vw, 16px);
+  }
+
+  .checklistItem {
+    flex-wrap: wrap;
+  }
+}

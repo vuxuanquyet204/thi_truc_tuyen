@@ -1,0 +1,160 @@
+.sidebar {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 1.5vw, 16px);
+  position: sticky;
+  top: clamp(70px, 8.75vw, 90px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cameraContainer {
+  background: var(--card);
+  border-radius: clamp(10px, 1.25vw, 12px);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cameraHeader {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(10px, 1.25vw, 16px);
+  border-bottom: 1px solid var(--border);
+  gap: clamp(8px, 1vw, 12px);
+}
+
+.cameraTitle {
+  font-size: clamp(12px, 1.75vw, 14px);
+  font-weight: 600;
+  color: var(--foreground);
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 0.75vw, 8px);
+  margin: 0;
+  word-break: break-word;
+  flex: 1;
+  min-width: 0;
+}
+
+.cameraIcon {
+  width: clamp(14px, 2vw, 16px);
+  height: clamp(14px, 2vw, 16px);
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.minimizeButton {
+  background: none;
+  border: none;
+  cursor: pointer;
+  color: var(--muted-foreground);
+  padding: clamp(3px, 0.5vw, 4px);
+  transition: color var(--transition-fast), background var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  border-radius: clamp(4px, 0.5vw, 6px);
+}
+
+.minimizeButton:hover {
+  color: var(--primary);
+  background: var(--muted);
+}
+
+.minimizeIcon {
+  width: clamp(14px, 2vw, 16px);
+  height: clamp(14px, 2vw, 16px);
+}
+
+.cameraContent {
+  padding: clamp(10px, 1.25vw, 16px);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .sidebar {
+    position: static;
+    gap: clamp(10px, 1.25vw, 12px);
+    top: 0;
+  }
+
+  .cameraContainer {
+    border-radius: clamp(8px, 1vw, 10px);
+  }
+
+  .cameraHeader {
+    padding: clamp(8px, 1vw, 12px);
+    gap: clamp(6px, 0.75vw, 8px);
+  }
+
+  .cameraTitle {
+    font-size: clamp(11px, 1.5vw, 12px);
+    gap: clamp(5px, 0.5vw, 6px);
+  }
+
+  .cameraIcon {
+    width: clamp(12px, 1.75vw, 14px);
+    height: clamp(12px, 1.75vw, 14px);
+  }
+
+  .minimizeButton {
+    padding: clamp(2px, 0.4vw, 3px);
+  }
+
+  .minimizeIcon {
+    width: clamp(12px, 1.75vw, 14px);
+    height: clamp(12px, 1.75vw, 14px);
+  }
+
+  .cameraContent {
+    padding: clamp(8px, 1vw, 12px);
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    gap: clamp(8px, 1vw, 10px);
+  }
+
+  .cameraContainer {
+    border-radius: clamp(6px, 0.75vw, 8px);
+  }
+
+  .cameraHeader {
+    padding: clamp(6px, 0.75vw, 8px);
+    gap: clamp(4px, 0.5vw, 6px);
+  }
+
+  .cameraTitle {
+    font-size: clamp(10px, 1.25vw, 11px);
+    gap: clamp(4px, 0.5vw, 5px);
+  }
+
+  .cameraIcon {
+    width: clamp(11px, 1.5vw, 12px);
+    height: clamp(11px, 1.5vw, 12px);
+  }
+
+  .minimizeButton {
+    padding: clamp(2px, 0.3vw, 3px);
+  }
+
+  .minimizeIcon {
+    width: clamp(11px, 1.5vw, 12px);
+    height: clamp(11px, 1.5vw, 12px);
+  }
+
+  .cameraContent {
+    padding: clamp(6px, 0.75vw, 8px);
+  }
+}

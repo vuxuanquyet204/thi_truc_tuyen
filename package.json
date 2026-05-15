@@ -1,0 +1,11 @@
+{
+  "name": "hoc-onl-monorepo",
+  "version": "1.0.0",
+  "private": true,
+  "description": "NCKH Online Examination System - Monorepo",
+  "scripts": {
+    "build": "cd web-frontend && npm ci && npm run build",
+    "install": "cd web-frontend && npm ci"
+  }
+}
+

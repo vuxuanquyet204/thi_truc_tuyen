@@ -1,0 +1,445 @@
+.sidebar {
+  background: linear-gradient(135deg, var(--card) 0%, var(--muted) 100%);
+  border: 2px solid var(--border);
+  border-radius: clamp(12px, 2vw, 16px);
+  padding: clamp(16px, 3vw, 24px);
+  height: fit-content;
+  position: static;
+  top: clamp(16px, 2.5vw, 20px);
+  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.1);
+  transition: all 0.3s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.sidebar:hover {
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.15);
+  transform: translateY(-2px);
+}
+
+.socialIcons {
+  display: flex;
+  gap: clamp(8px, 1.5vw, 12px);
+  margin-bottom: clamp(16px, 3vw, 24px);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.socialIcon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: clamp(32px, 5vw, 40px);
+  height: clamp(32px, 5vw, 40px);
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  color: white;
+  text-decoration: none;
+  border-radius: 50%;
+  font-size: clamp(14px, 2.5vw, 16px);
+  font-weight: 700;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
+}
+
+.socialIcon:hover {
+  transform: scale(1.2) translateY(-4px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
+}
+
+.socialIcon:nth-child(2) {
+  background: var(--accent);
+}
+
+.socialIcon:nth-child(2):hover {
+  background: var(--accent);
+}
+
+.socialIcon:nth-child(3) {
+  background: var(--primary);
+}
+
+.socialIcon:nth-child(3):hover {
+  background: var(--primary);
+}
+
+.rankSection {
+  margin-bottom: clamp(16px, 3vw, 24px);
+  text-align: center;
+  padding: clamp(16px, 2.5vw, 20px);
+  background: linear-gradient(135deg, var(--primary-light) 0%, var(--accent-light) 100%);
+  border-radius: clamp(12px, 2vw, 16px);
+  border: 2px solid var(--primary);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.rankSection::before {
+  content: '🏆';
+  position: absolute;
+  top: clamp(-8px, -1vw, -10px);
+  right: clamp(-8px, -1vw, -10px);
+  font-size: clamp(40px, 7.5vw, 60px);
+  opacity: 0.1;
+}
+
+.rankTitle {
+  font-size: clamp(12px, 2.5vw, 14px);
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0 0 clamp(6px, 1vw, 8px) 0;
+  word-break: break-word;
+}
+
+.rankValue {
+  font-size: clamp(24px, 5vw, 32px);
+  font-weight: 800;
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  margin: 0 0 clamp(3px, 0.8vw, 4px) 0;
+  position: relative;
+  z-index: 1;
+  word-break: break-word;
+}
+
+.totalParticipants {
+  font-size: clamp(10px, 2vw, 12px);
+  color: var(--muted-foreground);
+  margin: 0;
+  word-break: break-word;
+}
+
+.ratingMessage {
+  margin-bottom: clamp(16px, 2.5vw, 20px);
+  padding: clamp(10px, 1.5vw, 12px);
+  background: var(--primary-light);
+  border: 1px solid var(--primary);
+  border-radius: clamp(8px, 1.25vw, 10px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.ratingText {
+  font-size: clamp(12px, 2.5vw, 14px);
+  color: var(--primary);
+  margin: 0;
+  text-align: center;
+  font-weight: 500;
+  word-break: break-word;
+}
+
+.actionLinks {
+  margin-bottom: clamp(16px, 3vw, 24px);
+  width: 100%;
+}
+
+.actionLink {
+  display: flex;
+  align-items: center;
+  width: 100%;
+  background: var(--card);
+  border: 2px solid var(--border);
+  padding: clamp(12px, 2vw, 14px) clamp(14px, 2.5vw, 18px);
+  margin-bottom: clamp(10px, 1.5vw, 12px);
+  border-radius: clamp(10px, 1.5vw, 12px);
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-size: clamp(13px, 2.5vw, 15px);
+  color: var(--foreground);
+  text-align: left;
+  font-weight: 600;
+  position: relative;
+  overflow: hidden;
+  box-sizing: border-box;
+}
+
+.actionLink::before {
+  content: '';
+  position: absolute;
+  left: 0;
+  top: 0;
+  height: 100%;
+  width: 4px;
+  background: linear-gradient(180deg, var(--primary) 0%, var(--accent) 100%);
+  transform: scaleY(0);
+  transition: transform 0.3s ease;
+}
+
+.actionLink:hover {
+  background: var(--primary-light);
+  border-color: var(--primary);
+  transform: translateX(4px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+}
+
+.actionLink:hover::before {
+  transform: scaleY(1);
+}
+
+.actionLink:last-child {
+  margin-bottom: 0;
+}
+
+.actionIcon {
+  margin-right: clamp(6px, 1vw, 8px);
+  font-size: clamp(14px, 2.5vw, 16px);
+  flex-shrink: 0;
+}
+
+.messageCenter {
+  border-top: 1px solid var(--border);
+  padding-top: clamp(16px, 2.5vw, 20px);
+  width: 100%;
+}
+
+.messageTitle {
+  font-size: clamp(14px, 2.5vw, 16px);
+  font-weight: 600;
+  color: var(--foreground);
+  margin: 0 0 clamp(10px, 1.5vw, 12px) 0;
+  word-break: break-word;
+}
+
+.messageForm {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 1vw, 8px);
+  width: 100%;
+}
+
+.messageInput {
+  width: 100%;
+  padding: clamp(6px, 1.5vw, 8px) clamp(10px, 1.5vw, 12px);
+  border: 1px solid var(--border);
+  border-radius: clamp(8px, 1.25vw, 10px);
+  font-size: clamp(12px, 2.5vw, 14px);
+  transition: border-color 0.2s ease;
+  box-sizing: border-box;
+  background: var(--input);
+  color: var(--foreground);
+}
+
+.messageInput:focus {
+  outline: none;
+  border-color: var(--primary);
+  box-shadow: 0 0 0 3px var(--primary-light);
+}
+
+.messageButton {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  color: white;
+  border: none;
+  padding: clamp(8px, 1.5vw, 10px) clamp(14px, 2.5vw, 18px);
+  border-radius: clamp(10px, 1.5vw, 12px);
+  font-size: clamp(13px, 2.5vw, 15px);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.messageButton:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.messageButton:disabled {
+  background: var(--muted);
+  cursor: not-allowed;
+  box-shadow: none;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .sidebar {
+    padding: clamp(12px, 2.5vw, 16px);
+    border-radius: clamp(10px, 1.5vw, 12px);
+  }
+
+  .socialIcons {
+    gap: clamp(6px, 1.25vw, 8px);
+    margin-bottom: clamp(12px, 2.5vw, 16px);
+  }
+
+  .socialIcon {
+    width: clamp(28px, 4vw, 32px);
+    height: clamp(28px, 4vw, 32px);
+    font-size: clamp(12px, 2vw, 14px);
+  }
+
+  .rankSection {
+    padding: clamp(12px, 2vw, 16px);
+    margin-bottom: clamp(12px, 2.5vw, 16px);
+    border-radius: clamp(10px, 1.5vw, 12px);
+  }
+
+  .rankTitle {
+    font-size: clamp(11px, 2vw, 13px);
+    margin-bottom: clamp(5px, 0.75vw, 6px);
+  }
+
+  .rankValue {
+    font-size: clamp(20px, 4vw, 28px);
+    margin-bottom: clamp(2px, 0.5vw, 3px);
+  }
+
+  .totalParticipants {
+    font-size: clamp(9px, 1.75vw, 11px);
+  }
+
+  .ratingMessage {
+    padding: clamp(8px, 1.25vw, 10px);
+    margin-bottom: clamp(12px, 2vw, 16px);
+    border-radius: clamp(7px, 1vw, 8px);
+  }
+
+  .ratingText {
+    font-size: clamp(11px, 2vw, 13px);
+  }
+
+  .actionLinks {
+    margin-bottom: clamp(12px, 2.5vw, 16px);
+  }
+
+  .actionLink {
+    padding: clamp(10px, 1.75vw, 12px) clamp(12px, 2vw, 14px);
+    margin-bottom: clamp(8px, 1.25vw, 10px);
+    border-radius: clamp(8px, 1.25vw, 10px);
+    font-size: clamp(12px, 2.25vw, 14px);
+  }
+
+  .actionIcon {
+    margin-right: clamp(5px, 0.75vw, 6px);
+    font-size: clamp(12px, 2.25vw, 14px);
+  }
+
+  .messageCenter {
+    padding-top: clamp(12px, 2vw, 16px);
+  }
+
+  .messageTitle {
+    font-size: clamp(13px, 2.25vw, 15px);
+    margin-bottom: clamp(8px, 1.25vw, 10px);
+  }
+
+  .messageForm {
+    gap: clamp(5px, 0.75vw, 6px);
+  }
+
+  .messageInput {
+    padding: clamp(5px, 1.25vw, 7px) clamp(8px, 1.25vw, 10px);
+    border-radius: clamp(7px, 1vw, 8px);
+    font-size: clamp(11px, 2.25vw, 13px);
+  }
+
+  .messageButton {
+    padding: clamp(7px, 1.25vw, 9px) clamp(12px, 2vw, 14px);
+    border-radius: clamp(8px, 1.25vw, 10px);
+    font-size: clamp(12px, 2.25vw, 14px);
+  }
+}
+
+@media (max-width: 480px) {
+  .sidebar {
+    padding: clamp(10px, 2vw, 12px);
+    border-radius: clamp(8px, 1.25vw, 10px);
+  }
+
+  .socialIcons {
+    gap: clamp(5px, 1vw, 6px);
+    margin-bottom: clamp(10px, 2vw, 12px);
+  }
+
+  .socialIcon {
+    width: clamp(24px, 3.5vw, 28px);
+    height: clamp(24px, 3.5vw, 28px);
+    font-size: clamp(11px, 1.75vw, 12px);
+  }
+
+  .rankSection {
+    padding: clamp(10px, 1.75vw, 12px);
+    margin-bottom: clamp(10px, 2vw, 12px);
+    border-radius: clamp(8px, 1.25vw, 10px);
+  }
+
+  .rankTitle {
+    font-size: clamp(10px, 1.75vw, 11px);
+    margin-bottom: clamp(4px, 0.5vw, 5px);
+  }
+
+  .rankValue {
+    font-size: clamp(18px, 3.5vw, 24px);
+    margin-bottom: clamp(2px, 0.4vw, 3px);
+  }
+
+  .totalParticipants {
+    font-size: clamp(8px, 1.5vw, 10px);
+  }
+
+  .ratingMessage {
+    padding: clamp(7px, 1vw, 8px);
+    margin-bottom: clamp(10px, 1.75vw, 12px);
+    border-radius: clamp(6px, 0.75vw, 7px);
+  }
+
+  .ratingText {
+    font-size: clamp(10px, 1.75vw, 11px);
+  }
+
+  .actionLinks {
+    margin-bottom: clamp(10px, 2vw, 12px);
+  }
+
+  .actionLink {
+    padding: clamp(8px, 1.5vw, 10px) clamp(10px, 1.75vw, 12px);
+    margin-bottom: clamp(6px, 1vw, 8px);
+    border-radius: clamp(7px, 1vw, 8px);
+    font-size: clamp(11px, 2vw, 12px);
+  }
+
+  .actionLink:hover {
+    transform: translateX(2px);
+  }
+
+  .actionIcon {
+    margin-right: clamp(4px, 0.5vw, 5px);
+    font-size: clamp(11px, 2vw, 12px);
+  }
+
+  .messageCenter {
+    padding-top: clamp(10px, 1.75vw, 12px);
+  }
+
+  .messageTitle {
+    font-size: clamp(12px, 2vw, 13px);
+    margin-bottom: clamp(6px, 1vw, 8px);
+  }
+
+  .messageForm {
+    gap: clamp(4px, 0.5vw, 5px);
+  }
+
+  .messageInput {
+    padding: clamp(5px, 1vw, 6px) clamp(7px, 1vw, 8px);
+    border-radius: clamp(6px, 0.75vw, 7px);
+    font-size: clamp(10px, 2vw, 11px);
+  }
+
+  .messageButton {
+    padding: clamp(6px, 1vw, 8px) clamp(10px, 1.75vw, 12px);
+    border-radius: clamp(7px, 1vw, 8px);
+    font-size: clamp(11px, 2vw, 12px);
+  }
+}
+
+@media (min-width: 1024px) {
+  .sidebar {
+    position: sticky;
+  }
+}

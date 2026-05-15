@@ -1,0 +1,317 @@
+<!DOCTYPE html>
+
+<html class="light" lang="en"><head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+<link href="https://fonts.googleapis.com" rel="preconnect"/>
+<link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+<link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&amp;family=Manrope:wght@700;800&amp;family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&amp;display=swap" rel="stylesheet"/>
+<script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+<script id="tailwind-config">
+      tailwind.config = {
+        darkMode: "class",
+        theme: {
+          extend: {
+            "colors": {
+                    "inverse-surface": "#1e333c",
+                    "outline-variant": "#c3c6d4",
+                    "surface-container-highest": "#cfe6f2",
+                    "surface-tint": "#2b5bb5",
+                    "error": "#ba1a1a",
+                    "secondary-container": "#90efef",
+                    "on-primary": "#ffffff",
+                    "on-surface": "#071e27",
+                    "surface": "#f3faff",
+                    "outline": "#737783",
+                    "on-secondary": "#ffffff",
+                    "error-container": "#ffdad6",
+                    "surface-container": "#dbf1fe",
+                    "on-background": "#071e27",
+                    "surface-dim": "#c7dde9",
+                    "surface-container-low": "#e6f6ff",
+                    "inverse-on-surface": "#dff4ff",
+                    "primary": "#003178",
+                    "on-tertiary-container": "#eeb300",
+                    "surface-container-lowest": "#ffffff",
+                    "on-primary-fixed": "#001945",
+                    "surface-bright": "#f3faff",
+                    "secondary": "#006a6a",
+                    "inverse-primary": "#b0c6ff",
+                    "tertiary": "#453200",
+                    "on-tertiary": "#ffffff",
+                    "primary-fixed": "#d9e2ff",
+                    "on-tertiary-fixed": "#261a00",
+                    "primary-fixed-dim": "#b0c6ff",
+                    "on-secondary-container": "#006e6e",
+                    "on-error": "#ffffff",
+                    "secondary-fixed": "#93f2f2",
+                    "on-secondary-fixed-variant": "#004f4f",
+                    "surface-variant": "#cfe6f2",
+                    "secondary-fixed-dim": "#76d6d5",
+                    "on-error-container": "#93000a",
+                    "on-surface-variant": "#434652",
+                    "surface-container-high": "#d5ecf8",
+                    "tertiary-container": "#614800",
+                    "on-tertiary-fixed-variant": "#5b4300",
+                    "primary-container": "#0d47a1",
+                    "tertiary-fixed": "#ffdf9e",
+                    "tertiary-fixed-dim": "#fabd00",
+                    "on-primary-fixed-variant": "#00429c",
+                    "background": "#f3faff",
+                    "on-primary-container": "#a1bbff",
+                    "on-secondary-fixed": "#002020"
+            },
+            "borderRadius": {
+                    "DEFAULT": "0.25rem",
+                    "lg": "0.5rem",
+                    "xl": "0.75rem",
+                    "full": "9999px"
+            },
+            "fontFamily": {
+                    "headline": ["Manrope"],
+                    "body": ["Inter"],
+                    "label": ["Inter"]
+            }
+          },
+        },
+      }
+    </script>
+<style>
+        .material-symbols-outlined {
+            font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+        }
+        .glass-panel {
+            background: rgba(255, 255, 255, 0.2);
+            backdrop-filter: blur(16px);
+        }
+        .text-editorial {
+            letter-spacing: -0.02em;
+        }
+    </style>
+<style>
+    body {
+      min-height: max(884px, 100dvh);
+    }
+  </style>
+  </head>
+<body class="bg-surface font-body text-on-surface antialiased min-h-screen">
+<!-- Top Navigation Ribbon -->
+<div class="fixed top-0 left-0 w-full h-1 bg-secondary z-[60]"></div>
+<!-- TopAppBar -->
+<header class="bg-[#f3faff] dark:bg-slate-950 flex justify-between items-center px-6 py-4 w-full sticky top-0 z-50">
+<div class="flex items-center gap-4">
+<div class="w-10 h-10 rounded-full bg-surface-container-highest overflow-hidden">
+<img alt="Profile" class="w-full h-full object-cover" data-alt="close-up portrait of a professional male academic with a warm smile and spectacles in a softly lit office" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCcUxk7hl1Q11JQF8QRVlUMY7O4wWBWlapqVRHyyXxb5ecQqSRnGOHPlfwgUfMK1-Ha8gtztzd0yfiXnbY-s7p9cP5MlSyMCCt5Lsqac2LcJDO4q8KMZxkXoBiirV2qett1-DCAgsfiPx42l7A68nFOehVL2r3aI5XiYzW6BdL8EpudD-usVLJAhteBhM4Yby1eDCkOEVfQygsi-0Axss_XF5s_33KX-P8kZOGefOO5MBVaTcwUM_bGGxPCxzy2sZlx1MxolSHtiMk"/>
+</div>
+<h1 class="font-headline tracking-tight font-bold text-xl text-[#003178] dark:text-blue-400">Academic Luminary</h1>
+</div>
+<div class="flex items-center gap-3 bg-tertiary-fixed-dim text-on-tertiary-fixed px-4 py-2 rounded-full font-headline font-bold text-sm">
+<span class="material-symbols-outlined text-base">stars</span>
+            1,250 LT
+        </div>
+</header>
+<main class="max-w-7xl mx-auto px-6 py-12 pb-32">
+<!-- Hero Result Section (Asymmetric Layout) -->
+<section class="grid grid-cols-1 lg:grid-cols-12 gap-8 items-start mb-16">
+<div class="lg:col-span-7 space-y-6">
+<div class="inline-flex items-center gap-2 px-3 py-1 bg-secondary/10 text-secondary rounded-full text-sm font-semibold uppercase tracking-wider">
+<span class="material-symbols-outlined text-sm" style="font-variation-settings: 'FILL' 1;">check_circle</span>
+                    Assessment Complete
+                </div>
+<h2 class="font-headline text-5xl md:text-6xl font-extrabold text-editorial text-primary leading-tight">
+                    Advanced Cognitive Architecture Examination
+                </h2>
+<p class="text-on-surface-variant text-lg max-w-xl">
+                    Your performance has been evaluated against global benchmarks. You have demonstrated exceptional mastery in logical synthesis and domain-specific knowledge application.
+                </p>
+<div class="flex flex-wrap gap-4 pt-4">
+<button class="bg-primary text-on-primary px-8 py-4 rounded-full font-headline font-bold hover:bg-primary-container transition-all flex items-center gap-2 shadow-sm">
+<span class="material-symbols-outlined">download</span>
+                        Download Certificate
+                    </button>
+<button class="bg-secondary-container text-on-secondary-container px-8 py-4 rounded-full font-headline font-bold hover:opacity-90 transition-all flex items-center gap-2">
+<span class="material-symbols-outlined">share</span>
+                        Share Achievement
+                    </button>
+</div>
+</div>
+<!-- Score Display Glass Card -->
+<div class="lg:col-span-5 relative">
+<div class="bg-surface-container-lowest glass-panel p-10 rounded-[2.5rem] shadow-[0_12px_40px_rgba(7,30,39,0.06)] border border-white/30 relative z-10">
+<div class="flex justify-between items-start mb-8">
+<div>
+<span class="text-sm font-bold text-on-surface-variant uppercase tracking-widest">Composite Score</span>
+<div class="flex items-baseline gap-1 mt-1">
+<span class="text-7xl font-headline font-extrabold text-primary">85</span>
+<span class="text-2xl font-headline font-bold text-outline">/100</span>
+</div>
+</div>
+<div class="bg-secondary text-on-secondary w-20 h-20 rounded-2xl flex flex-col items-center justify-center shadow-lg">
+<span class="text-xs font-bold uppercase tracking-tighter">Status</span>
+<span class="text-lg font-headline font-extrabold">PASSED</span>
+</div>
+</div>
+<div class="space-y-6 pt-6 border-t border-outline-variant/20">
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-medium">Percentile Rank</span>
+<span class="font-headline font-bold text-primary">Top 12%</span>
+</div>
+<div class="flex justify-between items-center">
+<span class="text-on-surface-variant font-medium">Time Taken</span>
+<span class="font-headline font-bold text-primary">42:15 / 60:00</span>
+</div>
+<div class="flex justify-between items-center p-4 bg-tertiary-fixed-dim/20 rounded-2xl">
+<div class="flex items-center gap-3">
+<span class="material-symbols-outlined text-tertiary" style="font-variation-settings: 'FILL' 1;">generating_tokens</span>
+<span class="font-headline font-bold text-on-tertiary-fixed-variant">LearnTokens Earned</span>
+</div>
+<span class="font-headline font-extrabold text-on-tertiary-fixed-variant">+450 LT</span>
+</div>
+</div>
+</div>
+<!-- Abstract Decorative Shapes -->
+<div class="absolute -top-6 -right-6 w-32 h-32 bg-primary/5 rounded-full blur-3xl"></div>
+<div class="absolute -bottom-8 -left-8 w-48 h-48 bg-secondary/5 rounded-full blur-3xl"></div>
+</div>
+</section>
+<!-- Analytics Bento Grid -->
+<div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+<!-- Radar Chart Analysis -->
+<div class="md:col-span-2 bg-surface-container-low rounded-[2rem] p-8">
+<div class="flex justify-between items-center mb-10">
+<h3 class="font-headline text-2xl font-bold text-primary">Skill Proficiency Matrix</h3>
+<div class="flex gap-2">
+<span class="flex items-center gap-1 text-xs font-bold text-primary"><span class="w-3 h-3 bg-primary rounded-full"></span> Your Performance</span>
+<span class="flex items-center gap-1 text-xs font-bold text-outline"><span class="w-3 h-3 bg-outline/20 rounded-full"></span> Cohort Avg</span>
+</div>
+</div>
+<div class="flex flex-col lg:flex-row gap-12 items-center">
+<!-- Custom Visualization (CSS-based mock radar) -->
+<div class="relative w-64 h-64 flex items-center justify-center">
+<div class="absolute inset-0 border-[1px] border-outline-variant/30 rounded-full"></div>
+<div class="absolute inset-[20%] border-[1px] border-outline-variant/30 rounded-full"></div>
+<div class="absolute inset-[40%] border-[1px] border-outline-variant/30 rounded-full"></div>
+<div class="absolute inset-[60%] border-[1px] border-outline-variant/30 rounded-full"></div>
+<!-- Radar Lines -->
+<div class="absolute w-full h-[1px] bg-outline-variant/20 rotate-0"></div>
+<div class="absolute w-full h-[1px] bg-outline-variant/20 rotate-60"></div>
+<div class="absolute w-full h-[1px] bg-outline-variant/20 rotate-120"></div>
+<!-- Performance Polygon (Mock SVG) -->
+<svg class="absolute inset-0 w-full h-full drop-shadow-xl" viewbox="0 0 100 100">
+<polygon fill="rgba(0, 49, 120, 0.15)" points="50,10 85,35 75,80 30,85 15,35" stroke="#003178" stroke-width="2"></polygon>
+<circle cx="50" cy="10" fill="#003178" r="3"></circle>
+<circle cx="85" cy="35" fill="#003178" r="3"></circle>
+<circle cx="75" cy="80" fill="#003178" r="3"></circle>
+<circle cx="30" cy="85" fill="#003178" r="3"></circle>
+<circle cx="15" cy="35" fill="#003178" r="3"></circle>
+</svg>
+<!-- Labels -->
+<span class="absolute -top-6 text-[10px] font-bold uppercase tracking-widest text-outline">Knowledge</span>
+<span class="absolute top-[25%] -right-12 text-[10px] font-bold uppercase tracking-widest text-outline">Logic</span>
+<span class="absolute bottom-[10%] -right-8 text-[10px] font-bold uppercase tracking-widest text-outline">Speed</span>
+<span class="absolute bottom-[10%] -left-12 text-[10px] font-bold uppercase tracking-widest text-outline">Criticality</span>
+<span class="absolute top-[25%] -left-14 text-[10px] font-bold uppercase tracking-widest text-outline">Synthesis</span>
+</div>
+<div class="flex-1 w-full space-y-6">
+<div class="space-y-2">
+<div class="flex justify-between text-sm font-bold">
+<span>Logical Reasoning</span>
+<span class="text-primary">92%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[92%] rounded-full"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-sm font-bold">
+<span>Technical Knowledge</span>
+<span class="text-primary">78%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[78%] rounded-full"></div>
+</div>
+</div>
+<div class="space-y-2">
+<div class="flex justify-between text-sm font-bold">
+<span>Speed &amp; Accuracy</span>
+<span class="text-primary">85%</span>
+</div>
+<div class="h-2 w-full bg-surface-container rounded-full overflow-hidden">
+<div class="h-full bg-primary w-[85%] rounded-full"></div>
+</div>
+</div>
+</div>
+</div>
+</div>
+<!-- Insight Card -->
+<div class="bg-primary text-on-primary rounded-[2rem] p-8 flex flex-col justify-between overflow-hidden relative">
+<div class="relative z-10">
+<div class="w-12 h-12 bg-primary-container rounded-xl flex items-center justify-center mb-6">
+<span class="material-symbols-outlined text-on-primary-container">psychology</span>
+</div>
+<h3 class="font-headline text-2xl font-bold mb-4">Mastery Insight</h3>
+<p class="text-on-primary-container leading-relaxed">
+                        Your speed in resolving complex logical paradoxes is 15% higher than the institutional average. Focus on deepening "Synthesis" to reach the Luminary tier.
+                    </p>
+</div>
+<div class="relative z-10 pt-8">
+<a class="text-sm font-bold flex items-center gap-2 hover:translate-x-1 transition-transform" href="#">
+                        Explore Recommended Modules <span class="material-symbols-outlined">arrow_forward</span>
+</a>
+</div>
+<!-- Abstract Texture -->
+<div class="absolute top-0 right-0 w-full h-full opacity-10 pointer-events-none" style="background-image: radial-gradient(circle at 100% 0%, #ffffff 0%, transparent 50%)"></div>
+</div>
+</div>
+<!-- Next Steps Section -->
+<section class="mt-20">
+<h3 class="font-headline text-3xl font-bold text-primary mb-10 text-editorial">Career Path Synchronization</h3>
+<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+<div class="bg-surface-container-lowest p-6 rounded-3xl transition-all hover:bg-surface-container hover:shadow-xl group">
+<img alt="Job Match" class="w-full h-40 object-cover rounded-2xl mb-4 grayscale group-hover:grayscale-0 transition-all" data-alt="close-up of a professional desk with a high-end laptop, notebook, and warm coffee in a modern office with glass walls" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA0lk7jG9N53qw5S365JUPqbC_eFd8VDksee4ZgAX8Cgxi1DlGEDwW5lJ4mq56-_J-tX9_3wDDwAbCVXRB_MiwhETRV2GsT1KVPuy0187QV4ulL6i8n5xkUNYKQynI95d7ORkiMDFfb8dzMwPAEQLu03MneZ4cdQpkXZWfOT1_shAHk4otQ-ea7CCjS8JlKEwC_I4KFz4y29uDYWTR3XPms45FVObjvDsENA0Kgi5thE2yKgO-ChU5aQuV75uH6tQUQUOctc1H7-GQ"/>
+<h4 class="font-headline font-bold text-primary mb-2">Job Match: Architect</h4>
+<p class="text-sm text-on-surface-variant mb-4">Your score qualifies you for 8 new high-tier technical roles.</p>
+<span class="text-xs font-bold text-secondary uppercase tracking-widest">94% Compatibility</span>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-3xl transition-all hover:bg-surface-container hover:shadow-xl group">
+<img alt="Skill Path" class="w-full h-40 object-cover rounded-2xl mb-4 grayscale group-hover:grayscale-0 transition-all" data-alt="minimalist library setting with soft morning light hitting rows of books and a clean study table" src="https://lh3.googleusercontent.com/aida-public/AB6AXuCPte_tg8H_6iGZOujWEopRvaTtRMrI_HBYeDWnIJQocxEB21FW0oSFVtGZy3hNfqmNKi206TEmFkIa8cSFPR5sd_JXw_G6Eq8p0moN2-fuLC1p150rYwGPeHcIHXZ-C3Gc8lUWRCb1iyXI8cWLUEe0ETPB1mA9HQ2c9CDsC1ffYjy8GwqzNEJDJSfq2TrW0Nvw6CVlvb_uMjrUv6vILAVZRoMzpQqFV8fMtXITVykJChib52kMYymjmdoUr6sIw0xI68XqFAPrfbI"/>
+<h4 class="font-headline font-bold text-primary mb-2">Advance Specialization</h4>
+<p class="text-sm text-on-surface-variant mb-4">Unlock the "Logic Synthesis II" module with your new tokens.</p>
+<span class="text-xs font-bold text-tertiary uppercase tracking-widest">Token Redeemable</span>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-3xl transition-all hover:bg-surface-container hover:shadow-xl group">
+<img alt="Mentor" class="w-full h-40 object-cover rounded-2xl mb-4 grayscale group-hover:grayscale-0 transition-all" data-alt="two professionals engaged in a deep conversation in a minimalist lounge with warm wooden accents and plants" src="https://lh3.googleusercontent.com/aida-public/AB6AXuA6Kl6K2PHvBN8q6795_8xjPJAK5WoaaGynK9MHoNq16nzX4U7XHhQrAQyLT2yUEaIwaHOswKGAAmrBlOn-UZk-sRFojgZLb28zeicEZ6-xriwOkfGkVSqP_K2ituuSIJoxFPOLMP7oeaUoppnU2ayPgRSyjmN5o_Bywf9tUZ28YhFaVoo9-gWMVLO7tyCJfpkLqSB0wD9KXeNgfxanu1dMsc-KVFCFIdDwRSwAMthVA9CtwJUB2gTKooQkjP2KuuIpVzJ6WEY3waw"/>
+<h4 class="font-headline font-bold text-primary mb-2">Consult a Mentor</h4>
+<p class="text-sm text-on-surface-variant mb-4">Book a 1:1 session to discuss your analytics with an expert.</p>
+<span class="text-xs font-bold text-primary uppercase tracking-widest">Recommended</span>
+</div>
+<div class="bg-surface-container-lowest p-6 rounded-3xl transition-all hover:bg-surface-container hover:shadow-xl group">
+<img alt="Leaderboard" class="w-full h-40 object-cover rounded-2xl mb-4 grayscale group-hover:grayscale-0 transition-all" data-alt="abstract architectural staircases winding upwards in clean white concrete against a deep blue sky" src="https://lh3.googleusercontent.com/aida-public/AB6AXuALVcfKZqJGFky6Xy09Dve6bIMReblPVU0K1vgidmTdABelcPeAzqQFzsNo3k29YFG7YgVsnfSUJfzvTbrGtXSM6uxDeJ0m_6BGb9MjhvflKBPtocmjY__4Z4v2l9veEvzqi5QtRj1hFv44ZH0JDviTTyGYQjWkW77AdGxI2ysEXKQ6SfzMRiUXsOcYaZO1nLbD27BM0JL9NYvrRaemWyB4TezRW0vm7bMOiPaGEODhz-e7S3BAmiYr7J0Y67czPPEIAEaJycvJXX0"/>
+<h4 class="font-headline font-bold text-primary mb-2">Global Standing</h4>
+<p class="text-sm text-on-surface-variant mb-4">You have climbed 450 places in the global leaderboard.</p>
+<span class="text-xs font-bold text-secondary uppercase tracking-widest">Rank #1,402</span>
+</div>
+</div>
+</section>
+</main>
+<!-- BottomNavBar -->
+<nav class="fixed bottom-0 left-0 w-full z-50 flex justify-around items-center pb-6 pt-3 px-4 bg-white/20 dark:bg-slate-900/20 backdrop-blur-lg shadow-[0_12px_40px_rgba(7,30,39,0.06)] rounded-t-3xl">
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 p-2 hover:opacity-80 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="home">home</span>
+<span class="font-['Inter'] text-xs font-medium">Home</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 p-2 hover:opacity-80 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="quiz">quiz</span>
+<span class="font-['Inter'] text-xs font-medium">Exams</span>
+</a>
+<a class="flex flex-col items-center justify-center bg-[#cfe6f2] dark:bg-blue-900/40 text-[#003178] dark:text-blue-100 rounded-full px-5 py-1 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="analytics" style="font-variation-settings: 'FILL' 1;">analytics</span>
+<span class="font-['Inter'] text-xs font-medium">Results</span>
+</a>
+<a class="flex flex-col items-center justify-center text-slate-500 dark:text-slate-400 p-2 hover:opacity-80 transition-all duration-300 ease-in-out" href="#">
+<span class="material-symbols-outlined" data-icon="person">person</span>
+<span class="font-['Inter'] text-xs font-medium">Profile</span>
+</a>
+</nav>
+</body></html>

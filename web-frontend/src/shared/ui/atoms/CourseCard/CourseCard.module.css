@@ -1,0 +1,249 @@
+/* CourseCard.module.css */
+
+.card {
+  padding: clamp(12px, 2vw, 16px);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  background: var(--card);
+  transition: all 0.2s;
+  cursor: pointer;
+  box-shadow: var(--shadow-sm);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.card:hover {
+  border-color: var(--primary);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+/* Content Layout */
+.content {
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+  gap: clamp(8px, 1.25vw, 12px);
+  width: 100%;
+}
+
+.contentLeft {
+  flex: 1;
+  min-width: 0;
+}
+
+.contentRight {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 1vw, 8px);
+  margin-left: clamp(10px, 1.5vw, 12px);
+  flex-shrink: 0;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  margin-bottom: clamp(6px, 1vw, 8px);
+  gap: clamp(6px, 1vw, 8px);
+}
+
+.headerIcon {
+  width: clamp(14px, 2vw, 16px);
+  height: clamp(14px, 2vw, 16px);
+  color: var(--accent);
+  flex-shrink: 0;
+}
+
+.title {
+  font-size: clamp(13px, 1.75vw, 14px);
+  font-weight: 500;
+  margin: 0;
+  word-break: break-word;
+  flex: 1;
+  min-width: 0;
+}
+
+/* Meta Info */
+.meta {
+  display: flex;
+  align-items: center;
+  font-size: clamp(11px, 1.5vw, 12px);
+  color: var(--muted-foreground);
+  margin-bottom: clamp(6px, 1vw, 8px);
+  gap: clamp(3px, 0.5vw, 4px);
+  flex-wrap: wrap;
+}
+
+.metaIcon {
+  width: clamp(10px, 1.5vw, 12px);
+  height: clamp(10px, 1.5vw, 12px);
+  margin-right: clamp(3px, 0.5vw, 4px);
+  flex-shrink: 0;
+}
+
+/* Progress Section */
+.progressSection {
+  margin-bottom: clamp(6px, 1vw, 8px);
+  width: 100%;
+}
+
+.progressHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: clamp(3px, 0.5vw, 4px);
+  gap: clamp(6px, 1vw, 8px);
+}
+
+.progressLabel {
+  font-size: clamp(11px, 1.5vw, 12px);
+  color: var(--muted-foreground);
+  word-break: break-word;
+}
+
+.progressValue {
+  font-size: clamp(11px, 1.5vw, 12px);
+  font-weight: 600;
+  white-space: nowrap;
+}
+
+.progressBar {
+  width: 100%;
+  height: clamp(5px, 0.75vw, 6px);
+  background: var(--muted);
+  border-radius: 3px;
+  overflow: hidden;
+}
+
+.progressFill {
+  height: 100%;
+  background: linear-gradient(90deg, var(--primary), var(--accent));
+  border-radius: 3px;
+  transition: width 0.6s cubic-bezier(0.4, 0, 0.2, 1);
+  position: relative;
+}
+
+/* Next Lesson */
+.nextLesson {
+  font-size: clamp(11px, 1.5vw, 12px);
+  color: var(--muted-foreground);
+  margin-bottom: clamp(6px, 1vw, 8px);
+  word-break: break-word;
+}
+
+/* Certificate Badge */
+.certificateBadge {
+  display: flex;
+  align-items: center;
+  margin-top: clamp(6px, 1vw, 8px);
+}
+
+.certificateLabel {
+  font-size: clamp(11px, 1.5vw, 12px);
+  background: var(--accent);
+  color: var(--accent-foreground);
+  padding: clamp(2px, 0.5vw, 4px) clamp(6px, 1vw, 8px);
+  border-radius: 9999px;
+  white-space: nowrap;
+}
+
+/* Action Buttons */
+.continueButton {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: white;
+  padding: clamp(5px, 0.75vw, 6px) clamp(10px, 1.5vw, 12px);
+  border-radius: var(--radius-md);
+  font-size: clamp(11px, 1.5vw, 12px);
+  font-weight: 500;
+  border: none;
+  cursor: pointer;
+  transition: transform 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  gap: clamp(3px, 0.5vw, 4px);
+  box-shadow: none;
+  white-space: nowrap;
+  justify-content: center;
+}
+
+.continueButton:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.continueButtonIcon {
+  width: clamp(10px, 1.5vw, 12px);
+  height: clamp(10px, 1.5vw, 12px);
+  flex-shrink: 0;
+}
+
+.viewButton {
+  font-size: clamp(11px, 1.5vw, 12px);
+  color: var(--accent);
+  background: none;
+  border: none;
+  cursor: pointer;
+  text-decoration: underline;
+  transition: color 0.2s;
+  padding: clamp(2px, 0.5vw, 4px);
+  text-align: center;
+  white-space: nowrap;
+}
+
+.viewButton:hover {
+  color: var(--primary);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .content {
+    flex-direction: column;
+  }
+
+  .contentRight {
+    flex-direction: row;
+    justify-content: flex-end;
+    margin-left: 0;
+    margin-top: clamp(8px, 1.25vw, 12px);
+    width: 100%;
+  }
+
+  .continueButton {
+    flex: 1;
+  }
+
+  .viewButton {
+    flex: 1;
+  }
+}
+
+@media (max-width: 480px) {
+  .card {
+    padding: clamp(10px, 1.5vw, 12px);
+  }
+
+  .header {
+    flex-wrap: wrap;
+  }
+
+  .meta {
+    font-size: clamp(10px, 1.25vw, 11px);
+  }
+
+  .progressSection {
+    margin-bottom: clamp(8px, 1.25vw, 10px);
+  }
+
+  .contentRight {
+    flex-direction: column;
+    gap: clamp(6px, 1vw, 8px);
+  }
+
+  .continueButton,
+  .viewButton {
+    width: 100%;
+  }
+}

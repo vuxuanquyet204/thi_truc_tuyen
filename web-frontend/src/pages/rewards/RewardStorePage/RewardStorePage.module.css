@@ -1,0 +1,611 @@
+/* Reward Store Page Styles */
+
+.page {
+  min-height: 100vh;
+  background: var(--background);
+  padding: clamp(16px, 3vw, 24px);
+  box-sizing: border-box;
+  width: 100%;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: min(1400px, 100%);
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: clamp(16px, 2.5vw, 24px);
+  padding: clamp(16px, 2.5vw, 20px);
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  box-shadow: var(--shadow-sm);
+  flex-wrap: wrap;
+  gap: clamp(12px, 2vw, 16px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 2vw, 16px);
+  flex: 1;
+  min-width: 0;
+}
+
+.backButton {
+  background: var(--muted);
+  border: none;
+  border-radius: 50%;
+  width: clamp(36px, 5vw, 40px);
+  height: clamp(36px, 5vw, 40px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.backButton:hover {
+  background: var(--primary);
+  transform: scale(1.05);
+}
+
+.backButtonIcon {
+  width: clamp(18px, 2.5vw, 20px);
+  height: clamp(18px, 2.5vw, 20px);
+}
+
+.headerTitle {
+  margin: 0;
+  font-size: clamp(20px, 3.5vw, 28px);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1.5vw, 12px);
+  word-break: break-word;
+}
+
+.headerTitleIcon {
+  width: clamp(24px, 4vw, 32px);
+  height: clamp(24px, 4vw, 32px);
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.balanceBadge {
+  padding: clamp(10px, 1.5vw, 12px) clamp(16px, 3vw, 24px);
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: white;
+  border-radius: var(--radius-lg);
+  font-size: clamp(14px, 2.5vw, 18px);
+  font-weight: 700;
+  box-shadow: var(--shadow-md);
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+/* Content Card */
+.contentCard {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  padding: clamp(16px, 2.5vw, 24px);
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Search and Filter */
+.searchFilterSection {
+  margin-bottom: clamp(16px, 2.5vw, 24px);
+}
+
+.searchContainer {
+  position: relative;
+  margin-bottom: clamp(12px, 2vw, 16px);
+}
+
+.searchIcon {
+  position: absolute;
+  left: clamp(12px, 2vw, 16px);
+  top: 50%;
+  transform: translateY(-50%);
+  width: clamp(18px, 2.5vw, 20px);
+  height: clamp(18px, 2.5vw, 20px);
+  color: var(--muted-foreground);
+  pointer-events: none;
+  z-index: 1;
+}
+
+.searchInput {
+  width: 100%;
+  padding: clamp(12px, 1.5vw, 14px) clamp(14px, 2vw, 16px) clamp(12px, 1.5vw, 14px) clamp(44px, 6vw, 48px);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  font-size: clamp(14px, 2.5vw, 16px);
+  background: var(--background);
+  box-sizing: border-box;
+  outline: none;
+  transition: border-color var(--transition-fast);
+}
+
+.searchInput:focus {
+  border-color: var(--primary);
+}
+
+.categoriesContainer {
+  display: flex;
+  gap: clamp(8px, 1.5vw, 12px);
+  overflow-x: auto;
+  padding-bottom: clamp(6px, 1vw, 8px);
+  -webkit-overflow-scrolling: touch;
+}
+
+.categoriesContainer::-webkit-scrollbar {
+  height: 4px;
+}
+
+.categoriesContainer::-webkit-scrollbar-thumb {
+  background: var(--border);
+  border-radius: 2px;
+}
+
+.categoryButton {
+  padding: clamp(8px, 1.5vw, 10px) clamp(16px, 2.5vw, 20px);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: clamp(13px, 2vw, 15px);
+  font-weight: 500;
+  cursor: pointer;
+  white-space: nowrap;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.categoryButtonActive {
+  background: var(--primary);
+  color: white;
+}
+
+.categoryButtonInactive {
+  background: var(--muted);
+  color: var(--foreground);
+}
+
+.categoryButtonInactive:hover {
+  background: var(--border);
+}
+
+/* Gift Grid */
+.giftsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(min(100%, 280px), 1fr));
+  gap: clamp(16px, 2.5vw, 20px);
+  width: 100%;
+}
+
+.giftCard {
+  background: var(--card);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-lg);
+  overflow: hidden;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.giftCard:hover {
+  transform: translateY(-8px);
+  box-shadow: var(--shadow-lg);
+  border-color: var(--primary);
+}
+
+.giftImage {
+  height: clamp(160px, 20vw, 200px);
+  background: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+}
+
+.giftImageIcon {
+  width: clamp(48px, 6vw, 64px);
+  height: clamp(48px, 6vw, 64px);
+  color: var(--muted-foreground);
+}
+
+.giftContent {
+  padding: clamp(12px, 2vw, 16px);
+}
+
+.giftName {
+  margin: 0 0 clamp(6px, 1vw, 8px) 0;
+  font-size: clamp(14px, 2.5vw, 16px);
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.giftDescription {
+  margin: 0 0 clamp(10px, 1.5vw, 12px) 0;
+  font-size: clamp(12px, 2vw, 14px);
+  color: var(--muted-foreground);
+  line-height: 1.5;
+  word-break: break-word;
+}
+
+.giftFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: clamp(8px, 1.5vw, 12px);
+}
+
+.giftPrice {
+  font-size: clamp(16px, 2.5vw, 20px);
+  font-weight: 700;
+  color: var(--primary);
+  word-break: break-word;
+}
+
+.giftStock {
+  font-size: clamp(11px, 1.5vw, 13px);
+  color: var(--muted-foreground);
+  white-space: nowrap;
+}
+
+/* Loading State */
+.loadingContainer {
+  text-align: center;
+  padding: clamp(40px, 6vw, 60px);
+}
+
+.loadingSpinner {
+  width: clamp(36px, 5vw, 48px);
+  height: clamp(36px, 5vw, 48px);
+  color: var(--primary);
+  animation: spin 1s linear infinite;
+  margin: 0 auto;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Empty State */
+.emptyState {
+  text-align: center;
+  padding: clamp(40px, 6vw, 60px);
+}
+
+.emptyStateIcon {
+  width: clamp(48px, 6vw, 64px);
+  height: clamp(48px, 6vw, 64px);
+  color: var(--muted-foreground);
+  margin: 0 auto clamp(12px, 2vw, 16px);
+}
+
+.emptyStateText {
+  margin: 0;
+  color: var(--muted-foreground);
+  font-size: clamp(14px, 2.5vw, 16px);
+  word-break: break-word;
+}
+
+/* Confirm Step */
+.confirmCard {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  padding: clamp(20px, 3vw, 32px);
+  box-shadow: var(--shadow-sm);
+  max-width: min(800px, 100%);
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.confirmTitle {
+  font-size: clamp(20px, 3vw, 24px);
+  font-weight: 700;
+  margin-bottom: clamp(16px, 2.5vw, 24px);
+  word-break: break-word;
+}
+
+.confirmGiftInfo {
+  padding: clamp(16px, 2.5vw, 24px);
+  background: var(--muted);
+  border-radius: var(--radius-md);
+  margin-bottom: clamp(16px, 2.5vw, 24px);
+}
+
+.confirmGiftName {
+  margin: 0 0 clamp(12px, 2vw, 16px) 0;
+  font-size: clamp(18px, 2.5vw, 20px);
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.confirmGiftDescription {
+  margin: 0 0 clamp(16px, 2.5vw, 20px) 0;
+  font-size: clamp(12px, 2vw, 14px);
+  color: var(--muted-foreground);
+  word-break: break-word;
+}
+
+.formGroup {
+  margin-bottom: clamp(12px, 2vw, 16px);
+}
+
+.formLabel {
+  display: block;
+  font-size: clamp(12px, 2vw, 14px);
+  font-weight: 500;
+  margin-bottom: clamp(6px, 1vw, 8px);
+  word-break: break-word;
+}
+
+.formInput {
+  width: 100%;
+  padding: clamp(10px, 1.5vw, 12px);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  font-size: clamp(12px, 2vw, 14px);
+  background: var(--background);
+  box-sizing: border-box;
+  transition: border-color var(--transition-fast);
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.formTextarea {
+  resize: vertical;
+  min-height: 80px;
+}
+
+.confirmTotal {
+  display: flex;
+  justify-content: space-between;
+  padding-top: clamp(12px, 2vw, 16px);
+  border-top: 1px solid var(--border);
+  align-items: center;
+  gap: clamp(12px, 2vw, 16px);
+  flex-wrap: wrap;
+}
+
+.confirmTotalLabel {
+  font-size: clamp(16px, 2.5vw, 18px);
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.confirmTotalValue {
+  font-size: clamp(20px, 3vw, 24px);
+  font-weight: 700;
+  color: var(--primary);
+  word-break: break-word;
+}
+
+.errorAlert {
+  padding: clamp(10px, 1.5vw, 12px);
+  background: var(--destructive);
+  color: white;
+  border-radius: var(--radius-md);
+  margin-bottom: clamp(12px, 2vw, 16px);
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 1vw, 8px);
+  font-size: clamp(12px, 2vw, 14px);
+  word-break: break-word;
+}
+
+.errorAlertIcon {
+  width: clamp(14px, 2vw, 16px);
+  height: clamp(14px, 2vw, 16px);
+  flex-shrink: 0;
+}
+
+.confirmActions {
+  display: flex;
+  gap: clamp(10px, 1.5vw, 12px);
+  flex-wrap: wrap;
+}
+
+.confirmButton {
+  flex: 1;
+  min-width: min(150px, 100%);
+  padding: clamp(12px, 1.5vw, 14px);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: clamp(14px, 2.5vw, 16px);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 1vw, 8px);
+  box-sizing: border-box;
+}
+
+.confirmButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.confirmButtonSecondary {
+  background: var(--muted);
+  color: var(--foreground);
+}
+
+.confirmButtonSecondary:hover:not(:disabled) {
+  background: var(--border);
+}
+
+.confirmButtonPrimary {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: white;
+}
+
+.confirmButtonPrimary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.confirmButtonLoading {
+  opacity: 0.7;
+}
+
+.confirmButtonSpinner {
+  width: clamp(14px, 2vw, 16px);
+  height: clamp(14px, 2vw, 16px);
+  animation: spin 1s linear infinite;
+}
+
+/* Success Step */
+.successCard {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  padding: clamp(32px, 5vw, 48px) clamp(24px, 3vw, 32px);
+  box-shadow: var(--shadow-sm);
+  max-width: min(600px, 100%);
+  margin: 0 auto;
+  text-align: center;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.successIcon {
+  width: clamp(60px, 8vw, 80px);
+  height: clamp(60px, 8vw, 80px);
+  color: var(--primary);
+  margin: 0 auto clamp(16px, 2.5vw, 24px);
+}
+
+.successTitle {
+  margin: 0 0 clamp(8px, 1.5vw, 12px) 0;
+  font-size: clamp(22px, 3.5vw, 28px);
+  font-weight: 700;
+  word-break: break-word;
+}
+
+.successMessage {
+  margin: 0 0 clamp(24px, 4vw, 32px) 0;
+  font-size: clamp(14px, 2.5vw, 16px);
+  color: var(--muted-foreground);
+  word-break: break-word;
+}
+
+.successActions {
+  display: flex;
+  gap: clamp(10px, 1.5vw, 12px);
+  justify-content: center;
+  flex-wrap: wrap;
+}
+
+.successButton {
+  padding: clamp(10px, 1.5vw, 12px) clamp(20px, 3vw, 24px);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: clamp(14px, 2.5vw, 16px);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.successButtonSecondary {
+  background: var(--muted);
+  color: var(--foreground);
+}
+
+.successButtonSecondary:hover {
+  background: var(--border);
+}
+
+.successButtonPrimary {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: white;
+}
+
+.successButtonPrimary:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .headerLeft {
+    width: 100%;
+  }
+
+  .balanceBadge {
+    width: 100%;
+    text-align: center;
+  }
+
+  .giftsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .confirmActions {
+    flex-direction: column;
+  }
+
+  .confirmButton {
+    width: 100%;
+  }
+
+  .successActions {
+    flex-direction: column;
+  }
+
+  .successButton {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: clamp(12px, 2.5vw, 16px);
+  }
+
+  .header {
+    padding: clamp(12px, 2vw, 16px);
+  }
+
+  .contentCard {
+    padding: clamp(12px, 2vw, 16px);
+  }
+
+  .confirmCard {
+    padding: clamp(16px, 2.5vw, 20px);
+  }
+
+  .successCard {
+    padding: clamp(24px, 4vw, 32px) clamp(16px, 2.5vw, 20px);
+  }
+}
+

@@ -1,0 +1,245 @@
+/* Proctoring Styles */
+
+/* Session Card */
+.sessionCard {
+	padding: 16px;
+	background: var(--card);
+	border-radius: var(--radius-lg);
+	box-shadow: var(--shadow-sm);
+}
+
+.sessionCard:hover {
+	box-shadow: var(--shadow-lg);
+}
+
+/* Stats Grid */
+.statsGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+	gap: 20px;
+	margin-bottom: 24px;
+}
+
+.statCard {
+	padding: 20px;
+	background: var(--card);
+	border: 1px solid var(--border);
+	border-radius: var(--radius-lg);
+	display: flex;
+	align-items: center;
+	gap: 16px;
+	transition: all var(--transition-normal);
+}
+
+.statCard:hover {
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-md);
+}
+
+.statIcon {
+	width: 48px;
+	height: 48px;
+	border-radius: 50%;
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	font-size: 24px;
+}
+
+.statContent {
+	flex: 1;
+}
+
+.statLabel {
+	font-size: 14px;
+	color: var(--muted-foreground);
+	margin-bottom: 4px;
+}
+
+.statValue {
+	font-size: 28px;
+	font-weight: 700;
+}
+
+.statChange {
+	font-size: 12px;
+	margin-top: 4px;
+}
+
+.statChangePositive {
+	color: #10b981;
+}
+
+.statChangeNegative {
+	color: #ef4444;
+}
+
+/* Session Grid */
+.sessionGrid {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+	gap: 20px;
+}
+
+.sessionCard {
+	background: var(--card);
+	border: 1px solid var(--border);
+	border-radius: var(--radius-lg);
+	overflow: hidden;
+	transition: all var(--transition-normal);
+}
+
+.sessionCard:hover {
+	transform: translateY(-2px);
+	box-shadow: var(--shadow-lg);
+	border-color: var(--primary);
+}
+
+.sessionHeader {
+	padding: 16px;
+	background: var(--muted);
+	border-bottom: 1px solid var(--border);
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+}
+
+.sessionTitle {
+	font-size: 16px;
+	font-weight: 600;
+	color: var(--foreground);
+	margin: 0;
+}
+
+.sessionStatus {
+	padding: 4px 8px;
+	border-radius: var(--radius-sm);
+	font-size: 12px;
+	font-weight: 500;
+}
+
+.sessionStatusActive {
+	background: rgba(16, 185, 129, 0.1);
+	color: #10b981;
+}
+
+.sessionStatusPending {
+	background: rgba(245, 158, 11, 0.1);
+	color: #f59e0b;
+}
+
+.sessionStatusCompleted {
+	background: rgba(59, 130, 246, 0.1);
+	color: #3b82f6;
+}
+
+.sessionBody {
+	padding: 16px;
+}
+
+.sessionMeta {
+	display: flex;
+	flex-direction: column;
+	gap: 8px;
+}
+
+.metaItem {
+	display: flex;
+	align-items: center;
+	gap: 8px;
+	font-size: 14px;
+	color: var(--muted-foreground);
+}
+
+.sessionActions {
+	padding: 12px 16px;
+	border-top: 1px solid var(--border);
+	display: flex;
+	gap: 8px;
+}
+
+/* Live Camera Wall */
+.cameraWall {
+	display: grid;
+	grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
+	gap: 16px;
+	padding: 16px;
+}
+
+.cameraCard {
+	position: relative;
+	border-radius: var(--radius-md);
+	overflow: hidden;
+	aspect-ratio: 4/3;
+	background: var(--muted);
+}
+
+.cameraCard:hover .cameraOverlay {
+	opacity: 1;
+}
+
+.cameraOverlay {
+	position: absolute;
+	inset: 0;
+	background: rgba(0, 0, 0, 0.5);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	opacity: 0;
+	transition: opacity var(--transition-normal);
+}
+
+/* Event Log */
+.eventLog {
+	background: var(--card);
+	border: 1px solid var(--border);
+	border-radius: var(--radius-lg);
+	overflow: hidden;
+}
+
+.eventItem {
+	display: flex;
+	gap: 12px;
+	padding: 12px 16px;
+	border-bottom: 1px solid var(--border);
+}
+
+.eventItem:last-child {
+	border-bottom: none;
+}
+
+.eventTime {
+	font-size: 12px;
+	color: var(--muted-foreground);
+	white-space: nowrap;
+}
+
+.eventContent {
+	flex: 1;
+}
+
+.eventType {
+	font-weight: 500;
+	color: var(--foreground);
+	margin-bottom: 4px;
+}
+
+.eventDescription {
+	font-size: 13px;
+	color: var(--muted-foreground);
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	.statsGrid {
+		grid-template-columns: 1fr;
+	}
+
+	.sessionGrid {
+		grid-template-columns: 1fr;
+	}
+
+	.cameraWall {
+		grid-template-columns: 1fr;
+	}
+}

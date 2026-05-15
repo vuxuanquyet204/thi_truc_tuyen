@@ -1,0 +1,5 @@
+export { default as DocumentDetailModal } from './DocumentDetailModal'
+export { default as RegisterDocumentModal } from './RegisterDocumentModal'
+export { EditDocumentModal } from './EditDocumentModal'
+export { default as ExportModal } from './ExportModal'
+export { default as SettingsModal } from './SettingsModal'

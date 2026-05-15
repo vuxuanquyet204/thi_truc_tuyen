@@ -1,0 +1,101 @@
+/* Styles cho Table component - có thể tái sử dụng */
+
+.adminTable {
+	width: 100%;
+	border-collapse: collapse;
+	background: var(--card);
+	border-radius: var(--radius-lg);
+	overflow: hidden;
+	box-shadow: var(--shadow-sm);
+}
+
+.adminTable thead {
+	background: var(--muted);
+	border-bottom: 2px solid var(--border);
+}
+
+.adminTable th {
+	padding: 16px;
+	text-align: left;
+	font-weight: 600;
+	font-size: 14px;
+	color: var(--foreground);
+	white-space: nowrap;
+}
+
+.adminTable th.sortable {
+	cursor: pointer;
+	user-select: none;
+	transition: background var(--transition-normal);
+}
+
+.adminTable th.sortable:hover {
+	background: var(--accent);
+	color: var(--accent-foreground);
+}
+
+.adminTable tbody tr {
+	border-bottom: 1px solid var(--border);
+	transition: background var(--transition-normal);
+}
+
+.adminTable tbody tr:hover {
+	background: var(--muted);
+}
+
+.adminTable tbody tr:last-child {
+	border-bottom: none;
+}
+
+.adminTable td {
+	padding: 16px;
+	font-size: 14px;
+	color: var(--foreground);
+}
+
+.textCenter {
+	text-align: center;
+}
+
+.textRight {
+	text-align: right;
+}
+
+/* Loading state */
+.loading {
+	opacity: 0.5;
+	pointer-events: none;
+}
+
+/* Empty state */
+.empty {
+	padding: 48px;
+	text-align: center;
+	color: var(--muted-foreground);
+}
+
+.emptyIcon {
+	font-size: 48px;
+	margin-bottom: 16px;
+	opacity: 0.5;
+}
+
+.emptyText {
+	font-size: 16px;
+	font-weight: 500;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	.adminTable {
+		display: block;
+		overflow-x: auto;
+		white-space: nowrap;
+	}
+
+	.adminTable th,
+	.adminTable td {
+		padding: 12px;
+		font-size: 13px;
+	}
+}

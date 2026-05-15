@@ -1,0 +1,36 @@
+/* Badge Component Styles */
+
+.badge {
+	display: inline-flex;
+	align-items: center;
+	padding: 4px 12px;
+	border-radius: 12px;
+	font-size: 12px;
+	font-weight: 500;
+	white-space: nowrap;
+}
+
+.success {
+	background: #10b98120;
+	color: #10b981;
+}
+
+.warning {
+	background: #f59e0b20;
+	color: #f59e0b;
+}
+
+.danger {
+	background: #ef444420;
+	color: #ef4444;
+}
+
+.info {
+	background: #3b82f620;
+	color: #3b82f6;
+}
+
+.secondary {
+	background: var(--muted);
+	color: var(--muted-foreground);
+}

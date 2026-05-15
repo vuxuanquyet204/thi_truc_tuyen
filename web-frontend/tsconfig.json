@@ -1,0 +1,36 @@
+{
+  "compilerOptions": {
+    "target": "ES2020",
+    "useDefineForClassFields": true,
+    "lib": ["ES2020", "DOM", "DOM.Iterable"],
+    "module": "ESNext",
+    "skipLibCheck": true,
+    "moduleResolution": "Bundler",
+    "resolveJsonModule": true,
+    "isolatedModules": true,
+    "noEmit": true,
+    "jsx": "react-jsx",
+    "strict": true,
+    "noFallthroughCasesInSwitch": true,
+    "forceConsistentCasingInFileNames": true,
+    "esModuleInterop": true,
+    "noImplicitAny": false,
+
+    /* Path aliases for new architecture */
+    "paths": {
+      "@/*": ["./src/*"],
+      "@/shared/*": ["./src/shared/*"],
+      "@/features/*": ["./src/features/*"],
+      "@/pages/*": ["./src/pages/*"],
+      "@/widgets/*": ["./src/widgets/*"],
+      "@/data/*": ["./src/data/*"],
+      "@/mocks/*": ["./src/data/mocks/*"],
+      "@/foundation/*": ["./src/foundation/*"],
+      "@/types/*": ["./src/foundation/types/*"],
+      "@/contexts/*": ["./src/foundation/contexts/*"],
+      "@/store/*": ["./src/foundation/store/*"]
+    }
+  },
+  "include": ["src", "App.tsx", "vite-env.d.ts"],
+  "references": [{ "path": "./tsconfig.node.json" }]
+}

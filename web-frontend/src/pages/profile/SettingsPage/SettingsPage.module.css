@@ -1,0 +1,549 @@
+/* Settings Page Styles */
+
+.page {
+  min-height: 100vh;
+  background: var(--background);
+  padding: clamp(16px, 3vw, 2rem) clamp(12px, 2vw, 1rem);
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+.container {
+  max-width: min(1200px, 100%);
+  margin: 0 auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Header */
+.header {
+  margin-bottom: clamp(16px, 2.5vw, 2rem);
+  text-align: center;
+}
+
+.headerTitle {
+  font-size: clamp(24px, 4vw, 2rem);
+  font-weight: 700;
+  color: var(--foreground);
+  margin-bottom: clamp(4px, 1vw, 0.5rem);
+  word-break: break-word;
+}
+
+.headerSubtitle {
+  color: var(--muted-foreground);
+  font-size: clamp(14px, 2.5vw, 1rem);
+  word-break: break-word;
+}
+
+/* Main Layout */
+.mainLayout {
+  display: grid;
+  grid-template-columns: minmax(250px, 300px) 1fr;
+  gap: clamp(16px, 2.5vw, 2rem);
+  align-items: flex-start;
+  width: 100%;
+}
+
+/* Sidebar */
+.sidebar {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  padding: clamp(12px, 1.5vw, 1rem);
+  position: sticky;
+  top: clamp(16px, 2.5vw, 2rem);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.sidebarNav {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(2px, 0.5vw, 0.25rem);
+}
+
+.sidebarButton {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1vw, 0.75rem);
+  padding: clamp(10px, 1.5vw, 0.75rem) clamp(12px, 1.5vw, 1rem);
+  border: none;
+  border-radius: var(--radius-md);
+  font-size: clamp(13px, 2vw, 0.875rem);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  text-align: left;
+  box-sizing: border-box;
+}
+
+.sidebarButtonActive {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.sidebarButtonInactive {
+  background: transparent;
+  color: var(--foreground);
+}
+
+.sidebarButtonInactive:hover {
+  background: var(--muted);
+}
+
+/* Main Content */
+.mainContent {
+  width: 100%;
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+/* Tab Content */
+.tabContent {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 2.5vw, 2rem);
+}
+
+/* Section Card */
+.sectionCard {
+  background: var(--card);
+  padding: clamp(16px, 2vw, 1.5rem);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.sectionTitle {
+  font-size: clamp(18px, 2.5vw, 1.25rem);
+  font-weight: 600;
+  margin-bottom: clamp(12px, 1.5vw, 1rem);
+  color: var(--foreground);
+  word-break: break-word;
+}
+
+.sectionDescription {
+  color: var(--muted-foreground);
+  margin-bottom: clamp(12px, 1.5vw, 1rem);
+  font-size: clamp(12px, 1.5vw, 0.875rem);
+  word-break: break-word;
+}
+
+/* Buttons */
+.button {
+  border: none;
+  padding: clamp(10px, 1.5vw, 0.75rem) clamp(16px, 2vw, 1.5rem);
+  border-radius: var(--radius-md);
+  font-size: clamp(12px, 1.5vw, 0.875rem);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.buttonPrimary {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.buttonPrimary:hover {
+  opacity: 0.9;
+}
+
+.buttonSecondary {
+  background: var(--secondary);
+  color: var(--secondary-foreground);
+  border: 1px solid var(--border);
+}
+
+.buttonSecondary:hover {
+  background: var(--muted);
+}
+
+.buttonGroup {
+  display: flex;
+  gap: clamp(12px, 1.5vw, 1rem);
+  flex-wrap: wrap;
+}
+
+/* Form Elements */
+.formGroup {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 1.5vw, 1rem);
+}
+
+.formField {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 0.5vw, 0.5rem);
+}
+
+.formLabel {
+  display: block;
+  font-size: clamp(12px, 1.5vw, 0.875rem);
+  font-weight: 500;
+  margin-bottom: clamp(4px, 0.5vw, 0.5rem);
+  color: var(--foreground);
+  word-break: break-word;
+}
+
+.formInput {
+  width: 100%;
+  padding: clamp(10px, 1.5vw, 0.75rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--background);
+  color: var(--foreground);
+  font-size: clamp(12px, 1.5vw, 0.875rem);
+  box-sizing: border-box;
+  transition: border-color var(--transition-fast);
+}
+
+.formInput:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.formInputError {
+  border-color: rgb(239, 68, 68);
+}
+
+.formError {
+  color: rgb(239, 68, 68);
+  font-size: clamp(10px, 1.5vw, 0.75rem);
+  margin-top: clamp(2px, 0.5vw, 0.25rem);
+  margin: 0;
+  word-break: break-word;
+}
+
+.formSelect {
+  padding: clamp(10px, 1.5vw, 0.75rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--background);
+  color: var(--foreground);
+  font-size: clamp(12px, 1.5vw, 0.875rem);
+  min-width: min(200px, 100%);
+  box-sizing: border-box;
+}
+
+.formSelect:focus {
+  outline: none;
+  border-color: var(--primary);
+}
+
+.formSaveButton {
+  margin-top: clamp(12px, 1.5vw, 1rem);
+  align-self: flex-start;
+}
+
+/* Toggle Switch */
+.toggleItem {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: clamp(12px, 1.5vw, 1rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--background);
+  width: 100%;
+  box-sizing: border-box;
+  gap: clamp(12px, 1.5vw, 1rem);
+}
+
+.toggleItemContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.toggleItemTitle {
+  font-size: clamp(12px, 1.5vw, 0.875rem);
+  font-weight: 500;
+  margin-bottom: clamp(2px, 0.5vw, 0.25rem);
+  color: var(--foreground);
+  word-break: break-word;
+}
+
+.toggleItemDescription {
+  font-size: clamp(10px, 1.5vw, 0.75rem);
+  color: var(--muted-foreground);
+  margin: 0;
+  word-break: break-word;
+}
+
+.toggleSwitch {
+  position: relative;
+  display: inline-block;
+  width: clamp(40px, 5vw, 44px);
+  height: clamp(20px, 3vw, 24px);
+  flex-shrink: 0;
+}
+
+.toggleSwitchInput {
+  display: none;
+}
+
+.toggleSwitchSlider {
+  position: absolute;
+  cursor: pointer;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: var(--muted);
+  transition: 0.4s;
+  border-radius: 24px;
+}
+
+.toggleSwitchSliderActive {
+  background-color: var(--primary);
+}
+
+.toggleSwitchKnob {
+  position: absolute;
+  content: '';
+  height: clamp(16px, 2vw, 18px);
+  width: clamp(16px, 2vw, 18px);
+  left: clamp(2px, 0.5vw, 3px);
+  bottom: clamp(2px, 0.5vw, 3px);
+  background-color: white;
+  transition: 0.4s;
+  border-radius: 50%;
+}
+
+.toggleSwitchKnobActive {
+  left: clamp(20px, 2.5vw, 23px);
+}
+
+/* Theme Buttons */
+.themeButtons {
+  display: flex;
+  gap: clamp(12px, 1.5vw, 1rem);
+  flex-wrap: wrap;
+}
+
+.themeButton {
+  padding: clamp(10px, 1.5vw, 0.75rem) clamp(16px, 2vw, 1.5rem);
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  font-size: clamp(12px, 1.5vw, 0.875rem);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.themeButtonActive {
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.themeButtonInactive {
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.themeButtonInactive:hover {
+  background: var(--muted);
+}
+
+/* Modal */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  padding: clamp(16px, 3vw, 24px);
+  box-sizing: border-box;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.modalContent {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  padding: clamp(20px, 3vw, 2rem);
+  max-width: min(500px, 100%);
+  width: 100%;
+  border: 1px solid var(--border);
+  box-shadow: 0 10px 25px rgba(0, 0, 0, 0.2);
+  box-sizing: border-box;
+  max-height: calc(100vh - 48px);
+  overflow-y: auto;
+}
+
+.modalTitle {
+  font-size: clamp(20px, 3vw, 1.5rem);
+  font-weight: 600;
+  margin-bottom: clamp(16px, 2vw, 1.5rem);
+  color: var(--foreground);
+  word-break: break-word;
+}
+
+.modalMessage {
+  padding: clamp(10px, 1.5vw, 0.75rem) clamp(12px, 1.5vw, 1rem);
+  border-radius: var(--radius-md);
+  margin-bottom: clamp(12px, 1.5vw, 1rem);
+  font-size: clamp(12px, 1.5vw, 0.875rem);
+  word-break: break-word;
+}
+
+.modalMessageSuccess {
+  background: rgba(34, 197, 94, 0.1);
+  color: rgb(34, 197, 94);
+}
+
+.modalMessageError {
+  background: rgba(239, 68, 68, 0.1);
+  color: rgb(239, 68, 68);
+}
+
+.modalForm {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 1.5vw, 1rem);
+}
+
+.modalActions {
+  display: flex;
+  gap: clamp(12px, 1.5vw, 1rem);
+  margin-top: clamp(16px, 2vw, 1.5rem);
+  justify-content: flex-end;
+  flex-wrap: wrap;
+}
+
+.modalButton {
+  padding: clamp(10px, 1.5vw, 0.75rem) clamp(16px, 2vw, 1.5rem);
+  border-radius: var(--radius-md);
+  font-size: clamp(12px, 1.5vw, 0.875rem);
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  white-space: nowrap;
+}
+
+.modalButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.modalButtonCancel {
+  border: 1px solid var(--border);
+  background: var(--background);
+  color: var(--foreground);
+}
+
+.modalButtonCancel:hover:not(:disabled) {
+  background: var(--muted);
+}
+
+.modalButtonSubmit {
+  border: none;
+  background: var(--primary);
+  color: var(--primary-foreground);
+}
+
+.modalButtonSubmit:hover:not(:disabled) {
+  opacity: 0.9;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 1024px) {
+  .mainLayout {
+    grid-template-columns: 1fr;
+  }
+
+  .sidebar {
+    position: static;
+    order: 2;
+  }
+
+  .mainContent {
+    order: 1;
+  }
+
+  .sidebarNav {
+    flex-direction: row;
+    overflow-x: auto;
+    padding-bottom: clamp(8px, 1vw, 12px);
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .sidebarNav::-webkit-scrollbar {
+    height: 4px;
+  }
+
+  .sidebarNav::-webkit-scrollbar-thumb {
+    background: var(--border);
+    border-radius: 2px;
+  }
+
+  .sidebarButton {
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+}
+
+@media (max-width: 768px) {
+  .page {
+    padding: clamp(12px, 2vw, 16px);
+  }
+
+  .header {
+    margin-bottom: clamp(12px, 2vw, 16px);
+  }
+
+  .mainLayout {
+    gap: clamp(12px, 2vw, 16px);
+  }
+
+  .sectionCard {
+    padding: clamp(12px, 1.5vw, 16px);
+  }
+
+  .buttonGroup {
+    flex-direction: column;
+  }
+
+  .button {
+    width: 100%;
+  }
+
+  .themeButtons {
+    flex-direction: column;
+  }
+
+  .themeButton {
+    width: 100%;
+  }
+
+  .modalActions {
+    flex-direction: column;
+  }
+
+  .modalButton {
+    width: 100%;
+  }
+}
+
+@media (max-width: 480px) {
+  .toggleItem {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .toggleSwitch {
+    align-self: flex-end;
+  }
+}
+

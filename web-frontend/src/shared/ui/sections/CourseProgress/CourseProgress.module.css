@@ -1,0 +1,504 @@
+/* CourseProgress.module.css */
+
+.container {
+  animation-delay: 400ms;
+  min-height: 490px;
+  height: 100%;
+  padding: clamp(12px, 2vw, 16px);
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Header */
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: clamp(16px, 2.5vw, 20px);
+  gap: clamp(12px, 2vw, 16px);
+  flex-wrap: wrap;
+}
+
+.title {
+  font-size: clamp(16px, 2.25vw, 18px);
+  font-weight: 600;
+  margin: 0;
+  word-break: break-word;
+}
+
+.viewCoursesButton {
+  font-size: clamp(12px, 1.75vw, 14px);
+  color: var(--primary);
+  background: none;
+  border: none;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  padding: clamp(4px, 1vw, 8px);
+  border-radius: 6px;
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.viewCoursesButton:hover {
+  background: var(--primary-light);
+  text-decoration: underline;
+}
+
+/* Course List */
+.courseList {
+  flex: 1;
+  overflow-y: auto;
+  scrollbar-width: none;
+  -ms-overflow-style: none;
+  width: 100%;
+}
+
+.courseList::-webkit-scrollbar {
+  display: none;
+}
+
+.courseListContainer {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.5vw, 12px);
+  width: 100%;
+}
+
+/* Loading/Empty States */
+.stateContainer {
+  text-align: center;
+  padding: clamp(32px, 5vw, 40px) 0;
+  color: var(--muted-foreground);
+  width: 100%;
+}
+
+.stateIcon {
+  margin: 0 auto clamp(12px, 2vw, 16px);
+  opacity: 0.5;
+  width: clamp(40px, 6vw, 48px);
+  height: clamp(40px, 6vw, 48px);
+}
+
+.stateText {
+  font-size: clamp(14px, 2vw, 16px);
+  margin: 0;
+  word-break: break-word;
+}
+
+.exploreButton {
+  margin-top: clamp(10px, 1.5vw, 12px);
+  padding: clamp(6px, 1vw, 8px) clamp(12px, 2vw, 16px);
+  background: var(--primary);
+  color: white;
+  border: none;
+  border-radius: var(--radius-md);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: clamp(12px, 1.75vw, 14px);
+  transition: all 0.2s ease;
+}
+
+.exploreButton:hover {
+  background: var(--primary-dark);
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-md);
+}
+
+/* Modal Overlay */
+.modalOverlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  background: rgba(0, 0, 0, 0.7);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000;
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+  animation: fadeIn 0.2s ease;
+  padding: clamp(16px, 3vw, 20px);
+  box-sizing: border-box;
+}
+
+.modalContent {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  padding: clamp(20px, 3vw, 32px);
+  max-width: min(600px, 100%);
+  width: 100%;
+  max-height: calc(100vh - 32px);
+  overflow-y: auto;
+  position: relative;
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.5);
+  animation: modalSlideIn 0.3s ease forwards;
+  box-sizing: border-box;
+}
+
+.modalContentSmall {
+  max-width: min(500px, 100%);
+  padding: clamp(32px, 5vw, 48px) clamp(24px, 3vw, 32px);
+  text-align: center;
+}
+
+.modalCloseButton {
+  position: absolute;
+  top: clamp(12px, 2vw, 16px);
+  right: clamp(12px, 2vw, 16px);
+  background: var(--muted);
+  border: none;
+  border-radius: 50%;
+  width: clamp(28px, 4vw, 32px);
+  height: clamp(28px, 4vw, 32px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  flex-shrink: 0;
+}
+
+.modalCloseButton:hover {
+  background: var(--destructive);
+  transform: scale(1.1);
+}
+
+.modalCloseIcon {
+  width: clamp(18px, 2.5vw, 20px);
+  height: clamp(18px, 2.5vw, 20px);
+}
+
+.modalHeader {
+  text-align: center;
+  width: 100%;
+}
+
+/* Progress Circle */
+.progressCircle {
+  width: clamp(100px, 15vw, 120px);
+  height: clamp(100px, 15vw, 120px);
+  margin: 0 auto clamp(20px, 3vw, 24px);
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.2);
+}
+
+.progressValue {
+  font-size: clamp(28px, 4.5vw, 36px);
+  font-weight: 700;
+  color: white;
+  line-height: 1;
+}
+
+.progressLabel {
+  font-size: clamp(10px, 1.5vw, 12px);
+  color: rgba(255, 255, 255, 0.9);
+  line-height: 1;
+}
+
+.modalTitle {
+  font-size: clamp(20px, 3vw, 24px);
+  font-weight: 700;
+  margin-bottom: clamp(6px, 1vw, 8px);
+  word-break: break-word;
+}
+
+.modalPerformance {
+  font-size: clamp(16px, 2.25vw, 18px);
+  font-weight: 600;
+  margin-bottom: clamp(20px, 3vw, 24px);
+  word-break: break-word;
+}
+
+/* Stats Grid */
+.statsGrid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: clamp(12px, 2vw, 16px);
+  margin-bottom: clamp(20px, 3vw, 24px);
+  text-align: left;
+  width: 100%;
+}
+
+.statCard {
+  padding: clamp(12px, 2vw, 16px);
+  background: var(--muted);
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.statHeader {
+  display: flex;
+  align-items: center;
+  margin-bottom: clamp(6px, 1vw, 8px);
+  gap: clamp(6px, 1vw, 8px);
+}
+
+.statIcon {
+  width: clamp(14px, 2vw, 16px);
+  height: clamp(14px, 2vw, 16px);
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.statLabel {
+  font-size: clamp(11px, 1.5vw, 12px);
+  color: var(--muted-foreground);
+  word-break: break-word;
+}
+
+.statValue {
+  font-size: clamp(14px, 2vw, 16px);
+  font-weight: 600;
+  margin: 0;
+  word-break: break-word;
+}
+
+/* Next Lesson Info */
+.nextLessonInfo {
+  padding: clamp(12px, 2vw, 16px);
+  background: var(--primary-light);
+  border-radius: var(--radius-md);
+  border-left: 4px solid var(--primary);
+  margin-bottom: clamp(20px, 3vw, 24px);
+  text-align: left;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.nextLessonLabel {
+  margin: 0;
+  font-size: clamp(12px, 1.75vw, 14px);
+  word-break: break-word;
+}
+
+.nextLessonText {
+  margin: clamp(3px, 0.5vw, 4px) 0 0 0;
+  font-size: clamp(12px, 1.75vw, 14px);
+  color: var(--primary);
+  word-break: break-word;
+}
+
+/* Action Buttons */
+.actionButtons {
+  display: flex;
+  gap: clamp(10px, 1.5vw, 12px);
+  margin-top: clamp(20px, 3vw, 24px);
+  width: 100%;
+  flex-wrap: wrap;
+}
+
+.actionButton {
+  flex: 1;
+  padding: clamp(10px, 1.5vw, 12px);
+  border-radius: var(--radius-md);
+  font-size: clamp(14px, 2vw, 16px);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 1vw, 8px);
+  min-width: 0;
+  box-sizing: border-box;
+}
+
+.actionButtonPrimary {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: white;
+  border: none;
+}
+
+.actionButtonPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.actionButtonSecondary {
+  background: var(--muted);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+}
+
+.actionButtonSecondary:hover {
+  background: var(--border);
+  border-color: var(--primary);
+}
+
+.actionButtonIcon {
+  width: clamp(18px, 2.5vw, 20px);
+  height: clamp(18px, 2.5vw, 20px);
+  flex-shrink: 0;
+}
+
+/* Completion Modal */
+.completionTitle {
+  font-size: clamp(24px, 3.5vw, 28px);
+  font-weight: 700;
+  margin-bottom: clamp(10px, 1.5vw, 12px);
+  word-break: break-word;
+}
+
+.completionDescription {
+  font-size: clamp(14px, 2vw, 16px);
+  color: var(--muted-foreground);
+  margin-bottom: clamp(20px, 3vw, 24px);
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+.completionInfo {
+  background: var(--muted);
+  padding: clamp(12px, 2vw, 16px);
+  border-radius: var(--radius-md);
+  margin-bottom: clamp(20px, 3vw, 24px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.completionIcon {
+  width: clamp(32px, 5vw, 40px);
+  height: clamp(32px, 5vw, 40px);
+  color: var(--primary);
+  margin-bottom: clamp(10px, 1.5vw, 12px);
+}
+
+.completionInfoText {
+  margin: 0;
+  font-size: clamp(12px, 1.75vw, 14px);
+  color: var(--muted-foreground);
+  word-break: break-word;
+}
+
+.completionInfoTextMargin {
+  margin: clamp(6px, 1vw, 8px) 0 0 0;
+}
+
+.completionButton {
+  width: 100%;
+  padding: clamp(10px, 1.5vw, 12px);
+  border-radius: var(--radius-md);
+  font-size: clamp(14px, 2vw, 16px);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 1vw, 8px);
+  box-sizing: border-box;
+}
+
+.completionButtonPrimary {
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  color: white;
+  border: none;
+  margin-bottom: clamp(10px, 1.5vw, 12px);
+}
+
+.completionButtonPrimary:hover {
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-lg);
+}
+
+.completionButtonSecondary {
+  background: var(--muted);
+  color: var(--foreground);
+  border: 1px solid var(--border);
+}
+
+.completionButtonSecondary:hover {
+  background: var(--border);
+}
+
+.completionButtonIcon {
+  width: clamp(18px, 2.5vw, 20px);
+  height: clamp(18px, 2.5vw, 20px);
+  flex-shrink: 0;
+}
+
+/* Animations */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes modalSlideIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95) translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .title {
+    width: 100%;
+  }
+
+  .viewCoursesButton {
+    align-self: flex-end;
+  }
+
+  .statsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .actionButtons {
+    flex-direction: column;
+  }
+
+  .actionButton {
+    width: 100%;
+  }
+
+  .modalContent {
+    padding: clamp(16px, 2.5vw, 20px);
+  }
+}
+
+@media (max-width: 480px) {
+  .container {
+    padding: clamp(10px, 1.5vw, 12px);
+  }
+
+  .header {
+    margin-bottom: clamp(12px, 2vw, 16px);
+  }
+
+  .progressCircle {
+    width: clamp(80px, 12vw, 100px);
+    height: clamp(80px, 12vw, 100px);
+  }
+
+  .modalContent {
+    padding: clamp(12px, 2vw, 16px);
+  }
+
+  .modalContentSmall {
+    padding: clamp(24px, 4vw, 32px) clamp(16px, 2.5vw, 20px);
+  }
+}

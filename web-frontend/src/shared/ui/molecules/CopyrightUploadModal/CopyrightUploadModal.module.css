@@ -1,0 +1,772 @@
+/* Copyright Upload Modal Styles */
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-color: rgba(0, 0, 0, 0.8);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000; /* Higher than header (9999) */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.modal {
+  background: var(--card);
+  border-radius: 16px;
+  box-shadow: var(--shadow-xl);
+  width: min(90%, 800px);
+  max-width: 800px;
+  max-height: 90vh;
+  overflow-y: auto;
+  border: 1px solid var(--border);
+  margin: clamp(16px, 3vw, 20px);
+  box-sizing: border-box;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(16px, 3vw, 24px) clamp(20px, 3vw, 32px);
+  border-bottom: 1px solid var(--border);
+  gap: clamp(12px, 2vw, 16px);
+}
+
+.header h2 {
+  color: var(--foreground);
+  font-size: clamp(20px, 4vw, 24px);
+  font-weight: 600;
+  margin: 0;
+  word-break: break-word;
+  flex: 1;
+}
+
+.closeButton {
+  background: none;
+  border: none;
+  color: var(--foreground);
+  cursor: pointer;
+  padding: clamp(6px, 1vw, 8px);
+  border-radius: 8px;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+}
+
+.closeButton svg {
+  width: clamp(18px, 2.5vw, 20px);
+  height: clamp(18px, 2.5vw, 20px);
+}
+
+.closeButton:hover {
+  background-color: var(--hover-bg);
+}
+
+.closeButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.content {
+  padding: clamp(20px, 3vw, 32px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Warning Section */
+.warning {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(10px, 1.5vw, 12px);
+  background: var(--destructive);
+  border: 1px solid var(--destructive);
+  border-radius: 12px;
+  padding: clamp(12px, 2vw, 16px);
+  margin-bottom: clamp(20px, 3vw, 24px);
+  color: var(--destructive-foreground);
+  opacity: 0.9;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.warning span {
+  flex: 1;
+  font-weight: 500;
+  font-size: clamp(13px, 2.5vw, 14px);
+  word-break: break-word;
+}
+
+.feeInfo {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(6px, 1vw, 8px);
+  background: var(--muted);
+  border-radius: 8px;
+  padding: clamp(10px, 1.5vw, 12px) clamp(12px, 2vw, 16px);
+  margin-bottom: clamp(20px, 3vw, 24px);
+  text-align: center;
+  color: var(--foreground);
+  font-weight: 500;
+  font-size: clamp(13px, 2.5vw, 14px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Upload Type Section */
+.uploadTypeSection {
+  margin-bottom: 24px;
+}
+
+.uploadTypeSection label {
+  display: block;
+  color: var(--foreground);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.uploadTypeButtons {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.5vw, 12px);
+  width: 100%;
+}
+
+.uploadTypeButton {
+  flex: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 1vw, 8px);
+  padding: clamp(10px, 1.5vw, 12px) clamp(12px, 2vw, 16px);
+  background: var(--muted);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--foreground);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-weight: 500;
+  font-size: clamp(13px, 2.5vw, 14px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.uploadTypeButton:hover {
+  background: var(--hover-bg);
+}
+
+.uploadTypeButton.active {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+}
+
+/* File Upload Section */
+.fileUploadSection {
+  margin-bottom: 24px;
+}
+
+.fileUploadSection label {
+  display: block;
+  color: var(--foreground);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.fileDropZone {
+  border: 2px dashed var(--border);
+  border-radius: 12px;
+  padding: clamp(24px, 3vw, 32px);
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background: var(--muted);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.fileDropZone:hover {
+  border-color: var(--primary);
+  background: var(--hover-bg);
+}
+
+.dropZoneContent {
+  color: var(--foreground);
+}
+
+.dropZoneContent p {
+  margin: 8px 0;
+}
+
+.dropZoneContent .supportedFormats {
+  font-size: 12px;
+  color: var(--muted-foreground);
+}
+
+.selectedFile {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: clamp(12px, 2vw, 16px);
+  color: var(--foreground);
+  background: var(--muted);
+  border-radius: 8px;
+  padding: clamp(12px, 2vw, 16px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.selectedFile div {
+  flex: 1;
+  text-align: left;
+  width: 100%;
+  min-width: 0;
+}
+
+.selectedFile p {
+  margin: clamp(3px, 0.8vw, 4px) 0;
+  font-size: clamp(12px, 2.5vw, 14px);
+  word-break: break-word;
+}
+
+.selectedFile button {
+  background: none;
+  border: none;
+  color: var(--destructive);
+  cursor: pointer;
+  padding: 4px;
+  border-radius: 4px;
+  transition: all 0.2s ease;
+}
+
+.selectedFile button:hover {
+  background: var(--destructive);
+  color: var(--destructive-foreground);
+  opacity: 0.9;
+}
+
+/* Similarity Check Styles */
+.similarityChecking {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: var(--muted);
+  border: 1px solid var(--primary);
+  border-radius: 8px;
+  margin-top: 16px;
+  color: var(--primary);
+  font-size: 14px;
+}
+
+.similarityChecking .spinner {
+  animation: spin 1s linear infinite;
+}
+
+.similarityResult {
+  margin-top: 16px;
+  padding: 16px;
+  border-radius: 8px;
+  border: 1px solid;
+}
+
+.similaritySafe {
+  background: var(--primary);
+  border-color: var(--primary);
+  opacity: 0.9;
+}
+
+.similarityWarning {
+  background: var(--destructive);
+  border-color: var(--destructive);
+  opacity: 0.9;
+}
+
+.similarityHeader {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 12px;
+}
+
+.similarityHeader h4 {
+  color: var(--foreground);
+  font-size: 16px;
+  font-weight: 600;
+  margin: 0 0 4px 0;
+}
+
+.similarityHeader p {
+  color: var(--muted-foreground);
+  font-size: 13px;
+  margin: 0;
+}
+
+.successIcon {
+  color: var(--primary);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.warningIcon {
+  color: var(--destructive);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.similarDocumentsList {
+  margin-top: 16px;
+  padding-top: 16px;
+  border-top: 1px solid var(--border);
+}
+
+.similarDocumentsTitle {
+  color: var(--foreground);
+  font-size: 14px;
+  font-weight: 500;
+  margin: 0 0 12px 0;
+}
+
+.similarDocuments {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.similarDocumentItem {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 12px;
+  background: var(--muted);
+  border-radius: 6px;
+  border: 1px solid var(--border);
+}
+
+.similarDocumentInfo {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex: 1;
+  min-width: 0;
+}
+
+.similarDocumentInfo svg {
+  color: var(--muted-foreground);
+  flex-shrink: 0;
+}
+
+.similarDocumentName {
+  color: var(--foreground);
+  font-size: 13px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.similarityPercentage {
+  color: var(--accent-foreground);
+  font-size: 14px;
+  font-weight: 600;
+  padding: 4px 12px;
+  background: var(--accent);
+  border-radius: 12px;
+  flex-shrink: 0;
+}
+
+.moreDocuments {
+  color: var(--muted-foreground);
+  font-size: 12px;
+  font-style: italic;
+  margin: 8px 0 0 0;
+  text-align: center;
+}
+
+.similarityWarningMessage {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-top: 16px;
+  padding: 12px;
+  background: var(--destructive);
+  border-left: 3px solid var(--destructive);
+  border-radius: 6px;
+  color: var(--destructive-foreground);
+  font-size: 13px;
+  line-height: 1.5;
+  opacity: 0.9;
+}
+
+.similarityWarningMessage svg {
+  color: var(--destructive-foreground);
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.recheckButton {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-top: 12px;
+  padding: 10px 16px;
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  color: var(--secondary-foreground);
+  font-size: 14px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.recheckButton:hover:not(:disabled) {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border-color: var(--primary);
+}
+
+.recheckButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.recheckButton .spinner {
+  animation: spin 1s linear infinite;
+}
+
+/* Text Input Section */
+.textInputSection {
+  margin-bottom: 24px;
+}
+
+.textInputSection label {
+  display: block;
+  color: var(--foreground);
+  font-weight: 500;
+  margin-bottom: 12px;
+}
+
+.textInputSection textarea {
+  width: 100%;
+  background: var(--input);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  color: var(--foreground);
+  font-size: 14px;
+  resize: vertical;
+  min-height: 120px;
+}
+
+.textInputSection textarea::placeholder {
+  color: var(--muted-foreground);
+}
+
+.characterCount {
+  text-align: right;
+  font-size: 12px;
+  color: var(--muted-foreground);
+  margin-top: 4px;
+}
+
+/* Metadata Section */
+.metadataSection {
+  margin-bottom: 24px;
+}
+
+.metadataSection h3 {
+  color: var(--foreground);
+  font-size: 18px;
+  font-weight: 600;
+  margin-bottom: 20px;
+}
+
+.formRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(12px, 2vw, 16px);
+  margin-bottom: clamp(12px, 2vw, 16px);
+  width: 100%;
+}
+
+.formGroup {
+  margin-bottom: 16px;
+}
+
+.formGroup label {
+  display: block;
+  color: var(--foreground);
+  font-weight: 500;
+  margin-bottom: 8px;
+}
+
+.formGroup input,
+.formGroup select,
+.formGroup textarea {
+  width: 100%;
+  background: var(--input);
+  border: 1px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  color: var(--foreground);
+  font-size: 14px;
+}
+
+.formGroup input::placeholder,
+.formGroup textarea::placeholder {
+  color: var(--muted-foreground);
+}
+
+.formGroup select {
+  cursor: pointer;
+}
+
+/* Tags Input */
+.tagsInput {
+  display: flex;
+  gap: 8px;
+  margin-bottom: 12px;
+}
+
+.tagsInput input {
+  flex: 1;
+}
+
+.tagsInput button {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border: none;
+  padding: 12px 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  transition: all 0.2s ease;
+}
+
+.tagsInput button:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+  background: var(--accent);
+}
+
+.tagsInput button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+.tagsList {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.tag {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  background: var(--primary);
+  color: var(--primary-foreground);
+  padding: 6px 12px;
+  border-radius: 20px;
+  font-size: 12px;
+  font-weight: 500;
+}
+
+.tag button {
+  background: none;
+  border: none;
+  color: var(--primary-foreground);
+  cursor: pointer;
+  padding: 2px;
+  border-radius: 50%;
+  transition: all 0.2s ease;
+}
+
+.tag button:hover {
+  background: var(--hover-bg);
+}
+
+/* Error Display */
+.error {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--destructive);
+  border: 1px solid var(--destructive);
+  border-radius: 8px;
+  padding: 12px 16px;
+  color: var(--destructive-foreground);
+  margin-bottom: 16px;
+  opacity: 0.9;
+}
+
+/* Result Display */
+.result {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  border-radius: 8px;
+  padding: 16px;
+  margin-bottom: 16px;
+}
+
+.result.success {
+  background: var(--primary);
+  border: 1px solid var(--primary);
+  color: var(--primary-foreground);
+  opacity: 0.9;
+}
+
+.result.error {
+  background: var(--destructive);
+  border: 1px solid var(--destructive);
+  color: var(--destructive-foreground);
+  opacity: 0.9;
+}
+
+.result div {
+  flex: 1;
+}
+
+.result p {
+  margin: 4px 0;
+  font-size: 14px;
+}
+
+.result p:first-child {
+  font-weight: 600;
+  font-size: 16px;
+}
+
+.hashInfo {
+  font-family: monospace;
+  font-size: 12px !important;
+  word-break: break-all;
+}
+
+/* Actions */
+.actions {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 2vw, 16px);
+  justify-content: flex-end;
+  margin-top: clamp(24px, 3vw, 30px);
+  padding-top: clamp(20px, 3vw, 24px);
+  border-top: 1px solid var(--border);
+  width: 100%;
+}
+
+.cancelButton {
+  background: var(--secondary);
+  border: 1px solid var(--border);
+  color: var(--secondary-foreground);
+  padding: clamp(10px, 2vw, 12px) clamp(20px, 3vw, 24px);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: clamp(13px, 2.5vw, 14px);
+  transition: all 0.2s ease;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.cancelButton:hover {
+  background: var(--hover-bg);
+}
+
+.cancelButton:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.registerButton {
+  background: var(--primary);
+  color: var(--primary-foreground);
+  border: none;
+  padding: clamp(10px, 2vw, 12px) clamp(20px, 3vw, 24px);
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 500;
+  font-size: clamp(13px, 2.5vw, 14px);
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 1vw, 8px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.registerButton svg {
+  width: clamp(16px, 2vw, 18px);
+  height: clamp(16px, 2vw, 18px);
+  flex-shrink: 0;
+}
+
+.registerButton:hover {
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-lg);
+  background: var(--accent);
+}
+
+.registerButton:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+  transform: none;
+}
+
+/* Spinner */
+.spinner {
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive design */
+@media (min-width: 640px) {
+  .warning {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .uploadTypeButtons {
+    flex-direction: row;
+  }
+
+  .selectedFile {
+    flex-direction: row;
+    align-items: center;
+  }
+
+  .actions {
+    flex-direction: row;
+  }
+
+  .cancelButton,
+  .registerButton {
+    width: auto;
+  }
+}
+
+@media (min-width: 768px) {
+  .formRow {
+    grid-template-columns: 1fr 1fr;
+  }
+}

@@ -1,0 +1,124 @@
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: space-between;
+  margin-bottom: clamp(16px, 3vw, 24px);
+  gap: clamp(12px, 2vw, 16px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.title {
+  font-size: clamp(18px, 4vw, 24px);
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0;
+  letter-spacing: -0.02em;
+  word-break: break-word;
+  line-height: 1.3;
+}
+
+.viewAllButton {
+  background: var(--card);
+  border: 1px solid var(--border);
+  color: var(--foreground);
+  font-size: clamp(12px, 2.5vw, 14px);
+  font-weight: 500;
+  padding: clamp(6px, 1.5vw, 8px) clamp(12px, 2vw, 16px);
+  border-radius: clamp(6px, 1vw, 8px);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: flex;
+  align-items: center;
+  gap: clamp(4px, 0.8vw, 6px);
+  width: 100%;
+  max-width: 200px;
+  justify-content: center;
+  box-sizing: border-box;
+  white-space: nowrap;
+  position: relative;
+  overflow: hidden;
+}
+
+.viewAllButton::after {
+  content: '→';
+  display: inline-block;
+  transition: transform 0.2s ease;
+  margin-left: clamp(2px, 0.5vw, 4px);
+}
+
+.viewAllButton:hover {
+  background: var(--muted);
+  border-color: var(--accent);
+  color: var(--accent-foreground);
+  transform: translateY(-1px);
+  box-shadow: var(--shadow-sm);
+}
+
+.viewAllButton:hover::after {
+  transform: translateX(2px);
+}
+
+.viewAllButton:focus {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.viewAllButton:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+.viewAllButton:active {
+  transform: translateY(0);
+}
+
+@media (min-width: 640px) {
+  .sectionHeader {
+    flex-direction: row;
+    align-items: center;
+  }
+  
+  .viewAllButton {
+    width: auto;
+    max-width: none;
+  }
+}
+
+@media (max-width: 768px) {
+  .sectionHeader {
+    margin-bottom: clamp(12px, 2.5vw, 16px);
+    gap: clamp(10px, 1.75vw, 12px);
+  }
+
+  .title {
+    font-size: clamp(16px, 3.5vw, 20px);
+  }
+
+  .viewAllButton {
+    font-size: clamp(11px, 2.25vw, 13px);
+    padding: clamp(5px, 1.25vw, 7px) clamp(10px, 1.75vw, 14px);
+    border-radius: clamp(5px, 0.75vw, 6px);
+    max-width: 180px;
+  }
+}
+
+@media (max-width: 480px) {
+  .sectionHeader {
+    margin-bottom: clamp(10px, 2vw, 12px);
+    gap: clamp(8px, 1.5vw, 10px);
+  }
+
+  .title {
+    font-size: clamp(14px, 3vw, 18px);
+  }
+
+  .viewAllButton {
+    font-size: clamp(10px, 2vw, 12px);
+    padding: clamp(5px, 1vw, 6px) clamp(8px, 1.5vw, 12px);
+    border-radius: clamp(4px, 0.5vw, 5px);
+    max-width: 160px;
+    gap: clamp(2px, 0.5vw, 3px);
+  }
+}

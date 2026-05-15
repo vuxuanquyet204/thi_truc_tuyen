@@ -1,0 +1,126 @@
+/* DailyStreakCard.module.css */
+
+.container {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  padding: clamp(16px, 2.5vw, 20px);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-sm);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+/* Title */
+.title {
+  font-size: clamp(16px, 2.25vw, 18px);
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0 0 clamp(12px, 2vw, 16px) 0;
+  word-break: break-word;
+}
+
+/* Days of Week */
+.daysRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: clamp(10px, 1.5vw, 12px);
+  gap: clamp(4px, 0.75vw, 6px);
+  width: 100%;
+}
+
+.dayLabel {
+  font-size: clamp(12px, 1.75vw, 14px);
+  font-weight: 500;
+  color: var(--muted-foreground);
+  text-align: center;
+  width: clamp(18px, 2.5vw, 20px);
+  flex-shrink: 0;
+}
+
+/* Progress Dots */
+.progressRow {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: clamp(12px, 2vw, 16px);
+  gap: clamp(4px, 0.75vw, 6px);
+  width: 100%;
+}
+
+.progressDot {
+  width: clamp(10px, 1.5vw, 12px);
+  height: clamp(10px, 1.5vw, 12px);
+  border-radius: 50%;
+  transition: background-color 0.3s ease;
+  flex-shrink: 0;
+}
+
+.progressDotCompleted {
+  background: var(--primary);
+}
+
+.progressDotIncomplete {
+  background: var(--muted);
+}
+
+/* Current Streak Summary */
+.streakSummary {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: clamp(8px, 1.25vw, 12px);
+  flex-wrap: wrap;
+  width: 100%;
+}
+
+.streakLabel {
+  font-size: clamp(12px, 1.75vw, 14px);
+  font-weight: 500;
+  color: var(--foreground);
+  word-break: break-word;
+}
+
+.streakValue {
+  font-size: clamp(14px, 2vw, 16px);
+  font-weight: 700;
+  color: var(--accent);
+  white-space: nowrap;
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 480px) {
+  .container {
+    padding: clamp(12px, 2vw, 16px);
+  }
+
+  .title {
+    font-size: clamp(14px, 2vw, 16px);
+    margin-bottom: clamp(10px, 1.5vw, 12px);
+  }
+
+  .dayLabel {
+    font-size: clamp(10px, 1.5vw, 12px);
+    width: clamp(16px, 2.25vw, 18px);
+  }
+
+  .progressDot {
+    width: clamp(8px, 1.25vw, 10px);
+    height: clamp(8px, 1.25vw, 10px);
+  }
+
+  .progressRow,
+  .daysRow {
+    gap: clamp(3px, 0.5vw, 4px);
+  }
+
+  .streakSummary {
+    gap: clamp(6px, 1vw, 8px);
+  }
+
+  .streakLabel {
+    font-size: clamp(11px, 1.5vw, 12px);
+  }
+
+  .streakValue {
+    font-size: clamp(13px, 1.75vw, 14px);
+  }
+}

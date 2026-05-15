@@ -1,0 +1,72 @@
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.75);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 10000; /* Higher than header (9999) */
+  backdrop-filter: blur(4px);
+  -webkit-backdrop-filter: blur(4px);
+}
+
+.modal {
+  background: var(--card);
+  border-radius: var(--radius-xl);
+  padding: var(--space-8);
+  max-width: 500px;
+  width: 90%;
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-2xl);
+}
+
+.content {
+  text-align: center;
+  margin-bottom: var(--space-6);
+}
+
+.icon {
+  width: 64px;
+  height: 64px;
+  color: #f59e0b;
+  margin: 0 auto var(--space-4);
+}
+
+.title {
+  font-size: 24px;
+  font-weight: 700;
+  margin-bottom: var(--space-3);
+  color: var(--foreground);
+}
+
+.description {
+  color: var(--muted-foreground);
+  line-height: 1.6;
+  margin-bottom: var(--space-3);
+}
+
+.description strong {
+  color: var(--foreground);
+}
+
+.warning {
+  display: block;
+  color: #dc2626;
+  margin-top: var(--space-2);
+}
+
+.confirmation {
+  color: var(--muted-foreground);
+}
+
+.actions {
+  display: flex;
+  gap: var(--space-4);
+  justify-content: center;
+}
+
+.submitButton {
+  background: var(--gradient-primary);
+  color: white;
+}
+

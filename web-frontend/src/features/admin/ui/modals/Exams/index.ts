@@ -1,0 +1,6 @@
+export { default as AddExamModal } from './AddExamModal'
+export { default as DeleteExamModal } from './DeleteExamModal'
+export { default as EditExamModal } from './EditExamModal'
+export { default as ImportExamModal } from './ImportExamModal'
+export { default as ImportQuestionsModal } from './ImportQuestionsModal'
+export { default as ViewExamModal } from './ViewExamModal'

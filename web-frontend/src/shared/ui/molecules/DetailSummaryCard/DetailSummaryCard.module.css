@@ -1,0 +1,60 @@
+.summaryCard {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  border: 1px solid var(--border);
+  box-shadow: var(--shadow-md);
+  padding: clamp(16px, 2.5vw, var(--space-6));
+  margin-bottom: clamp(16px, 2.5vw, var(--space-6));
+  display: flex;
+  align-items: center;
+  justify-content: space-around;
+  gap: clamp(12px, 2vw, var(--space-4));
+  width: 100%;
+  box-sizing: border-box;
+  flex-wrap: wrap;
+}
+
+.summaryItem {
+  text-align: center;
+  flex: 1 1 auto;
+  min-width: min(100px, 100%);
+}
+
+.summaryValue {
+  font-size: clamp(28px, 5vw, 36px);
+  font-weight: 700;
+  font-family: var(--font-display);
+  word-break: break-word;
+  line-height: 1.2;
+}
+
+.summaryLabel {
+  font-size: clamp(11px, 2vw, 13px);
+  color: var(--muted-foreground);
+  font-weight: 600;
+  margin-top: clamp(4px, 1vw, 6px);
+  word-break: break-word;
+}
+
+.divider {
+  width: 1px;
+  height: clamp(32px, 5vw, 40px);
+  background: var(--border);
+  flex-shrink: 0;
+}
+
+@media (max-width: 640px) {
+  .summaryCard {
+    flex-direction: column;
+    gap: clamp(16px, 2.5vw, 20px);
+  }
+
+  .divider {
+    width: 100%;
+    height: 1px;
+  }
+
+  .summaryItem {
+    width: 100%;
+  }
+}

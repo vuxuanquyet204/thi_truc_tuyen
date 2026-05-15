@@ -1,0 +1,257 @@
+.multisig-page {
+	padding: 24px;
+	display: flex;
+	flex-direction: column;
+	gap: 24px;
+}
+
+.multisig-header {
+	display: flex;
+	justify-content: space-between;
+	align-items: flex-start;
+	gap: 16px;
+	flex-wrap: wrap;
+}
+
+.multisig-header h1 {
+	margin: 0;
+	font-size: 28px;
+	font-weight: 700;
+}
+
+.multisig-header p {
+	margin: 0;
+	color: var(--muted-foreground);
+	max-width: 600px;
+}
+
+.multisig-actions {
+	display: flex;
+	gap: 12px;
+	flex-wrap: wrap;
+}
+
+.multisig-alert {
+	display: flex;
+	align-items: flex-start;
+	gap: 12px;
+	padding: 16px 20px;
+	border-radius: var(--radius-lg);
+	border: 1px solid transparent;
+	box-shadow: var(--shadow-sm);
+	font-size: 14px;
+}
+
+.multisig-alert.success {
+	background: rgba(34, 197, 94, 0.12);
+	border-color: rgba(34, 197, 94, 0.4);
+	color: #15803d;
+}
+
+.multisig-alert.error {
+	background: rgba(239, 68, 68, 0.12);
+	border-color: rgba(239, 68, 68, 0.4);
+	color: #b91c1c;
+}
+
+.multisig-alert.info {
+	background: rgba(59, 130, 246, 0.12);
+	border-color: rgba(59, 130, 246, 0.4);
+	color: #1d4ed8;
+}
+
+.multisig-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+	gap: 24px;
+}
+
+.multisig-card {
+	background: var(--card);
+	border: 1px solid var(--border);
+	border-radius: var(--radius-lg);
+	padding: 24px;
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+	box-shadow: var(--shadow-sm);
+}
+
+.multisig-card h2 {
+	margin: 0;
+	font-size: 18px;
+	font-weight: 600;
+	display: flex;
+	align-items: center;
+	gap: 8px;
+}
+
+.multisig-card .form-grid {
+	gap: 16px;
+}
+
+.multisig-card .form-textarea {
+	min-height: 80px;
+	font-family: var(--font-mono);
+}
+
+.multisig-summary-grid {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(180px, 1fr));
+	gap: 16px;
+}
+
+.multisig-summary-card {
+	background: var(--muted);
+	border-radius: var(--radius-lg);
+	padding: 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.multisig-summary-label {
+	font-size: 13px;
+	color: var(--muted-foreground);
+	text-transform: uppercase;
+	letter-spacing: 0.04em;
+}
+
+.multisig-summary-value {
+	font-size: 20px;
+	font-weight: 600;
+}
+
+.multisig-summary-extra {
+	font-size: 12px;
+	color: var(--muted-foreground);
+}
+
+.multisig-owners {
+	display: flex;
+	flex-direction: column;
+	gap: 16px;
+}
+
+.multisig-owner-list {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 8px;
+}
+
+.multisig-owner {
+	background: var(--muted);
+	border-radius: 999px;
+	padding: 8px 12px;
+	font-size: 13px;
+	font-family: var(--font-mono);
+	color: var(--muted-foreground);
+}
+
+.multisig-owner-warning {
+	background: rgba(234, 179, 8, 0.15);
+	border-radius: var(--radius-md);
+	padding: 12px 16px;
+	font-size: 13px;
+	color: #92400e;
+}
+
+.multisig-tracked {
+	display: flex;
+	flex-direction: column;
+	gap: 12px;
+}
+
+.multisig-tracked-list {
+	display: grid;
+	grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+	gap: 12px;
+}
+
+.multisig-tracked-item {
+	background: var(--muted);
+	border-radius: var(--radius-md);
+	padding: 12px 16px;
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+	border: 1px solid transparent;
+	transition: all var(--transition-normal);
+	cursor: pointer;
+}
+
+.multisig-tracked-item:hover {
+	border-color: var(--accent);
+	background: var(--background);
+}
+
+.multisig-tracked-item.active {
+	border-color: var(--primary);
+	box-shadow: 0 0 0 2px rgba(59, 130, 246, 0.3);
+}
+
+.multisig-tracked-item strong {
+	font-size: 14px;
+	color: var(--foreground);
+}
+
+.multisig-filters {
+	display: flex;
+	gap: 16px;
+	flex-wrap: wrap;
+	align-items: center;
+	justify-content: space-between;
+}
+
+.multisig-filters .filter-controls {
+	display: flex;
+	gap: 12px;
+	flex-wrap: wrap;
+	align-items: center;
+}
+
+.multisig-empty {
+	padding: 32px;
+	text-align: center;
+	color: var(--muted-foreground);
+	font-style: italic;
+}
+
+.multisig-transaction-actions {
+	display: flex;
+	gap: 8px;
+	align-items: center;
+	flex-wrap: wrap;
+}
+
+.multisig-transaction-key {
+	display: flex;
+	flex-direction: column;
+	gap: 6px;
+}
+
+.multisig-transaction-key label {
+	font-size: 12px;
+	color: var(--muted-foreground);
+}
+
+.multisig-data {
+	font-family: var(--font-mono);
+	font-size: 12px;
+	background: var(--muted);
+	border-radius: var(--radius-md);
+	padding: 12px;
+	overflow: auto;
+	max-height: 160px;
+}
+
+@media (max-width: 768px) {
+	.multisig-page {
+		padding: 16px;
+	}
+
+	.multisig-card {
+		padding: 20px;
+	}
+}
+

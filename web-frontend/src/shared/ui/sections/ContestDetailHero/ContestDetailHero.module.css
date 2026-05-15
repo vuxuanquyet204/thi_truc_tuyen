@@ -1,0 +1,275 @@
+.hero {
+  background: linear-gradient(135deg, var(--card) 0%, var(--muted) 100%);
+  padding: clamp(20px, 3vw, 32px) 0 clamp(32px, 5vw, 48px) 0;
+  border-bottom: 1px solid var(--border);
+  position: relative;
+  overflow: hidden;
+  border-radius: 0 0 clamp(16px, 3vw, 24px) clamp(16px, 3vw, 24px);
+  margin: 0 clamp(8px, 2vw, 16px) clamp(16px, 3vw, 24px) clamp(8px, 2vw, 16px);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: calc(100% - clamp(16px, 4vw, 32px));
+  box-sizing: border-box;
+}
+
+.hero::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  right: 0;
+  width: 400px;
+  height: 400px;
+  background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
+  opacity: 0.05;
+  pointer-events: none;
+}
+
+.container {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: clamp(40px, 8vw, 80px) clamp(16px, 3vw, 24px) 0 clamp(16px, 3vw, 24px);
+  position: relative;
+  z-index: 1;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.breadcrumbs {
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 1vw, 8px);
+  margin-bottom: clamp(16px, 2.5vw, 20px);
+  font-size: clamp(12px, 2.5vw, 14px);
+  flex-wrap: wrap;
+  word-break: break-word;
+}
+
+.breadcrumbLink {
+  color: var(--muted-foreground);
+  text-decoration: none;
+  transition: color 0.2s ease;
+  word-break: break-word;
+}
+
+.breadcrumbLink:hover {
+  color: var(--primary);
+}
+
+.breadcrumbSeparator {
+  color: var(--muted-foreground);
+  font-weight: 600;
+  flex-shrink: 0;
+}
+
+.breadcrumbCurrent {
+  color: var(--foreground);
+  font-weight: 500;
+  word-break: break-word;
+}
+
+.titleSection {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  margin-bottom: clamp(24px, 3vw, 32px);
+  gap: clamp(16px, 2.5vw, 20px);
+  width: 100%;
+}
+
+.titleContainer {
+  flex: 1;
+  margin-right: 0;
+  width: 100%;
+}
+
+.title {
+  font-size: clamp(24px, 5vw, 36px);
+  font-weight: 800;
+  color: var(--foreground);
+  margin: 0 0 clamp(12px, 2vw, 16px) 0;
+  line-height: 1.2;
+  background: linear-gradient(135deg, var(--foreground) 0%, var(--primary) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.05);
+  word-break: break-word;
+}
+
+.contestMeta {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.5vw, 12px);
+  width: 100%;
+}
+
+.status {
+  display: inline-block;
+  padding: clamp(3px, 0.8vw, 4px) clamp(10px, 2vw, 12px);
+  border-radius: 20px;
+  font-size: clamp(10px, 2vw, 12px);
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  width: fit-content;
+}
+
+.statusActive {
+  background: var(--primary-light);
+  color: var(--primary);
+}
+
+.statusUpcoming {
+  background: var(--accent-light);
+  color: var(--accent);
+}
+
+.statusArchived {
+  background: var(--muted);
+  color: var(--muted-foreground);
+}
+
+.statusDefault {
+  background: var(--muted);
+  color: var(--muted-foreground);
+}
+
+.description {
+  color: var(--muted-foreground);
+  font-size: clamp(14px, 2.5vw, 16px);
+  line-height: 1.5;
+  margin: 0;
+  word-break: break-word;
+}
+
+.dateInfo {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  gap: clamp(8px, 1.5vw, 16px);
+  font-size: clamp(12px, 2.5vw, 14px);
+}
+
+.dateLabel {
+  color: var(--muted-foreground);
+  font-weight: 500;
+  word-break: break-word;
+}
+
+.dateValue {
+  color: var(--foreground);
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.detailsButton {
+  background: linear-gradient(135deg, var(--primary) 0%, var(--accent) 100%);
+  border: none;
+  color: white;
+  font-size: clamp(14px, 2.5vw, 16px);
+  font-weight: 600;
+  cursor: pointer;
+  padding: clamp(10px, 2vw, 12px) clamp(20px, 3vw, 24px);
+  border-radius: 12px;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  position: relative;
+  overflow: hidden;
+  width: 100%;
+  max-width: 300px;
+  box-sizing: border-box;
+}
+
+.detailsButton::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.3), transparent);
+  transition: left 0.5s ease;
+}
+
+.detailsButton:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.25);
+}
+
+.detailsButton:hover::before {
+  left: 100%;
+}
+
+.detailsButton:active {
+  transform: translateY(0);
+}
+
+.sectionHeader {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding-bottom: clamp(16px, 2.5vw, 20px);
+  border-bottom: 3px solid var(--primary);
+  margin-top: clamp(6px, 1vw, 8px);
+  position: relative;
+  gap: clamp(8px, 1.5vw, 12px);
+  width: 100%;
+}
+
+.sectionHeader::after {
+  content: '';
+  position: absolute;
+  bottom: -3px;
+  left: 0;
+  width: 60px;
+  height: 3px;
+  background: var(--accent);
+}
+
+.sectionTitle {
+  font-size: clamp(20px, 4vw, 26px);
+  font-weight: 700;
+  color: var(--foreground);
+  margin: 0;
+  letter-spacing: -0.5px;
+  word-break: break-word;
+}
+
+.challengesCount {
+  color: var(--primary);
+  font-size: clamp(13px, 2.5vw, 15px);
+  font-weight: 600;
+  background: var(--primary-light);
+  padding: clamp(4px, 1vw, 6px) clamp(12px, 2vw, 16px);
+  border-radius: 20px;
+  border: 2px solid var(--primary);
+  white-space: nowrap;
+}
+
+/* Responsive design - Most styles now use clamp() so minimal media queries needed */
+@media (min-width: 768px) {
+  .titleSection {
+    flex-direction: row;
+    align-items: flex-start;
+  }
+
+  .titleContainer {
+    margin-right: clamp(16px, 2.5vw, 20px);
+  }
+
+  .detailsButton {
+    max-width: none;
+    width: auto;
+  }
+
+  .dateInfo {
+    flex-direction: row;
+  }
+
+  .sectionHeader {
+    flex-direction: row;
+    align-items: center;
+  }
+}

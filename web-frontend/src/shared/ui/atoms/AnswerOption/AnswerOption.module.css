@@ -1,0 +1,54 @@
+.option {
+  padding: clamp(10px, 1.5vw, var(--space-3));
+  background: var(--background);
+  border: 2px solid var(--border);
+  border-radius: var(--radius-md);
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 1vw, var(--space-2));
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.optionText {
+  font-size: clamp(12px, 2vw, 14px);
+  color: var(--foreground);
+  line-height: 1.6;
+  word-break: break-word;
+  flex: 1;
+  min-width: 0;
+}
+
+.option.correct {
+  background: #d1fae5;
+  border-color: #10b981;
+}
+
+.option.correct .optionText {
+  color: #065f46;
+  font-weight: 600;
+}
+
+.option.incorrect {
+  background: #fee2e2;
+  border-color: #ef4444;
+}
+
+.option.incorrect .optionText {
+  color: #991b1b;
+  font-weight: 600;
+}
+
+.icon {
+  width: clamp(16px, 2.3vw, 18px);
+  height: clamp(16px, 2.3vw, 18px);
+  flex-shrink: 0;
+}
+
+.option.correct .icon {
+  color: #10b981;
+}
+
+.option.incorrect .icon {
+  color: #ef4444;
+}

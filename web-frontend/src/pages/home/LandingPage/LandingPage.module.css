@@ -1,0 +1,19 @@
+/* Landing Page Styles */
+
+.page {
+  min-height: 100vh;
+  background: var(--background);
+  color: var(--foreground);
+  font-family: var(--font-sans);
+  width: 100%;
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* Responsive */
+@media (max-width: 480px) {
+  .page {
+    min-height: auto;
+  }
+}
+

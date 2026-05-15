@@ -1,0 +1,223 @@
+.card {
+  background: var(--card);
+  border-radius: var(--radius-lg);
+  border: 2px solid;
+  box-shadow: var(--shadow-md);
+  overflow: hidden;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.header {
+  padding: clamp(12px, 2vw, var(--space-4));
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  border-bottom: 1px solid;
+  flex-wrap: wrap;
+  gap: clamp(8px, 1.5vw, 12px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.headerLeft {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1.5vw, var(--space-3));
+  flex: 1;
+  min-width: 0;
+}
+
+.iconEssay,
+.iconCorrect,
+.iconIncorrect {
+  width: clamp(20px, 3vw, 24px);
+  height: clamp(20px, 3vw, 24px);
+  flex-shrink: 0;
+}
+
+.iconEssay {
+  color: #3b82f6;
+}
+
+.iconCorrect {
+  color: #10b981;
+}
+
+.iconIncorrect {
+  color: #ef4444;
+}
+
+.questionNumber {
+  font-size: clamp(13px, 2vw, 14px);
+  font-weight: 700;
+  word-break: break-word;
+}
+
+.questionStatus {
+  font-size: clamp(11px, 1.8vw, 12px);
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.points {
+  background: white;
+  padding: clamp(5px, 1vw, 6px) clamp(12px, 2vw, 16px);
+  border-radius: var(--radius-full);
+  font-size: clamp(11px, 2vw, 13px);
+  font-weight: 700;
+  white-space: nowrap;
+  flex-shrink: 0;
+}
+
+.content {
+  padding: clamp(16px, 2.5vw, var(--space-5));
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.questionText {
+  font-size: clamp(14px, 2.5vw, 16px);
+  font-weight: 600;
+  margin-bottom: clamp(12px, 2vw, var(--space-4));
+  color: var(--foreground);
+  line-height: 1.6;
+  word-break: break-word;
+}
+
+.noAnswerWarning {
+  background: #fef3c7;
+  border: 1px solid #fbbf24;
+  padding: clamp(10px, 1.5vw, var(--space-3));
+  border-radius: var(--radius-md);
+  margin-bottom: clamp(10px, 1.5vw, var(--space-3));
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 1vw, var(--space-2));
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.warningIcon {
+  width: clamp(14px, 2vw, 16px);
+  height: clamp(14px, 2vw, 16px);
+  color: #92400e;
+  flex-shrink: 0;
+}
+
+.warningText {
+  font-size: clamp(12px, 2vw, 14px);
+  color: #92400e;
+  font-weight: 600;
+  word-break: break-word;
+  line-height: 1.5;
+}
+
+.optionsList {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(10px, 1.5vw, var(--space-3));
+  margin-bottom: clamp(12px, 2vw, var(--space-4));
+  width: 100%;
+}
+
+.codeContainer {
+  margin-bottom: clamp(12px, 2vw, var(--space-4));
+  width: 100%;
+  overflow-x: auto;
+}
+
+.codeLabel {
+  font-size: clamp(11px, 1.8vw, 12px);
+  color: #94a3b8;
+  margin-bottom: clamp(6px, 1vw, var(--space-2));
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.codeBlock {
+  background: #1e293b;
+  padding: clamp(12px, 2vw, var(--space-4));
+  border-radius: var(--radius-md);
+  border: 1px solid #334155;
+  font-size: clamp(11px, 2vw, 13px);
+  color: #e2e8f0;
+  font-family: var(--font-mono);
+  line-height: 1.6;
+  margin: 0;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+  overflow-x: auto;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.essayContainer {
+  background: var(--background);
+  padding: clamp(12px, 2vw, var(--space-4));
+  border-radius: var(--radius-md);
+  border: 1px solid var(--border);
+  margin-bottom: clamp(12px, 2vw, var(--space-4));
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.essayLabel {
+  font-size: clamp(11px, 1.8vw, 12px);
+  color: var(--muted-foreground);
+  margin-bottom: clamp(6px, 1vw, var(--space-2));
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.essayText {
+  font-size: clamp(12px, 2vw, 14px);
+  color: var(--foreground);
+  line-height: 1.8;
+  margin: 0;
+  word-break: break-word;
+}
+
+.explanation {
+  background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
+  padding: clamp(12px, 2vw, var(--space-4));
+  border-radius: var(--radius-md);
+  border: 1px solid #7dd3fc;
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.explanationTitle {
+  font-size: clamp(11px, 2vw, 13px);
+  font-weight: 700;
+  color: #0c4a6e;
+  margin-bottom: clamp(6px, 1vw, var(--space-2));
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 1vw, var(--space-2));
+  word-break: break-word;
+}
+
+.explanationText {
+  font-size: clamp(12px, 2vw, 14px);
+  color: #075985;
+  line-height: 1.6;
+  margin: 0;
+  word-break: break-word;
+}
+
+@media (max-width: 640px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .headerLeft {
+    width: 100%;
+  }
+
+  .points {
+    align-self: flex-end;
+  }
+}
+

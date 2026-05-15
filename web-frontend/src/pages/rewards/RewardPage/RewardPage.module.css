@@ -1,0 +1,1109 @@
+/* Reward Page Styles */
+
+.page {
+  width: 100%;
+  padding: clamp(16px, 3vw, 32px);
+  max-width: min(1280px, 100%);
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 3vw, 28px);
+  box-sizing: border-box;
+  overflow-x: hidden;
+}
+
+/* Header */
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  row-gap: clamp(12px, 2vw, 16px);
+  column-gap: clamp(16px, 2.5vw, 24px);
+  width: 100%;
+}
+
+.headerContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.headerTitle {
+  font-size: clamp(24px, 4vw, 32px);
+  font-weight: 700;
+  margin: 0;
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1.5vw, 12px);
+  word-break: break-word;
+}
+
+.headerTitleIcon {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.headerSubtitle {
+  margin: clamp(6px, 1vw, 8px) 0 0 0;
+  color: var(--muted-foreground);
+  font-size: clamp(13px, 2.5vw, 15px);
+  word-break: break-word;
+}
+
+.headerActions {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1.5vw, 12px);
+  flex-wrap: wrap;
+}
+
+.balanceBadge {
+  padding: clamp(8px, 1.5vw, 10px) clamp(12px, 2vw, 16px);
+  border-radius: 999px;
+  background: var(--muted);
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(6px, 1vw, 8px);
+  font-size: clamp(12px, 2.5vw, 14px);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.balanceBadgeIcon {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.balanceBadgeValue {
+  font-weight: 700;
+  color: var(--foreground);
+}
+
+.connectButton {
+  padding: clamp(10px, 1.5vw, 12px) clamp(14px, 2vw, 18px);
+  border-radius: 10px;
+  border: none;
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(6px, 1vw, 8px);
+  font-weight: 600;
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  font-size: clamp(12px, 2.5vw, 14px);
+  white-space: nowrap;
+}
+
+.connectButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.connectButtonConnected {
+  background: rgba(59, 130, 246, 0.12);
+  color: var(--foreground);
+}
+
+.connectButtonNotConnected {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.35);
+}
+
+.connectButtonNotConnected:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 12px 35px rgba(99, 102, 241, 0.4);
+}
+
+/* Network Cards Grid */
+.networkCardsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 320px), 1fr));
+  gap: clamp(16px, 2.5vw, 24px);
+  width: 100%;
+}
+
+.networkCard {
+  background: var(--card);
+  border-radius: clamp(12px, 2vw, 16px);
+  padding: clamp(16px, 2.5vw, 20px);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(12px, 2vw, 16px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.networkCardHeader {
+  display: flex;
+  align-items: center;
+  gap: clamp(8px, 1.5vw, 12px);
+}
+
+.networkCardIcon {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.networkCardTitle {
+  font-weight: 600;
+  font-size: clamp(13px, 2.5vw, 15px);
+  word-break: break-word;
+}
+
+.networkCardContent {
+  font-size: clamp(12px, 2.5vw, 14px);
+  color: var(--muted-foreground);
+  word-break: break-word;
+}
+
+.networkCardButton {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(10px, 1.5vw, 12px) clamp(12px, 2vw, 16px);
+  border-radius: clamp(10px, 1.5vw, 12px);
+  background: var(--muted);
+  border: none;
+  cursor: pointer;
+  font-family: monospace;
+  font-size: clamp(11px, 2vw, 13px);
+  transition: background var(--transition-fast);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.networkCardButton:hover {
+  background: var(--border);
+}
+
+.networkWarning {
+  padding: clamp(10px, 1.5vw, 12px) clamp(12px, 2vw, 14px);
+  border: 1px solid #f97316;
+  background: rgba(249, 115, 22, 0.12);
+  border-radius: clamp(10px, 1.5vw, 12px);
+  color: #9a3412;
+  font-size: clamp(11px, 2vw, 13px);
+  display: flex;
+  gap: clamp(8px, 1.5vw, 10px);
+  align-items: flex-start;
+  word-break: break-word;
+}
+
+.networkWarningIcon {
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.networkInfoGrid {
+  display: grid;
+  gap: clamp(6px, 1vw, 8px);
+  font-size: clamp(12px, 2.5vw, 14px);
+  color: var(--muted-foreground);
+}
+
+.networkInfoItem {
+  word-break: break-word;
+}
+
+.networkInfoLabel {
+  font-weight: 600;
+  color: var(--foreground);
+}
+
+.refreshButton {
+  margin-top: clamp(6px, 1vw, 8px);
+  padding: clamp(8px, 1.5vw, 10px) clamp(12px, 2vw, 14px);
+  border: 1px solid var(--border);
+  border-radius: clamp(8px, 1.5vw, 10px);
+  background: transparent;
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(6px, 1vw, 8px);
+  cursor: pointer;
+  font-size: clamp(11px, 2vw, 13px);
+  font-weight: 500;
+  transition: all var(--transition-fast);
+}
+
+.refreshButton:hover {
+  background: var(--muted);
+}
+
+/* Deposit & Withdraw Grid */
+.depositWithdrawGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 360px), 1fr));
+  gap: clamp(16px, 2.5vw, 24px);
+  width: 100%;
+}
+
+/* Card Base */
+.card {
+  background: var(--card);
+  border-radius: clamp(16px, 2.5vw, 20px);
+  padding: clamp(16px, 2.5vw, 24px);
+  border: 1px solid var(--border);
+  display: flex;
+  flex-direction: column;
+  gap: clamp(14px, 2vw, 18px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.depositCard {
+  position: relative;
+  overflow: hidden;
+}
+
+.depositCardBackground {
+  position: absolute;
+  top: -60px;
+  right: -60px;
+  width: 160px;
+  height: 160px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.15), rgba(79, 70, 229, 0.05));
+  border-radius: 50%;
+  z-index: 0;
+}
+
+.depositCardContent {
+  z-index: 1;
+}
+
+.cardHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: clamp(6px, 1vw, 8px);
+}
+
+.cardTitle {
+  margin: 0;
+  font-size: clamp(18px, 3vw, 20px);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 1vw, 8px);
+  word-break: break-word;
+}
+
+.cardTitleIcon {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.cardDescription {
+  margin: 0;
+  font-size: clamp(12px, 2.5vw, 14px);
+  color: var(--muted-foreground);
+  word-break: break-word;
+}
+
+/* Forms */
+.form {
+  margin-top: clamp(10px, 1.5vw, 14px);
+  display: grid;
+  gap: clamp(10px, 1.5vw, 12px);
+}
+
+.formGroup {
+  display: grid;
+  gap: clamp(4px, 1vw, 6px);
+}
+
+.formLabel {
+  font-size: clamp(11px, 2vw, 13px);
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.formInput {
+  width: 100%;
+  padding: clamp(10px, 1.5vw, 12px) clamp(12px, 2vw, 14px);
+  border-radius: clamp(8px, 1.5vw, 10px);
+  border: 1px solid var(--border);
+  background: var(--background);
+  font-size: clamp(12px, 2.5vw, 14px);
+  box-sizing: border-box;
+}
+
+.formInput:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.formInputMonospace {
+  font-family: monospace;
+}
+
+.formActions {
+  display: flex;
+  gap: clamp(8px, 1.5vw, 10px);
+  flex-wrap: wrap;
+}
+
+.formButton {
+  border: none;
+  border-radius: clamp(8px, 1.5vw, 10px);
+  padding: clamp(10px, 1.5vw, 12px) clamp(14px, 2vw, 18px);
+  font-weight: 600;
+  cursor: pointer;
+  display: inline-flex;
+  align-items: center;
+  gap: clamp(6px, 1vw, 8px);
+  font-size: clamp(12px, 2.5vw, 14px);
+  transition: all var(--transition-fast);
+  white-space: nowrap;
+}
+
+.formButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.formButtonPrimary {
+  background: var(--primary);
+  color: #fff;
+  box-shadow: 0 12px 30px rgba(99, 102, 241, 0.25);
+}
+
+.formButtonPrimary:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 14px 35px rgba(99, 102, 241, 0.3);
+}
+
+.formButtonSecondary {
+  border: 1px solid var(--border);
+  background: var(--card);
+  font-weight: 500;
+}
+
+.formButtonSecondary:hover {
+  background: var(--muted);
+}
+
+.formButtonDisabled {
+  background: rgba(99, 102, 241, 0.35);
+  color: #fff;
+  box-shadow: none;
+}
+
+.formHelper {
+  font-size: clamp(10px, 2vw, 12px);
+  color: var(--muted-foreground);
+  display: grid;
+  gap: clamp(2px, 0.5vw, 4px);
+  word-break: break-word;
+}
+
+.formHelperError {
+  color: #dc2626;
+}
+
+/* Notes */
+.note {
+  margin-top: clamp(6px, 1vw, 8px);
+  padding: clamp(10px, 1.5vw, 12px) clamp(12px, 2vw, 14px);
+  border-radius: clamp(8px, 1.5vw, 10px);
+  font-size: clamp(11px, 2vw, 13px);
+  word-break: break-word;
+}
+
+.noteSuccess {
+  border: 1px solid #22c55e;
+  background: rgba(34, 197, 94, 0.1);
+  color: #047857;
+}
+
+.noteError {
+  border: 1px solid #ef4444;
+  background: rgba(248, 113, 113, 0.12);
+  color: #b91c1c;
+}
+
+.noteInfo {
+  border: 1px solid #3b82f6;
+  background: rgba(59, 130, 246, 0.12);
+  color: #1d4ed8;
+}
+
+.noteMessage {
+  font-weight: 600;
+  margin-bottom: 4px;
+}
+
+.noteDetail {
+  font-size: inherit;
+}
+
+.withdrawNote {
+  margin-top: clamp(12px, 2vw, 16px);
+}
+
+/* Deposit Specific */
+.depositWarning {
+  background: rgba(247, 147, 26, 0.12);
+  border: 1px solid rgba(247, 147, 26, 0.4);
+  border-radius: clamp(10px, 1.5vw, 12px);
+  padding: clamp(12px, 2vw, 14px) clamp(14px, 2.5vw, 16px);
+  display: flex;
+  gap: clamp(10px, 1.5vw, 12px);
+  align-items: flex-start;
+  word-break: break-word;
+}
+
+.depositWarningIcon {
+  color: #b45309;
+  margin-top: 2px;
+  flex-shrink: 0;
+}
+
+.depositWarningText {
+  font-size: clamp(11px, 2vw, 13px);
+  color: #b45309;
+}
+
+.depositAddressContainer {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: clamp(12px, 2vw, 14px) clamp(14px, 2.5vw, 16px);
+  border-radius: clamp(10px, 1.5vw, 12px);
+  background: var(--muted);
+  font-family: monospace;
+  font-size: clamp(12px, 2.5vw, 14px);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.depositAddressLabel {
+  font-size: clamp(9px, 1.5vw, 11px);
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  opacity: 0.7;
+  word-break: break-word;
+}
+
+.depositAddressValue {
+  word-break: break-all;
+}
+
+.depositAddressCopyButton {
+  border: none;
+  background: var(--card);
+  border-radius: clamp(8px, 1.5vw, 10px);
+  padding: clamp(8px, 1.5vw, 10px);
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-shrink: 0;
+  transition: background var(--transition-fast);
+}
+
+.depositAddressCopyButton:hover:not(:disabled) {
+  background: var(--border);
+}
+
+.depositAddressCopyButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.5;
+}
+
+.depositQRContainer {
+  display: grid;
+  grid-template-columns: clamp(100px, 15vw, 120px) 1fr;
+  gap: clamp(14px, 2.5vw, 18px);
+  align-items: center;
+  width: 100%;
+}
+
+.depositQRImage {
+  width: 100%;
+  padding-top: 100%;
+  border-radius: clamp(10px, 1.5vw, 12px);
+  overflow: hidden;
+  position: relative;
+  background: var(--muted);
+}
+
+.depositQRImage img {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.depositInstructions {
+  font-size: clamp(11px, 2vw, 13px);
+  color: var(--muted-foreground);
+  display: grid;
+  gap: clamp(6px, 1vw, 8px);
+}
+
+.depositInstructionsTitle {
+  font-weight: 600;
+  color: var(--foreground);
+  word-break: break-word;
+}
+
+.depositInstructionsList {
+  margin: 0;
+  padding-left: clamp(14px, 2.5vw, 18px);
+  display: grid;
+  gap: clamp(4px, 1vw, 6px);
+}
+
+.depositInstructionsListItem {
+  word-break: break-word;
+}
+
+.depositFooter {
+  margin-top: auto;
+  padding: clamp(10px, 1.5vw, 12px);
+  border-radius: clamp(8px, 1.5vw, 10px);
+  background: var(--muted);
+  font-size: clamp(10px, 2vw, 12px);
+  color: var(--muted-foreground);
+  word-break: break-word;
+}
+
+/* Withdraw Specific */
+.withdrawStatsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 140px), 1fr));
+  gap: clamp(10px, 1.5vw, 12px);
+  width: 100%;
+}
+
+.withdrawStatCard {
+  padding: clamp(10px, 1.5vw, 12px) clamp(12px, 2vw, 14px);
+  border-radius: clamp(12px, 2vw, 14px);
+  background: var(--muted);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.withdrawStatLabel {
+  font-size: clamp(10px, 2vw, 12px);
+  opacity: 0.7;
+  word-break: break-word;
+}
+
+.withdrawStatValue {
+  font-size: clamp(18px, 3vw, 22px);
+  font-weight: 700;
+  color: var(--primary);
+  word-break: break-word;
+}
+
+.withdrawForm {
+  display: grid;
+  gap: clamp(12px, 2vw, 14px);
+}
+
+.withdrawFormButton {
+  margin-top: clamp(2px, 0.5vw, 4px);
+  padding: clamp(12px, 2vw, 14px);
+  border-radius: clamp(10px, 1.5vw, 12px);
+  background: linear-gradient(135deg, var(--primary), var(--accent));
+  border: none;
+  color: white;
+  font-weight: 600;
+  font-size: clamp(13px, 2.5vw, 15px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(6px, 1vw, 8px);
+  cursor: pointer;
+  transition: all var(--transition-fast);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.withdrawFormButton:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+  background: var(--muted);
+}
+
+.withdrawFormButton:hover:not(:disabled) {
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(99, 102, 241, 0.3);
+}
+
+.withdrawFormHelper {
+  font-size: clamp(10px, 2vw, 12px);
+  color: var(--muted-foreground);
+  display: grid;
+  gap: clamp(2px, 0.5vw, 4px);
+  word-break: break-word;
+}
+
+.withdrawFormHelperItem {
+  word-break: break-word;
+}
+
+.withdrawWarning {
+  display: flex;
+  align-items: center;
+  gap: clamp(4px, 1vw, 6px);
+  font-size: clamp(10px, 2vw, 12px);
+  color: var(--muted-foreground);
+  word-break: break-word;
+}
+
+.withdrawWarningIcon {
+  flex-shrink: 0;
+}
+
+/* Store Section */
+.storeSection {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 2.5vw, 20px);
+}
+
+.storeHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(12px, 2vw, 16px);
+}
+
+.storeHeaderContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.storeTitle {
+  margin: 0;
+  font-size: clamp(20px, 3vw, 22px);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 1vw, 8px);
+  word-break: break-word;
+}
+
+.storeTitleIcon {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.storeDescription {
+  margin: clamp(4px, 1vw, 6px) 0 0 0;
+  font-size: clamp(11px, 2vw, 13px);
+  color: var(--muted-foreground);
+  word-break: break-word;
+}
+
+.storeTabs {
+  display: inline-flex;
+  gap: clamp(6px, 1vw, 8px);
+  background: var(--muted);
+  padding: clamp(4px, 1vw, 6px);
+  border-radius: clamp(10px, 1.5vw, 12px);
+}
+
+.storeTab {
+  padding: clamp(8px, 1.5vw, 10px) clamp(14px, 2.5vw, 18px);
+  border-radius: clamp(8px, 1.5vw, 10px);
+  border: none;
+  font-size: clamp(11px, 2vw, 13px);
+  font-weight: 600;
+  cursor: pointer;
+  transition: background var(--transition-fast);
+  white-space: nowrap;
+}
+
+.storeTabActive {
+  background: var(--card);
+}
+
+.storeTabInactive {
+  background: transparent;
+}
+
+.storeItemsGrid {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 220px), 1fr));
+  gap: clamp(14px, 2.5vw, 18px);
+  width: 100%;
+}
+
+.storeItem {
+  border: 1px solid var(--border);
+  border-radius: clamp(12px, 2vw, 16px);
+  padding: clamp(12px, 2vw, 16px);
+  display: grid;
+  gap: clamp(10px, 1.5vw, 12px);
+  background: var(--background);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.storeItemImage {
+  height: clamp(100px, 15vw, 120px);
+  border-radius: clamp(10px, 1.5vw, 12px);
+  background: var(--muted);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.storeItemImage img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.storeItemContent {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(4px, 1vw, 6px);
+}
+
+.storeItemName {
+  font-size: clamp(13px, 2.5vw, 15px);
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.storeItemDescription {
+  font-size: clamp(10px, 2vw, 12px);
+  color: var(--muted-foreground);
+  margin-top: clamp(2px, 0.5vw, 4px);
+  word-break: break-word;
+}
+
+.storeItemFooter {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: clamp(8px, 1.5vw, 12px);
+}
+
+.storeItemPrice {
+  font-size: clamp(16px, 2.5vw, 18px);
+  font-weight: 700;
+  color: var(--primary);
+  word-break: break-word;
+}
+
+.storeItemStock {
+  font-size: clamp(9px, 1.5vw, 11px);
+  color: var(--muted-foreground);
+  word-break: break-word;
+}
+
+.storeItemButton {
+  padding: clamp(8px, 1.5vw, 10px) clamp(10px, 1.5vw, 12px);
+  border-radius: clamp(8px, 1.5vw, 10px);
+  border: none;
+  background: var(--primary);
+  color: white;
+  font-size: clamp(11px, 2vw, 13px);
+  font-weight: 600;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: clamp(4px, 1vw, 6px);
+  transition: all var(--transition-fast);
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.storeItemButton:hover {
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.3);
+}
+
+.storeEmptyState {
+  grid-column: 1 / -1;
+  padding: clamp(16px, 2.5vw, 24px);
+  border: 1px dashed var(--border);
+  border-radius: clamp(12px, 2vw, 16px);
+  text-align: center;
+  color: var(--muted-foreground);
+  font-size: clamp(11px, 2vw, 13px);
+  word-break: break-word;
+}
+
+.storeErrorState {
+  grid-column: 1 / -1;
+  padding: clamp(16px, 2.5vw, 20px);
+  border-radius: clamp(12px, 2vw, 16px);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  background: rgba(239, 68, 68, 0.08);
+  color: #b91c1c;
+  text-align: center;
+  font-size: clamp(11px, 2vw, 13px);
+  word-break: break-word;
+}
+
+.storeLoadingState {
+  grid-column: 1 / -1;
+  padding: clamp(16px, 2.5vw, 24px);
+  border: 1px dashed var(--border);
+  border-radius: clamp(12px, 2vw, 16px);
+  text-align: center;
+  color: var(--muted-foreground);
+  word-break: break-word;
+}
+
+.storeHistoryEmpty {
+  border: 1px dashed var(--border);
+  border-radius: clamp(12px, 2vw, 16px);
+  padding: clamp(16px, 2.5vw, 24px);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: clamp(10px, 1.5vw, 12px);
+}
+
+.storeHistoryEmptyIcon {
+  color: var(--muted-foreground);
+}
+
+.storeHistoryEmptyTitle {
+  font-weight: 600;
+  word-break: break-word;
+}
+
+.storeHistoryEmptyText {
+  font-size: clamp(11px, 2vw, 13px);
+  color: var(--muted-foreground);
+  word-break: break-word;
+}
+
+.storeHistoryEmptyButton {
+  padding: clamp(8px, 1.5vw, 10px) clamp(12px, 2vw, 16px);
+  border-radius: clamp(8px, 1.5vw, 10px);
+  border: 1px solid var(--border);
+  background: transparent;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: clamp(4px, 1vw, 6px);
+  font-size: clamp(11px, 2vw, 13px);
+  transition: all var(--transition-fast);
+}
+
+.storeHistoryEmptyButton:hover {
+  background: var(--muted);
+}
+
+/* History Section */
+.historySection {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(16px, 2.5vw, 20px);
+}
+
+.historyHeader {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: clamp(12px, 2vw, 16px);
+}
+
+.historyHeaderContent {
+  flex: 1;
+  min-width: 0;
+}
+
+.historyTitle {
+  margin: 0;
+  font-size: clamp(20px, 3vw, 22px);
+  font-weight: 700;
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 1vw, 8px);
+  word-break: break-word;
+}
+
+.historyTitleIcon {
+  color: var(--primary);
+  flex-shrink: 0;
+}
+
+.historyDescription {
+  margin: clamp(4px, 1vw, 6px) 0 0 0;
+  font-size: clamp(11px, 2vw, 13px);
+  color: var(--muted-foreground);
+  word-break: break-word;
+}
+
+.historyBadge {
+  font-size: clamp(11px, 2vw, 13px);
+  background: var(--muted);
+  padding: clamp(6px, 1vw, 8px) clamp(12px, 2vw, 14px);
+  border-radius: clamp(12px, 2vw, 16px);
+  color: var(--muted-foreground);
+  font-weight: 500;
+  white-space: nowrap;
+}
+
+.historyError {
+  padding: clamp(10px, 1.5vw, 12px) clamp(12px, 2vw, 14px);
+  border-radius: clamp(8px, 1.5vw, 10px);
+  border: 1px solid rgba(239, 68, 68, 0.35);
+  background: rgba(239, 68, 68, 0.1);
+  display: flex;
+  align-items: center;
+  gap: clamp(6px, 1vw, 8px);
+  color: #b91c1c;
+  font-size: clamp(11px, 2vw, 13px);
+  word-break: break-word;
+}
+
+.historyErrorIcon {
+  flex-shrink: 0;
+}
+
+/* Toast */
+.toast {
+  position: fixed;
+  bottom: clamp(16px, 3vw, 24px);
+  right: clamp(16px, 3vw, 24px);
+  color: white;
+  padding: clamp(12px, 2vw, 16px) clamp(16px, 2.5vw, 20px);
+  border-radius: clamp(10px, 1.5vw, 12px);
+  box-shadow: 0 20px 40px rgba(0, 0, 0, 0.35);
+  z-index: 10000;
+  max-width: min(360px, calc(100vw - 32px));
+  box-sizing: border-box;
+}
+
+.toastSuccess {
+  background: rgba(22, 163, 74, 0.95);
+}
+
+.toastError {
+  background: rgba(220, 38, 38, 0.95);
+}
+
+.toastInfo {
+  background: rgba(59, 130, 246, 0.95);
+}
+
+.toastMessage {
+  font-weight: 600;
+  margin-bottom: 4px;
+  word-break: break-word;
+}
+
+.toastDetail {
+  font-size: clamp(11px, 2vw, 13px);
+  opacity: 0.85;
+  word-break: break-word;
+}
+
+/* Loading Spinner */
+.loadingSpinner {
+  width: clamp(12px, 2vw, 16px);
+  height: clamp(12px, 2vw, 16px);
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: #fff;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+@keyframes spin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* Responsive Breakpoints */
+@media (max-width: 768px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .headerActions {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .connectButton {
+    flex: 1;
+    justify-content: center;
+  }
+
+  .depositQRContainer {
+    grid-template-columns: 1fr;
+  }
+
+  .depositQRImage {
+    max-width: 200px;
+    margin: 0 auto;
+  }
+
+  .withdrawStatsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .storeHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .storeTabs {
+    width: 100%;
+    justify-content: stretch;
+  }
+
+  .storeTab {
+    flex: 1;
+    text-align: center;
+  }
+
+  .historyHeader {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}
+
+@media (max-width: 480px) {
+  .page {
+    padding: clamp(12px, 2.5vw, 16px);
+  }
+
+  .balanceBadge {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .connectButton {
+    width: 100%;
+  }
+
+  .networkCardsGrid,
+  .depositWithdrawGrid,
+  .storeItemsGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .formActions {
+    flex-direction: column;
+  }
+
+  .formButton {
+    width: 100%;
+  }
+}
+
