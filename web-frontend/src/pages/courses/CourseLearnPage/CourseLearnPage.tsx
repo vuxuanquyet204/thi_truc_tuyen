@@ -156,8 +156,18 @@ export default function CourseLearnPage(): JSX.Element {
   const rewardBanner = (() => {
     if (isAwardingTokens) {
       return (
-        <div className="reward-banner loading">
-          <Award />
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 'var(--space-3)',
+          padding: '10px var(--space-6)',
+          background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+          color: 'white',
+          fontSize: '14px',
+          fontWeight: 500,
+          flexShrink: 0,
+        }}>
+          <Award size={18} />
           <span>Đang cộng token phần thưởng cho bạn...</span>
         </div>
       )
@@ -165,8 +175,18 @@ export default function CourseLearnPage(): JSX.Element {
 
     if (awardMessage) {
       return (
-        <div className="reward-banner success">
-          <Award />
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 'var(--space-3)',
+          padding: '10px var(--space-6)',
+          background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+          color: 'white',
+          fontSize: '14px',
+          fontWeight: 500,
+          flexShrink: 0,
+        }}>
+          <Award size={18} />
           <span>{awardMessage}</span>
         </div>
       )
@@ -174,14 +194,33 @@ export default function CourseLearnPage(): JSX.Element {
 
     if (awardError) {
       return (
-        <div className="reward-banner error">
-          <AlertCircle />
-          <span>{awardError}</span>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 'var(--space-3)',
+          padding: '10px var(--space-6)',
+          background: 'linear-gradient(135deg, #ef4444 0%, #dc2626 100%)',
+          color: 'white',
+          fontSize: '14px',
+          fontWeight: 500,
+          flexShrink: 0,
+        }}>
+          <AlertCircle size={18} />
+          <span style={{ flex: 1 }}>{awardError}</span>
           <button
             type="button"
             onClick={handleRetryAward}
             disabled={isAwardingTokens}
-            className="retry-button"
+            style={{
+              padding: '4px 16px',
+              background: 'rgba(255,255,255,0.2)',
+              color: 'white',
+              border: '1px solid rgba(255,255,255,0.3)',
+              borderRadius: 'var(--radius)',
+              fontSize: '13px',
+              fontWeight: 600,
+              cursor: 'pointer',
+            }}
           >
             Thử lại
           </button>
@@ -524,18 +563,68 @@ export default function CourseLearnPage(): JSX.Element {
 
   if (loading) {
     return (
-      <div className="course-learn-loading">
-        <div className="spinner"></div>
-        <p>Đang tải bài học...</p>
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
+        gap: 'var(--space-4)',
+        color: 'var(--muted-foreground)',
+      }}>
+        <div style={{
+          width: '40px',
+          height: '40px',
+          border: '3px solid var(--muted)',
+          borderTop: '3px solid #3b82f6',
+          borderRadius: '50%',
+          animation: 'spin 0.8s linear infinite',
+        }} />
+        <p style={{ fontSize: '14px', fontWeight: 500 }}>Đang tải bài học...</p>
       </div>
     )
   }
 
   if (error || !course || !currentMaterial) {
     return (
-      <div className="course-learn-error">
-        <p>{error || 'Không tìm thấy bài học'}</p>
-        <button onClick={() => navigate(`/user/courses/${courseId}`)} className="btn-back">
+      <div style={{
+        display: 'flex',
+        flexDirection: 'column',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: '100vh',
+        gap: 'var(--space-4)',
+        padding: 'var(--space-6)',
+      }}>
+        <div style={{
+          width: '64px',
+          height: '64px',
+          borderRadius: '50%',
+          background: 'linear-gradient(135deg, #fee2e2 0%, #fecaca 100%)',
+          display: 'flex',
+          alignItems: 'center',
+          justifyContent: 'center',
+          color: '#dc2626',
+          marginBottom: '8px',
+        }}>
+          <AlertCircle size={32} />
+        </div>
+        <p style={{ fontSize: '16px', fontWeight: 600, color: 'var(--foreground)', margin: 0 }}>
+          {error || 'Không tìm thấy bài học'}
+        </p>
+        <button
+          onClick={() => navigate(`/user/courses/${courseId}`)}
+          style={{
+            padding: '10px 24px',
+            background: 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)',
+            color: 'white',
+            border: 'none',
+            borderRadius: 'var(--radius)',
+            fontSize: '14px',
+            fontWeight: 600,
+            cursor: 'pointer',
+          }}
+        >
           Quay lại khóa học
         </button>
       </div>
@@ -543,32 +632,112 @@ export default function CourseLearnPage(): JSX.Element {
   }
 
   return (
-    <div className="course-learn-page" style={{ height: '100vh', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
+    <div style={{ height: '100vh', overflow: 'hidden', display: 'flex', flexDirection: 'column' }}>
       {/* Header */}
-      <div className="learn-header">
-        <div className="header-info">
-          <h1>{course.title}</h1>
-          <p className="material-position">
-            Bại {getCurrentMaterialIndex()} / {materials.length}
+      <div style={{
+        display: 'flex',
+        alignItems: 'center',
+        gap: 'var(--space-4)',
+        padding: '12px var(--space-6)',
+        background: 'var(--card)',
+        borderBottom: '1px solid var(--border)',
+        flexShrink: 0,
+        zIndex: 10,
+      }}>
+        <button
+          onClick={() => navigate(`/user/courses/${courseId}`)}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '36px',
+            height: '36px',
+            borderRadius: 'var(--radius)',
+            border: '1px solid var(--border)',
+            background: 'var(--background)',
+            color: 'var(--foreground)',
+            cursor: 'pointer',
+            flexShrink: 0,
+            transition: 'all 0.15s',
+          }}
+          onMouseEnter={(e) => {
+            e.currentTarget.style.background = 'var(--accent)'
+            e.currentTarget.style.borderColor = 'var(--accent)'
+          }}
+          onMouseLeave={(e) => {
+            e.currentTarget.style.background = 'var(--background)'
+            e.currentTarget.style.borderColor = 'var(--border)'
+          }}
+          title="Quay lại"
+        >
+          <ArrowLeft size={18} />
+        </button>
+
+        <div style={{ flex: 1, minWidth: 0 }}>
+          <h1 style={{
+            fontSize: '16px',
+            fontWeight: 700,
+            color: 'var(--foreground)',
+            margin: 0,
+            whiteSpace: 'nowrap',
+            overflow: 'hidden',
+            textOverflow: 'ellipsis',
+          }}>{course.title}</h1>
+          <p style={{
+            fontSize: '12px',
+            color: 'var(--muted-foreground)',
+            margin: '2px 0 0',
+          }}>
+            Bài {getCurrentMaterialIndex()} / {materials.length}
           </p>
         </div>
 
-          <div className="header-progress">
-            <div className="progress-bar">
-              <div 
-                className="progress-fill" 
-              style={{ width: `${percentComplete}%` }}
-              ></div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-3)', flexShrink: 0 }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)', minWidth: '120px' }}>
+            <div style={{
+              flex: 1,
+              height: '6px',
+              background: 'var(--muted)',
+              borderRadius: '9999px',
+              overflow: 'hidden',
+            }}>
+              <div
+                style={{
+                  height: '100%',
+                  width: `${percentComplete}%`,
+                  background: percentComplete >= 100
+                    ? 'linear-gradient(90deg, #10b981, #059669)'
+                    : 'linear-gradient(90deg, #3b82f6, #2563eb)',
+                  borderRadius: '9999px',
+                  transition: 'width 0.4s ease',
+                }}
+              />
+            </div>
+            <span style={{ fontSize: '12px', fontWeight: 600, color: 'var(--muted-foreground)', minWidth: '36px', textAlign: 'right' }}>
+              {percentComplete}%
+            </span>
           </div>
-          <span className="progress-text">{percentComplete}%</span>
         </div>
 
-        <button 
-          onClick={() => setSidebarOpen(!sidebarOpen)} 
-          className="btn-toggle-sidebar"
-          title={sidebarOpen ? 'Ẩn nội dung' : 'Hiện nội dung'}
+        <button
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+          style={{
+            display: 'flex',
+            alignItems: 'center',
+            justifyContent: 'center',
+            width: '36px',
+            height: '36px',
+            borderRadius: 'var(--radius)',
+            border: '1px solid var(--border)',
+            background: sidebarOpen ? 'var(--accent)' : 'var(--background)',
+            color: 'var(--foreground)',
+            cursor: 'pointer',
+            flexShrink: 0,
+            transition: 'all 0.15s',
+          }}
+          title={sidebarOpen ? 'Ẩn danh sách' : 'Hiện danh sách'}
         >
-          {sidebarOpen ? <CloseIcon size={24} /> : <Menu size={24} />}
+          {sidebarOpen ? <CloseIcon size={18} /> : <Menu size={18} />}
         </button>
       </div>
 
@@ -579,13 +748,32 @@ export default function CourseLearnPage(): JSX.Element {
         const allowReward = percentComplete >= 100 && !hasAwardedCompletion && (!hasQuiz || !firstIncompleteQuiz)
         return allowReward
       })() && (
-        <div className="reward-banner cta">
-          <Award />
-          <span>Bạn đã hoàn thành 100% khóa học. Nhấn để nhận {COURSE_COMPLETION_REWARD} LEARN.</span>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 'var(--space-3)',
+          padding: '10px var(--space-6)',
+          background: 'linear-gradient(135deg, #a855f7 0%, #9333ea 100%)',
+          color: 'white',
+          fontSize: '14px',
+          fontWeight: 500,
+          flexShrink: 0,
+        }}>
+          <Award size={18} />
+          <span style={{ flex: 1 }}>Bạn đã hoàn thành 100% khóa học. Nhấn để nhận {COURSE_COMPLETION_REWARD} LEARN.</span>
           <button
             type="button"
             onClick={() => { void handleCourseCompletionReward() }}
-            className="claim-button"
+            style={{
+              padding: '6px 16px',
+              background: 'rgba(255,255,255,0.2)',
+              color: 'white',
+              border: '1px solid rgba(255,255,255,0.3)',
+              borderRadius: 'var(--radius)',
+              fontSize: '13px',
+              fontWeight: 700,
+              cursor: 'pointer',
+            }}
           >
             Nhận thưởng
           </button>
@@ -593,29 +781,47 @@ export default function CourseLearnPage(): JSX.Element {
       )}
       {/* Nếu còn quiz chưa làm khi đạt 100%, yêu cầu làm quiz trước */}
       {!isAwardingTokens && !awardMessage && !awardError && percentComplete >= 100 && !hasAwardedCompletion && materials.some(m => m.type === 'quiz' && !isMaterialCompleted(m.id)) && (
-        <div className="reward-banner warning">
-          <FileQuestion />
-          <span>Bạn cần hoàn thành bài quiz cuối cùng trước khi nhận thưởng.</span>
+        <div style={{
+          display: 'flex',
+          alignItems: 'center',
+          gap: 'var(--space-3)',
+          padding: '10px var(--space-6)',
+          background: 'linear-gradient(135deg, #f59e0b 0%, #d97706 100%)',
+          color: 'white',
+          fontSize: '14px',
+          fontWeight: 500,
+          flexShrink: 0,
+        }}>
+          <FileQuestion size={18} />
+          <span style={{ flex: 1 }}>Bạn cần hoàn thành bài quiz cuối cùng trước khi nhận thưởng.</span>
           <button
             type="button"
             onClick={() => {
               const pending = materials.find(m => m.type === 'quiz' && !isMaterialCompleted(m.id))
               if (pending) handleMaterialSelect(pending)
             }}
-            className="claim-button"
+            style={{
+              padding: '6px 16px',
+              background: 'rgba(255,255,255,0.2)',
+              color: 'white',
+              border: '1px solid rgba(255,255,255,0.3)',
+              borderRadius: 'var(--radius)',
+              fontSize: '13px',
+              fontWeight: 700,
+              cursor: 'pointer',
+            }}
           >
-            LẠm quiz ngay
+            Làm quiz ngay
           </button>
         </div>
       )}
 
       {/* Content Area */}
-      <div className="learn-content" style={{ flex: 1, minHeight: 0, display: 'flex', gap: 'var(--space-6)', overflow: 'hidden' }}>
+      <div style={{ flex: 1, minHeight: 0, display: 'flex', gap: 'var(--space-6)', overflow: 'hidden' }}>
         {/* Main Content */}
-        <div className="main-content" style={{ flex: 1, minWidth: 0, overflowY: 'auto', paddingRight: 8, position: 'relative', zIndex: 0 }}>
+        <div style={{ flex: 1, minWidth: 0, overflowY: 'auto', paddingRight: 8, position: 'relative', zIndex: 0 }}>
           {/* Material Content */}
           <div
-            className="material-content"
             style={{
               position: 'relative',
               overflow: 'visible',
@@ -630,10 +836,9 @@ export default function CourseLearnPage(): JSX.Element {
             {/* Video */}
             {currentMaterial.type === 'video' && (
               <div
-                className="video-container"
                 style={{
                   width: '100%',
-                  maxHeight: 'calc(100vh - 220px)', // trừ phần header + banner + margin để không bị cắt
+                  maxHeight: 'calc(100vh - 220px)',
                   backgroundColor: '#000',
                   borderRadius: 'var(--radius-lg)',
                   display: 'flex',
@@ -678,7 +883,6 @@ export default function CourseLearnPage(): JSX.Element {
             {/* Image */}
             {currentMaterial.type === 'image' && (
               <div
-                className="image-container"
                 style={{
                   width: '100%',
                   maxHeight: 'calc(100vh - 220px)',
@@ -706,25 +910,77 @@ export default function CourseLearnPage(): JSX.Element {
 
             {/* Document/Text Content */}
             {(currentMaterial.type === 'document' || currentMaterial.type === 'text') && (
-              <div className="document-content">
-                <div className="document-header">
-                  <FileText size={32} />
-                  <h2>{currentMaterial.title}</h2>
+              <div style={{
+                background: 'var(--card)',
+                borderRadius: 'var(--radius-lg)',
+                border: '1px solid var(--border)',
+                overflow: 'hidden',
+              }}>
+                <div style={{
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: 'var(--space-3)',
+                  padding: 'var(--space-4) var(--space-5)',
+                  borderBottom: '1px solid var(--border)',
+                  background: 'linear-gradient(135deg, #f0fdf4 0%, #dcfce7 100%)',
+                }}>
+                  <div style={{
+                    width: '40px',
+                    height: '40px',
+                    borderRadius: 'var(--radius)',
+                    background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                    display: 'flex',
+                    alignItems: 'center',
+                    justifyContent: 'center',
+                    color: 'white',
+                  }}>
+                    <FileText size={20} />
+                  </div>
+                  <h2 style={{ fontSize: '16px', fontWeight: 700, margin: 0, color: 'var(--foreground)' }}>
+                    {currentMaterial.title}
+                  </h2>
                 </div>
                 {currentMaterial.description && (
-                  <div className="document-body">
-                  <p>{currentMaterial.description ?? currentMaterial.content}</p>
+                  <div style={{ padding: 'var(--space-5)' }}>
+                    <p style={{ fontSize: '14px', lineHeight: 1.8, color: 'var(--foreground)', margin: 0, whiteSpace: 'pre-wrap' }}>
+                      {currentMaterial.description ?? currentMaterial.content}
+                    </p>
                   </div>
                 )}
                 {(currentMaterial.contentUrl || currentMaterial.storageKey) && (
-                  <div className="document-actions">
-                    <a 
-                      href={resolveMaterialFileUrl(currentMaterial.storageKey, currentMaterial.contentUrl) || '#'} 
-                      target="_blank" 
+                  <div style={{
+                    padding: 'var(--space-4) var(--space-5)',
+                    borderTop: '1px solid var(--border)',
+                    background: 'var(--muted)',
+                  }}>
+                    <a
+                      href={resolveMaterialFileUrl(currentMaterial.storageKey, currentMaterial.contentUrl) || '#'}
+                      target="_blank"
                       rel="noopener noreferrer"
-                      className="btn-download"
+                      style={{
+                        display: 'inline-flex',
+                        alignItems: 'center',
+                        gap: 'var(--space-2)',
+                        padding: 'var(--space-2) var(--space-4)',
+                        background: 'var(--card)',
+                        border: '1px solid var(--border)',
+                        borderRadius: 'var(--radius)',
+                        color: 'var(--foreground)',
+                        fontSize: '13px',
+                        fontWeight: 600,
+                        textDecoration: 'none',
+                        transition: 'all 0.15s',
+                      }}
+                      onMouseEnter={(e) => {
+                        e.currentTarget.style.background = 'var(--accent)'
+                        e.currentTarget.style.borderColor = 'var(--accent)'
+                      }}
+                      onMouseLeave={(e) => {
+                        e.currentTarget.style.background = 'var(--card)'
+                        e.currentTarget.style.borderColor = 'var(--border)'
+                      }}
                     >
-                      <FileText size={20} />
+                      <FileText size={16} />
                       Tải tài liệu
                     </a>
                   </div>
@@ -781,7 +1037,7 @@ export default function CourseLearnPage(): JSX.Element {
                     border: '1px solid #fbbf24'
                   }}>
                     <FileQuestion size={20} style={{ color: '#d97706' }} />
-                    <span style={{ fontWeight: 600, color: '#92400e' }}>{quiz.questions.length} cêu hơi</span>
+                    <span style={{ fontWeight: 600, color: '#92400e' }}>{quiz.questions.length} câu hỏi</span>
                   </div>
                   <div style={{
                     background: 'linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%)',
@@ -834,7 +1090,7 @@ export default function CourseLearnPage(): JSX.Element {
                   }}
                 disabled={isMaterialCompleted(currentMaterial.id)}
                 >
-                  {isMaterialCompleted(currentMaterial.id) ? 'đã hoàn thành (chỉ xem lại)' : 'Bắt đâảu làm bài'}
+                  {isMaterialCompleted(currentMaterial.id) ? 'Đã hoàn thành (chỉ xem lại)' : 'Bắt đầu làm bài'}
                 </button>
               </div>
             )}
@@ -1031,7 +1287,7 @@ export default function CourseLearnPage(): JSX.Element {
                                 để trả lời
                               </>
                             ) : (
-                              'Chữ trả lời'
+                              'Chưa trả lời'
                             )}
                           </div>
                         </div>
@@ -1256,7 +1512,7 @@ export default function CourseLearnPage(): JSX.Element {
                 </h3>
                 <p style={{ color: 'var(--muted-foreground)', marginBottom: 'var(--space-6)' }}>
                   {quizScore >= (quiz.passingScore || 0) 
-                    ? `Bạn đã vượt qua bài quiz vừỏi ${quizScore}% điểm.`
+                    ? `Bạn đã vượt qua bài quiz với ${quizScore}% điểm.`
                     : `Bạn cần đạt tối thiểu ${quiz.passingScore}% đã hoàn thành bài quiz.`
                   }
                 </p>
@@ -1310,110 +1566,292 @@ export default function CourseLearnPage(): JSX.Element {
             )}
           </div>
 
-          {/* Material Info & Description */}
-          <div className="material-info-section">
-            <div className="material-header">
-              <div className="material-icon-large">
-                {getMaterialIcon(currentMaterial.type)}
-              </div>
-              <div>
-                <h3>{currentMaterial.title}</h3>
-                {currentMaterial.duration && (
-                  <p className="material-duration">
-                    <Clock size={16} />
-                    {currentMaterial.duration} phút
-                  </p>
-                )}
-              </div>
+          {/* Material Info & Actions */}
+          <div style={{
+            marginTop: 'var(--space-6)',
+            background: 'var(--card)',
+            borderRadius: 'var(--radius-lg)',
+            border: '1px solid var(--border)',
+            padding: 'var(--space-5)',
+            display: 'flex',
+            alignItems: 'flex-start',
+            gap: 'var(--space-4)',
+          }}>
+            <div style={{
+              width: '44px',
+              height: '44px',
+              borderRadius: 'var(--radius)',
+              background: currentMaterial.type === 'quiz'
+                ? 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)'
+                : currentMaterial.type === 'video'
+                ? 'linear-gradient(135deg, #8b5cf6 0%, #7c3aed 100%)'
+                : 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+              display: 'flex',
+              alignItems: 'center',
+              justifyContent: 'center',
+              color: 'white',
+              flexShrink: 0,
+            }}>
+              {getMaterialIcon(currentMaterial.type)}
             </div>
-
-            {currentMaterial.type !== 'quiz' && (currentMaterial.description || currentMaterial.content) && (
-              <div className="material-description">
-                <h4>Mô tả</h4>
-                <p>{currentMaterial.description ?? currentMaterial.content}</p>
+            <div style={{ flex: 1, minWidth: 0 }}>
+              <h3 style={{ fontSize: '16px', fontWeight: 700, margin: '0 0 4px', color: 'var(--foreground)' }}>
+                {currentMaterial.title}
+              </h3>
+              {currentMaterial.duration && (
+                <p style={{ fontSize: '12px', color: 'var(--muted-foreground)', margin: 0, display: 'flex', alignItems: 'center', gap: '4px' }}>
+                  <Clock size={12} />{currentMaterial.duration} phút
+                </p>
+              )}
+            </div>
+            {isMaterialCompleted(currentMaterial.id) && (
+              <div style={{
+                display: 'flex',
+                alignItems: 'center',
+                gap: '6px',
+                padding: '4px 12px',
+                background: 'linear-gradient(135deg, #d1fae5 0%, #a7f3d0 100%)',
+                border: '1px solid #34d399',
+                borderRadius: '9999px',
+                fontSize: '12px',
+                fontWeight: 600,
+                color: '#065f46',
+                flexShrink: 0,
+              }}>
+                <CheckCircle size={14} />
+                Đã hoàn thành
               </div>
             )}
+          </div>
 
-            {/* Mark Complete Button */}
+          {/* Action buttons */}
+          <div style={{ display: 'flex', gap: 'var(--space-3)', marginTop: 'var(--space-4)' }}>
             {!isMaterialCompleted(currentMaterial.id) && currentMaterial.type !== 'quiz' && (
-              <button 
+              <button
                 onClick={handleMarkComplete}
                 disabled={completingMaterial}
-                className="btn-complete"
+                style={{
+                  flex: 1,
+                  display: 'flex',
+                  alignItems: 'center',
+                  justifyContent: 'center',
+                  gap: 'var(--space-2)',
+                  padding: 'var(--space-3) var(--space-4)',
+                  background: 'linear-gradient(135deg, #10b981 0%, #059669 100%)',
+                  color: 'white',
+                  border: 'none',
+                  borderRadius: 'var(--radius)',
+                  fontSize: '14px',
+                  fontWeight: 600,
+                  cursor: completingMaterial ? 'not-allowed' : 'pointer',
+                  opacity: completingMaterial ? 0.7 : 1,
+                  transition: 'all 0.2s',
+                  boxShadow: '0 2px 8px rgba(16, 185, 129, 0.3)',
+                }}
+                onMouseEnter={(e) => { if (!completingMaterial) e.currentTarget.style.transform = 'translateY(-1px)' }}
+                onMouseLeave={(e) => { e.currentTarget.style.transform = 'translateY(0)' }}
               >
-                <CheckCircle size={20} />
-                {completingMaterial ? 'Đang lưu...' : 'đánh dấu hoàn thành'}
+                <CheckCircle size={16} />
+                {completingMaterial ? 'Đang lưu...' : 'Hoàn thành bài học'}
               </button>
             )}
-            {/* Với tài liệu dạng quiz: hoàn thành thông qua nộp bài (submitQuiz) */}
             {currentMaterial.type === 'quiz' && !isMaterialCompleted(currentMaterial.id) && (
-              <div className="quiz-completion-hint">
-                <AlertCircle />
-                <span>Hoàn thành bài quiz bðng cách nơp bài. Nút hoàn thành sẽ tữ cập nhật sau khi nơp.</span>
-              </div>
-            )}
-
-            {isMaterialCompleted(currentMaterial.id) && (
-              <div className="completed-badge">
-                <CheckCircle size={20} />
-                <span>đã hoàn thành</span>
+              <div style={{
+                flex: 1,
+                display: 'flex',
+                alignItems: 'center',
+                gap: 'var(--space-2)',
+                padding: 'var(--space-3) var(--space-4)',
+                background: 'linear-gradient(135deg, #fef3c7 0%, #fde68a 100%)',
+                border: '1px solid #fbbf24',
+                borderRadius: 'var(--radius)',
+                fontSize: '13px',
+                color: '#92400e',
+              }}>
+                <AlertCircle size={16} />
+                <span>Hoàn thành bài quiz bằng cách nộp bài. Nút hoàn thành sẽ được cập nhật sau khi nộp.</span>
               </div>
             )}
           </div>
 
           {/* Navigation */}
-          <div className="material-navigation">
+          <div style={{
+            display: 'flex',
+            gap: 'var(--space-3)',
+            marginTop: 'var(--space-4)',
+          }}>
             <button
               onClick={handlePrevious}
               disabled={getCurrentMaterialIndex() === 1}
-              className="btn-nav"
+              style={{
+                flex: 1,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 'var(--space-2)',
+                padding: 'var(--space-3) var(--space-4)',
+                background: getCurrentMaterialIndex() === 1 ? 'var(--muted)' : 'var(--card)',
+                color: getCurrentMaterialIndex() === 1 ? 'var(--muted-foreground)' : 'var(--foreground)',
+                border: '1px solid var(--border)',
+                borderRadius: 'var(--radius)',
+                fontSize: '14px',
+                fontWeight: 600,
+                cursor: getCurrentMaterialIndex() === 1 ? 'not-allowed' : 'pointer',
+                transition: 'all 0.2s',
+              }}
             >
-              <ChevronLeft size={20} />
-              <span>Bài trước</span>
+              <ChevronLeft size={16} />
+              Bài trước
             </button>
             <button
               onClick={handleNext}
               disabled={getCurrentMaterialIndex() === materials.length}
-              className="btn-nav"
+              style={{
+                flex: 1,
+                display: 'flex',
+                alignItems: 'center',
+                justifyContent: 'center',
+                gap: 'var(--space-2)',
+                padding: 'var(--space-3) var(--space-4)',
+                background: getCurrentMaterialIndex() === materials.length ? 'var(--muted)' : 'var(--card)',
+                color: getCurrentMaterialIndex() === materials.length ? 'var(--muted-foreground)' : 'var(--foreground)',
+                border: '1px solid var(--border)',
+                borderRadius: 'var(--radius)',
+                fontSize: '14px',
+                fontWeight: 600,
+                cursor: getCurrentMaterialIndex() === materials.length ? 'not-allowed' : 'pointer',
+                transition: 'all 0.2s',
+              }}
             >
-              <span>Bại tiẟp theo</span>
-              <ChevronRight size={20} />
+              Bài tiếp theo
+              <ChevronRight size={16} />
             </button>
           </div>
         </div>
 
         {/* Sidebar */}
-        <div className={`materials-sidebar ${sidebarOpen ? 'open' : 'closed'}`}>
-          <div className="sidebar-header">
-            <h3>Nội dung khóa học</h3>
-            <p>{completedMaterialsCount} / {materials.length} hoàn thành</p>
-          </div>
-
-          <div className="materials-list">
-            {materials.map((material, index) => (
-              <div
-                key={material.id}
-                className={`material-item ${material.id === currentMaterial?.id ? 'active' : ''} ${isMaterialCompleted(material.id) ? 'completed' : ''}`}
-                onClick={() => handleMaterialSelect(material)}
-              >
-                <div className="material-number">{index + 1}</div>
-                <div className="material-icon">
-                  {getMaterialIcon(material.type)}
+        <div style={{
+          width: sidebarOpen ? '280px' : '0',
+          flexShrink: 0,
+          transition: 'width 0.3s cubic-bezier(0.4, 0, 0.2, 1)',
+          overflow: 'hidden',
+          position: 'relative',
+        }}>
+          <div style={{
+            width: '280px',
+            height: '100%',
+            background: 'var(--card)',
+            borderLeft: '1px solid var(--border)',
+            display: 'flex',
+            flexDirection: 'column',
+          }}>
+            {/* Sidebar header */}
+            <div style={{
+              padding: '16px',
+              borderBottom: '1px solid var(--border)',
+              flexShrink: 0,
+            }}>
+              <h3 style={{ fontSize: '14px', fontWeight: 700, margin: '0 0 4px', color: 'var(--foreground)' }}>
+                Nội dung khóa học
+              </h3>
+              <div style={{ display: 'flex', alignItems: 'center', gap: 'var(--space-2)' }}>
+                <div style={{ flex: 1, height: '4px', background: 'var(--muted)', borderRadius: '9999px', overflow: 'hidden' }}>
+                  <div style={{
+                    height: '100%',
+                    width: `${percentComplete}%`,
+                    background: 'linear-gradient(90deg, #10b981, #059669)',
+                    borderRadius: '9999px',
+                    transition: 'width 0.4s ease',
+                  }} />
                 </div>
-                <div className="material-details">
-                  <h4>{material.title}</h4>
-                  {material.duration && (
-                    <span className="duration">
-                      <Clock size={14} />
-                      {material.duration} phút
-                    </span>
-                  )}
-                </div>
-                {isMaterialCompleted(material.id) && (
-                  <CheckCircle size={20} className="completed-icon" />
-                )}
+                <span style={{ fontSize: '11px', fontWeight: 600, color: 'var(--muted-foreground)', whiteSpace: 'nowrap' }}>
+                  {completedMaterialsCount}/{materials.length}
+                </span>
               </div>
-            ))}
+            </div>
+
+            {/* Materials list */}
+            <div style={{ flex: 1, overflowY: 'auto', padding: '8px' }}>
+              {materials.map((material, index) => {
+                const isActive = material.id === currentMaterial?.id
+                const isCompleted = isMaterialCompleted(material.id)
+                return (
+                  <div
+                    key={material.id}
+                    onClick={() => handleMaterialSelect(material)}
+                    style={{
+                      display: 'flex',
+                      alignItems: 'center',
+                      gap: 'var(--space-3)',
+                      padding: '10px 12px',
+                      borderRadius: 'var(--radius)',
+                      cursor: 'pointer',
+                      transition: 'all 0.15s',
+                      background: isActive ? 'var(--accent)' : 'transparent',
+                      border: isActive ? '1px solid var(--accent)' : '1px solid transparent',
+                      marginBottom: '2px',
+                    }}
+                    onMouseEnter={(e) => {
+                      if (!isActive) e.currentTarget.style.background = 'var(--muted)'
+                    }}
+                    onMouseLeave={(e) => {
+                      if (!isActive) e.currentTarget.style.background = 'transparent'
+                    }}
+                  >
+                    {/* Index/Status badge */}
+                    <div style={{
+                      width: '28px',
+                      height: '28px',
+                      borderRadius: '50%',
+                      display: 'flex',
+                      alignItems: 'center',
+                      justifyContent: 'center',
+                      fontSize: '12px',
+                      fontWeight: 700,
+                      flexShrink: 0,
+                      background: isCompleted
+                        ? 'linear-gradient(135deg, #10b981 0%, #059669 100%)'
+                        : isActive
+                        ? 'linear-gradient(135deg, #3b82f6 0%, #2563eb 100%)'
+                        : 'var(--muted)',
+                      color: (isCompleted || isActive) ? 'white' : 'var(--muted-foreground)',
+                      transition: 'all 0.2s',
+                    }}>
+                      {isCompleted ? <CheckCircle size={14} /> : (index + 1)}
+                    </div>
+
+                    {/* Icon */}
+                    <div style={{
+                      color: isActive ? '#3b82f6' : 'var(--muted-foreground)',
+                      flexShrink: 0,
+                    }}>
+                      {getMaterialIcon(material.type)}
+                    </div>
+
+                    {/* Content */}
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <h4 style={{
+                        fontSize: '13px',
+                        fontWeight: isActive ? 600 : 500,
+                        color: isActive ? '#3b82f6' : 'var(--foreground)',
+                        margin: 0,
+                        whiteSpace: 'nowrap',
+                        overflow: 'hidden',
+                        textOverflow: 'ellipsis',
+                      }}>
+                        {material.title}
+                      </h4>
+                      {material.duration && (
+                        <span style={{ fontSize: '11px', color: 'var(--muted-foreground)', display: 'flex', alignItems: 'center', gap: '2px' }}>
+                          <Clock size={10} />
+                          {material.duration} phút
+                        </span>
+                      )}
+                    </div>
+                  </div>
+                )
+              })}
+            </div>
           </div>
         </div>
       </div>

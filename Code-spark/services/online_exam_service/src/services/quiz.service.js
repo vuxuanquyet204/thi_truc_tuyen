@@ -507,13 +507,22 @@ async function syncQuizFromCourseService(quizData) {
 
     // Tao cac tuy chon (neu co)
     if (q.options && q.options.length > 0) {
-      for (const opt of q.options) {
+      for (let i = 0; i < q.options.length; i++) {
+        const opt = q.options[i];
+        // Handle both string options and object options
+        const isCorrect = typeof opt === 'object' 
+          ? (opt.isCorrect || false)
+          : (q.correctAnswer === i); // Use correctAnswer index for string options
+        const optionText = typeof opt === 'object' 
+          ? (opt.text || opt.optionText || '') 
+          : opt;
+        
         await db.QuestionOption.create({
-          id: opt.id || `${question.id}-opt-${opt.order}`,
+          id: typeof opt === 'object' ? (opt.id || `${question.id}-opt-${i}`) : `${question.id}-opt-${i}`,
           questionId: question.id,
-          optionText: opt.text || opt.optionText || '',
-          isCorrect: opt.isCorrect || false,
-          displayOrder: opt.order || opt.displayOrder || 0,
+          optionText: optionText,
+          isCorrect: isCorrect,
+          displayOrder: typeof opt === 'object' ? (opt.order || opt.displayOrder || i) : i,
         });
       }
     } else if (q.correctAnswer !== undefined) {

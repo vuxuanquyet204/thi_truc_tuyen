@@ -51,7 +51,8 @@ public class RouterValidator {
                         "/exam/api/v1/exams/statuses",
                         "/exam/api/v1/exams/subjects",
                         "/exam/api/v1/exams/schedules",
-                        "/exam/api/v1/exams/**");
+                        "/exam/api/v1/exams/**",
+                        "/exam/api/v1/questions/**");
 
         public Predicate<ServerHttpRequest> isSecured = request -> openApiEndpoints
                         .stream()

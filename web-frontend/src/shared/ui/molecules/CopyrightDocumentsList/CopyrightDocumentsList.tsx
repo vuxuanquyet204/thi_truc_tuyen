@@ -129,7 +129,8 @@ export default function CopyrightDocumentsList({
           mimeType: doc.mimeType || null, // Store mimeType separately for viewer
           fileSize: doc.fileSize || 0,
           isVerified: !!doc.transactionHash,
-          cloudinaryUrl: doc.storedFilename?.startsWith('http') ? doc.storedFilename : null
+          // Ưu tiên cloudinaryUrl từ API, fallback sang storedFilename nếu là http
+          cloudinaryUrl: doc.cloudinaryUrl || (doc.storedFilename?.startsWith('http') ? doc.storedFilename : null)
         }));
         
         setDocuments(mappedDocuments);

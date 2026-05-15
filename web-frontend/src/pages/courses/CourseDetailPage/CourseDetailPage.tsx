@@ -137,7 +137,7 @@ export default function CourseDetailPage(): JSX.Element {
 
   const getLevelText = (level: string) => {
     switch (level) {
-      case 'beginner': return 'Cư bản'
+      case 'beginner': return 'Cơ bản'
       case 'intermediate': return 'Trung cấp'
       case 'advanced': return 'Nâng cao'
       default: return level
@@ -148,14 +148,14 @@ export default function CourseDetailPage(): JSX.Element {
     const numeric = Number(duration)
 
     if (!Number.isFinite(numeric) || numeric <= 0) {
-      return '0 giǭ'
+      return '0 giờ'
     }
 
     if (Number.isInteger(numeric)) {
-      return `${numeric} giǭ`
+      return `${numeric} giờ`
     }
 
-    return `${numeric.toFixed(1)} giǭ`
+    return `${numeric.toFixed(1)} giờ`
   }
 
   const formatMaterialDuration = (duration: number | string | null | undefined) => {
@@ -173,7 +173,7 @@ export default function CourseDetailPage(): JSX.Element {
       const parts: string[] = []
 
       if (hours > 0) {
-        parts.push(`${hours} giǭ`)
+        parts.push(`${hours} giờ`)
       }
 
       if (minutes > 0) {
@@ -199,7 +199,7 @@ export default function CourseDetailPage(): JSX.Element {
       case 'quiz':
         return {
           className: 'quiz',
-          label: 'Bại kiểm tra',
+          label: 'Bài kiểm tra',
           icon: <ClipboardList size={24} strokeWidth={1.8} />
         }
       case 'document':
@@ -241,14 +241,14 @@ export default function CourseDetailPage(): JSX.Element {
     if (!isEnrolled) {
       return {
         className: 'locked',
-        label: 'Bại bị khóa',
+        label: 'Bài bị khóa',
         icon: <LockKeyhole size={20} />
       }
     }
 
     return {
-      className: 'active',
-      label: 'Hộ ngay',
+        className: 'active',
+        label: 'Học ngay',
       icon: <PlayCircle size={20} />
     }
   }
@@ -315,7 +315,7 @@ export default function CourseDetailPage(): JSX.Element {
               {(course as any).enrollmentCount !== undefined || (course as any).studentsCount !== undefined || (course as any).learnersCount !== undefined ? (
                 <div className="stat">
                   <Users size={20} />
-                  <span>{(course as any).enrollmentCount ?? (course as any).studentsCount ?? (course as any).learnersCount} hộ viên</span>
+                  <span>{Math.max(course.enrollmentCount ?? (course as any).studentsCount ?? (course as any).learnersCount ?? 0, 0)} học viên</span>
                 </div>
               ) : null}
 
@@ -327,7 +327,7 @@ export default function CourseDetailPage(): JSX.Element {
               {course.certificateAvailable && (
                 <div className="stat">
                   <Award size={20} />
-                  <span>Có chỏ ng chỏ</span>
+                  <span>Có chứng chỉ</span>
                 </div>
               )}
             </div>
@@ -361,7 +361,7 @@ export default function CourseDetailPage(): JSX.Element {
                 </button>
               ) : (
                 <button onClick={handleEnrollCourse} className="btn-primary">
-                  <span>đăng kộ học</span>
+                  <span>Đăng ký học</span>
                   <ChevronRight size={20} />
                 </button>
               )}
@@ -496,7 +496,7 @@ export default function CourseDetailPage(): JSX.Element {
                 <div className="info-item">
                   <Users size={24} />
                   <div>
-                    <p className="label">Hộc viên</p>
+                    <p className="label">Học viên</p>
                     <p className="value">{course.enrollmentCount || 0} người</p>
                   </div>
                 </div>
@@ -550,7 +550,7 @@ export default function CourseDetailPage(): JSX.Element {
                             className="material-info"
                             style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', gap: '8px' }}
                           >
-                            <h3 style={{ margin: 0, flex: 1 }}>{material.title}</h3>
+                            <h3 style={{ margin: 0 }}>{material.title}</h3>
                             <span className={`material-type-badge ${typeMeta.className}`}>
                               {typeMeta.label}
                             </span>

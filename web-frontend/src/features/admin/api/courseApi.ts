@@ -10,6 +10,11 @@ import courseApiMain, {
   updateMaterial,
   deleteMaterial,
   getQuizDetails,
+  getQuizDetailsAdmin,
+  createQuiz,
+  getCourseQuizzes,
+  updateQuiz,
+  deleteQuiz,
   submitQuiz,
   getCourseProgressDashboard,
   grantReward,
@@ -42,6 +47,11 @@ export {
   updateMaterial,
   deleteMaterial,
   getQuizDetails,
+  getQuizDetailsAdmin,
+  createQuiz,
+  getCourseQuizzes,
+  updateQuiz,
+  deleteQuiz,
   submitQuiz,
   getCourseProgressDashboard,
   grantReward,
@@ -199,6 +209,11 @@ export const adminCourseApi = {
   
   // Quiz operations
   getQuizDetails,
+  getQuizDetailsAdmin,
+  createQuiz,
+  getCourseQuizzes,
+  updateQuiz,
+  deleteQuiz,
   submitQuiz,
   
   // Progress operations

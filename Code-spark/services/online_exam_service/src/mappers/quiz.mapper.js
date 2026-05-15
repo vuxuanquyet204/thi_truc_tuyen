@@ -18,27 +18,38 @@ function toQuestionResponse(question) {
   // ✨ FIX: Extract question text from JSONB content
   // question.content can be:
   // 1. JSONB object: { "question": "text", "options": [...], "correctAnswer": 0 }
-  // 2. String: "question text"
-  // 3. Null/undefined
+  // 2. String JSON: '{"question": "text", ...}'
+  // 3. String plain text: "question text"
+  // 4. Null/undefined
+  
   let questionText = question.text; // Default to text field
   let optionsArray = [];
+  let contentObj = question.content;
   
-  if (question.content && typeof question.content === 'object') {
+  // Parse content if it's a JSON string
+  if (typeof contentObj === 'string') {
+    try {
+      contentObj = JSON.parse(contentObj);
+    } catch (e) {
+      // It's a plain text string, use it directly
+      questionText = contentObj;
+      contentObj = null;
+    }
+  }
+  
+  if (contentObj && typeof contentObj === 'object') {
     // Extract question text
-    if (question.content.question) {
-      questionText = question.content.question;
+    if (contentObj.question) {
+      questionText = contentObj.question;
     }
     
     // Extract options from JSONB content.options (for imported questions from exam-service)
-    if (Array.isArray(question.content.options)) {
-      optionsArray = question.content.options.map((optionText, index) => ({
+    if (Array.isArray(contentObj.options)) {
+      optionsArray = contentObj.options.map((optionText, index) => ({
         id: `${question.id}-opt-${index}`, // Generate ID từ question ID + index
-        content: optionText,
+        content: typeof optionText === 'string' ? optionText : (optionText.text || optionText.content || ''),
       }));
     }
-  } else if (question.content && typeof question.content === 'string') {
-    // Case 2: Already a string
-    questionText = question.content;
   }
   
   // Fallback: Use question.options association if content.options not available

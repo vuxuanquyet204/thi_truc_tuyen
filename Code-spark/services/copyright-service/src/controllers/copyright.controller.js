@@ -328,7 +328,12 @@ const getAllCopyrights = asyncHandler(async (req, res) => {
 const getCopyrightById = asyncHandler(async (req, res) => {
     const copyright = await Copyright.findByPk(req.params.id);
     if (copyright) {
-        res.status(200).json(ApiResponse.success(copyright));
+        const response = copyright.toJSON();
+        // Nếu storedFilename là Cloudinary URL thì trả về field cloudinaryUrl
+        if (response.storedFilename && response.storedFilename.startsWith('http')) {
+            response.cloudinaryUrl = response.storedFilename;
+        }
+        res.status(200).json(ApiResponse.success(response));
     } else {
         throw new AppException('Copyright not found.', 404);
     }

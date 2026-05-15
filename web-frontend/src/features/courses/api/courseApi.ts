@@ -115,6 +115,7 @@ export interface Quiz {
   title: string;
   description?: string;
   timeLimit?: number;
+  timeLimitMinutes?: number;
   passingScore?: number;
   createdAt?: string;
   questions: QuizQuestion[];
@@ -459,7 +460,7 @@ export const getExams = async (page = 0, size = 20): Promise<ApiResponse<PageRes
 // ==================== Quiz Operations ====================
 
 /**
- * Get quiz details
+ * Get quiz details (student endpoint — no correct answers)
  */
 export const getQuizDetails = async (quizId: string): Promise<ApiResponse<Quiz>> => {
   try {
@@ -467,6 +468,19 @@ export const getQuizDetails = async (quizId: string): Promise<ApiResponse<Quiz>>
     return response.data;
   } catch (error: any) {
     console.error('Error getting quiz:', error);
+    throw new Error(error.response?.data?.message || 'Failed to get quiz');
+  }
+};
+
+/**
+ * Get quiz details with correct answers (admin endpoint)
+ */
+export const getQuizDetailsAdmin = async (quizId: string): Promise<ApiResponse<Quiz>> => {
+  try {
+    const response = await courseClient.get(`/quizzes/${quizId}/admin`);
+    return response.data;
+  } catch (error: any) {
+    console.error('Error getting quiz admin:', error);
     throw new Error(error.response?.data?.message || 'Failed to get quiz');
   }
 };
@@ -652,6 +666,7 @@ const courseApi = {
 
   // Quiz operations
   getQuizDetails,
+  getQuizDetailsAdmin,
   createQuiz,
   getCourseQuizzes,
   updateQuiz,

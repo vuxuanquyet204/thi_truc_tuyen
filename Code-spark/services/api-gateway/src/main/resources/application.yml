@@ -51,7 +51,7 @@ spring:
           predicates:
             - Path=/exam/api/v1/questions/**
           filters:
-            - RewritePath=/exam/api/v1/questions(?<segment>.*), /api/questions${segment}
+            - StripPrefix=3
         - id: exam-service
           uri: lb://exam-service
           predicates:
