@@ -32,7 +32,7 @@ public class WebAuthnService {
 
     @Transactional(readOnly = true)
     public AssertionRequest startAuthentication(String username) {
-        if (credentialRepository.findByUsername(username).isEmpty()) {
+        if (userRepository.findByUsernameOrEmail(username, username).isEmpty()) {
             throw new AppException("User not found or no WebAuthn credentials registered for this user.", HttpStatus.BAD_REQUEST);
         }
         AssertionRequest assertionRequest = relyingParty.startAssertion(StartAssertionOptions.builder()
@@ -83,7 +83,7 @@ public class WebAuthnService {
 
     @Transactional(readOnly = true)
     public PublicKeyCredentialCreationOptions startRegistration(String username, String displayName) {
-        User user = userRepository.findByUsername(username)
+        User user = userRepository.findByUsernameOrEmail(username, username)
                 .orElseThrow(() -> new AppException("User not found: " + username, HttpStatus.NOT_FOUND));
 
         StartRegistrationOptions options = StartRegistrationOptions.builder()
@@ -112,7 +112,7 @@ public class WebAuthnService {
                     .response(PublicKeyCredential.parseRegistrationResponseJson(responseJson))
                     .build());
 
-            User user = userRepository.findByUsername(username)
+            User user = userRepository.findByUsernameOrEmail(username, username)
                     .orElseThrow(() -> new AppException("User not found: " + username, HttpStatus.NOT_FOUND));
 
             byte[] userHandle = user.getId().toString().getBytes(java.nio.charset.StandardCharsets.UTF_8);

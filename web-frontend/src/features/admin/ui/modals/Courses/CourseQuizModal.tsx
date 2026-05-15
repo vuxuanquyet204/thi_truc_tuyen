@@ -27,10 +27,15 @@ export default function CourseQuizModal({ isOpen, onClose, courseId }: CourseQui
   const [selectedSubject, setSelectedSubject] = useState<string>('')
 
   // Form state
-  const [form, setForm] = useState({
+  const [form, setForm] = useState<{
+    title: string;
+    description: string;
+    timeLimit: number | undefined;
+    questionCount: number;
+  }>({
     title: '',
     description: '',
-    timeLimit: 30,
+    timeLimit: undefined,
     questionCount: 5,
   })
 
@@ -116,7 +121,7 @@ export default function CourseQuizModal({ isOpen, onClose, courseId }: CourseQui
       const body = {
         title: form.title.trim(),
         description: form.description?.trim() || undefined,
-        timeLimitMinutes: form.timeLimit,
+        timeLimitMinutes: form.timeLimit || 30,
         subject: selectedSubject,
         questionCount: form.questionCount,
       }
@@ -316,7 +321,7 @@ export default function CourseQuizModal({ isOpen, onClose, courseId }: CourseQui
                     min={1}
                     placeholder="30"
                     value={form.timeLimit ?? ''}
-                    onChange={e => setForm(prev => ({ ...prev, timeLimit: Number(e.target.value) || undefined }))}
+					onChange={e => setForm(prev => ({ ...prev, timeLimit: e.target.value ? Number(e.target.value) : undefined }))}
                     style={{ maxWidth: 200 }}
                   />
                 </div>

@@ -330,11 +330,11 @@ export default function useSecurityDashboard() {
 					// Update copyright-protection module
 					if (blockchainRes.status === 'fulfilled' && blockchainRes.value?.data) {
 						const bcData = blockchainRes.value.data
+						const idx = updatedModules.findIndex(m => m.id === 'copyright-protection')
 						const networkValue = bcData.network
 						const networkStr: BlockchainModule['blockchain'] = typeof networkValue === 'object' && networkValue !== null
 							? (((networkValue as any).name || (networkValue as any).chainId) as BlockchainModule['blockchain']) || updatedModules[idx].blockchain
 							: (typeof networkValue === 'string' ? networkValue as BlockchainModule['blockchain'] : updatedModules[idx].blockchain)
-						const idx = updatedModules.findIndex(m => m.id === 'copyright-protection')
 						if (idx !== -1) {
 							updatedModules[idx] = {
 								...updatedModules[idx],

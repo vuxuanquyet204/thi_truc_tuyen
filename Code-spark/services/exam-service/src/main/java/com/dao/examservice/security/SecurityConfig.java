@@ -32,6 +32,9 @@ public class SecurityConfig {
                 
                 // Public: Enum/lookup endpoints (for frontend dropdowns)
                 .requestMatchers("/exams/types", "/exams/difficulties", "/exams/statuses", "/exams/subjects").permitAll()
+
+                // Public: Question search for quiz creation
+                .requestMatchers("GET", "/exams/questions/search").permitAll()
                 
                 // Public: Read-only exam schedules (for public calendar view)
                 .requestMatchers("GET", "/exams/schedules").permitAll()

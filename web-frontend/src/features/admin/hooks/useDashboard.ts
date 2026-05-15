@@ -293,7 +293,7 @@ export default function useDashboard() {
 				}))
 
 				const mappedSystemHealth: SystemHealth = {
-					status: dashboard.systemHealth.status,
+					status: (dashboard.systemHealth.status || 'healthy') as SystemHealth['status'],
 					uptime: dashboard.systemHealth.uptime,
 					responseTime: dashboard.systemHealth.responseTime,
 					errorRate: dashboard.systemHealth.errorRate,

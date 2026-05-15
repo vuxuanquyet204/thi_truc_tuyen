@@ -236,12 +236,12 @@ export function useCopyright() {
               title: form.title,
               description: form.description,
               category: form.category as DocumentMetadata['category'],
-              fileExtension: form.fileExtension,
-              fileSize: form.fileSize,
-              tags: form.tags,
+              fileExtension: form.fileExtension || '',
+              fileSize: form.fileSize || 0,
+              tags: form.tags || [],
               authorName: form.authorName,
               institution: form.institution,
-              keywords: form.keywords,
+              keywords: form.keywords || [],
               abstract: form.abstract
             };
             

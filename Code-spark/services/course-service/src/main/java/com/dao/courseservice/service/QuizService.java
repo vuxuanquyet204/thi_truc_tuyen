@@ -242,45 +242,59 @@ class QuizServiceImpl implements QuizService {
         return quizMapper.toQuizAdminResponse(savedQuiz);
     }
 
+    @SuppressWarnings("unchecked")
     private void importRandomQuestionsFromSubject(Quiz quiz, String subject, int questionCount) {
         log.info("Importing {} random questions from subject '{}'", questionCount, subject);
-        List<ExamQuestionResponse> allQuestions;
+        List<Map<String, Object>> rawQuestions;
         try {
-            allQuestions = examServiceClient.searchQuestions(List.of(subject), null, null, questionCount * 3);
+            String url = "http://localhost:9005/exams/questions/search?tags=" + subject + "&limit=" + (questionCount * 3);
+            Map<?, ?> resp = restTemplate.getForObject(url, Map.class);
+
+            Object data = resp != null ? resp.get("data") : null;
+            if (data instanceof List) {
+                rawQuestions = (List<Map<String, Object>>) data;
+            } else {
+                rawQuestions = List.of();
+            }
         } catch (Exception e) {
             log.error("Failed to fetch questions from exam-service for subject '{}': {}", subject, e.getMessage());
             throw new RuntimeException("Không lấy được câu hỏi từ exam-service cho môn '" + subject + "': " + e.getMessage(), e);
         }
 
-        if (allQuestions == null || allQuestions.isEmpty()) {
+        if (rawQuestions == null || rawQuestions.isEmpty()) {
             log.warn("No questions found for subject '{}'", subject);
             throw new RuntimeException("Không tìm thấy câu hỏi nào cho môn '" + subject + "' trong ngân hàng đề thi.");
         }
 
-        List<ExamQuestionResponse> shuffled = new java.util.ArrayList<>(allQuestions);
-        java.util.Collections.shuffle(shuffled);
-        int count = Math.min(questionCount, shuffled.size());
-        List<ExamQuestionResponse> selected = shuffled.subList(0, count);
+        java.util.Collections.shuffle(rawQuestions);
+        int count = Math.min(questionCount, rawQuestions.size());
+        List<Map<String, Object>> selected = rawQuestions.subList(0, count);
 
         for (int i = 0; i < selected.size(); i++) {
-            ExamQuestionResponse eq = selected.get(i);
+            Map<String, Object> raw = selected.get(i);
+            String content = (String) raw.get("content");
+            String type = raw.get("type") != null ? raw.get("type").toString() : "multiple";
+
             Question question = Question.builder()
                     .quiz(quiz)
-                    .content(eq.getContent())
-                    .type(eq.getType() != null ? eq.getType() : "multiple")
+                    .content(content != null ? content : "")
+                    .type(type)
                     .displayOrder(i + 1)
                     .options(new java.util.HashSet<>())
                     .build();
 
             int optOrder = 1;
-            for (ExamQuestionResponse.ExamQuestionOptionResponse opt : eq.getOptions()) {
-                QuestionOption option = QuestionOption.builder()
-                        .question(question)
-                        .content(opt.getContent())
-                        .isCorrect(opt.isCorrect())
-                        .displayOrder(optOrder++)
-                        .build();
-                question.getOptions().add(option);
+            Object rawOptions = raw.get("options");
+            if (rawOptions instanceof List) {
+                for (Map<String, Object> rawOpt : (List<Map<String, Object>>) rawOptions) {
+                    QuestionOption option = QuestionOption.builder()
+                            .question(question)
+                            .content((String) rawOpt.get("content"))
+                            .isCorrect(Boolean.TRUE.equals(rawOpt.get("isCorrect")))
+                            .displayOrder(optOrder++)
+                            .build();
+                    question.getOptions().add(option);
+                }
             }
 
             quiz.getQuestions().add(question);

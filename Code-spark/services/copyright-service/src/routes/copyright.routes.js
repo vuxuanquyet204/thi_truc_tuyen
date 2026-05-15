@@ -31,11 +31,11 @@ router.get('/blockchain/status', copyrightController.getBlockchainStatus);
 // GET /search - Search copyrights
 router.get('/search', copyrightController.searchCopyrights);
 
-// GET /:id - Get copyright by ID (must be AFTER more specific routes)
-router.get('/:id', copyrightController.getCopyrightById);
-
-// GET /:id/download - Download document file (must be BEFORE /:id to match first)
+// GET /:id/download - Download document file (MUST be before /:id)
 router.get('/:id/download', copyrightController.downloadDocument);
+
+// GET /:id - Get copyright by ID
+router.get('/:id', copyrightController.getCopyrightById);
 
 // GET /hash/:hash - Get copyright by hash
 router.get('/hash/:hash', copyrightController.getCopyrightByHash);

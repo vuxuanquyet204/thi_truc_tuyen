@@ -40,7 +40,7 @@ public class RouterValidator {
                         "/actuator/health",
 
                         // Token reward service - Allow authenticated users to access their own tokens
-                        "/token-reward/**",
+                        "/api/tokens/**",
 
                         // Multisig service - Allow testing without authentication
                         "/api/v1/multisig/**",

@@ -2,14 +2,14 @@ import React, { useState, useEffect } from 'react'
 import Modal from '@/features/admin/ui/common/Modal'
 import Button from '@/features/admin/ui/common/primitives/Button'
 import { User as UserIcon, Mail, Phone, Shield } from 'lucide-react'
-import { User as UserType } from '@/types/user'
+import { User as UserType, UserRole } from '@/foundation/types/user'
 import { toast } from '@/foundation/contexts/ToastContext'
 
 interface EditUserModalProps {
 	isOpen: boolean
 	onClose: () => void
-	onSave: (userData: Partial<User>) => void
-	user: User | null
+	onSave: (userData: Partial<UserType>) => void
+	user: UserType | null
 }
 
 const EditUserModal: React.FC<EditUserModalProps> = ({
@@ -18,7 +18,7 @@ const EditUserModal: React.FC<EditUserModalProps> = ({
 	onSave,
 	user
 }) => {
-	const [formData, setFormData] = useState({
+	const [formData, setFormData] = useState<{ name: string; email: string; phone: string; role: UserRole }>({
 		name: '',
 		email: '',
 		phone: '',

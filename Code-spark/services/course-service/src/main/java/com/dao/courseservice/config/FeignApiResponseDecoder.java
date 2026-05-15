@@ -50,6 +50,9 @@ public class FeignApiResponseDecoder implements Decoder {
             if (args.length == 1 && args[0] instanceof Class) {
                 return (Class<?>) args[0];
             }
+            if (args.length == 1 && args[0] instanceof ParameterizedType) {
+                return (Class<?>) ((ParameterizedType) args[0]).getRawType();
+            }
         }
         return Object.class;
     }

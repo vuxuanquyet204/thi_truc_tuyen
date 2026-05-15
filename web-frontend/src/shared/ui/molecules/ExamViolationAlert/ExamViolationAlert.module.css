@@ -10,8 +10,9 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  z-index: 9999;
+  z-index: 99999;
   animation: fadeIn 0.2s ease-out;
+  backdrop-filter: blur(4px);
 }
 
 .examViolationAlertOverlay.stopping {
@@ -35,9 +36,9 @@
   width: 90%;
   max-width: 480px;
   border-left: 6px solid #ef4444;
-  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.4), 0 0 0 1px rgba(0,0,0,0.05);
   overflow: hidden;
-  animation: slideIn 0.3s ease-out;
+  animation: slideIn 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
 .examViolationAlertContainer.low { border-left-color: #10b981; }
@@ -209,19 +210,22 @@
 }
 
 .examViolationAcknowledgeButton {
-  padding: 10px 20px;
-  background: #f3f4f6;
-  color: #374151;
-  border: 1px solid #d1d5db;
-  border-radius: 8px;
-  font-size: 14px;
-  font-weight: 600;
+  padding: 12px 28px;
+  background: linear-gradient(135deg, #374151 0%, #1f2937 100%);
+  color: #fff;
+  border: none;
+  border-radius: 10px;
+  font-size: 15px;
+  font-weight: 700;
   cursor: pointer;
-  transition: all 0.15s;
+  transition: all 0.2s;
+  box-shadow: 0 2px 8px rgba(0,0,0,0.15);
 }
 
 .examViolationAcknowledgeButton:hover {
-  background: #e5e7eb;
+  background: linear-gradient(135deg, #4b5563 0%, #374151 100%);
+  transform: translateY(-1px);
+  box-shadow: 0 4px 12px rgba(0,0,0,0.2);
 }
 
 .examViolationStopExamButton {

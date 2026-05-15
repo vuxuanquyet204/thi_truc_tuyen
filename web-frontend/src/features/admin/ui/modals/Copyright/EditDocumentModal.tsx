@@ -37,6 +37,7 @@ export const EditDocumentModal: React.FC<EditDocumentModalProps> = ({
 		description: '',
 		author: '',
 		category: 'academic',
+		tags: [],
 		keywords: [],
 		references: [],
 		file: undefined,
@@ -56,12 +57,13 @@ export const EditDocumentModal: React.FC<EditDocumentModalProps> = ({
 				description: document.description,
 				author: document.author,
 				category: document.category,
-				keywords: (document.metadata as Record<string, unknown>)?.keywords || [],
-				references: (document.metadata as Record<string, unknown>)?.references || [],
+				tags: ((document.metadata as Record<string, unknown>)?.tags as string[] | undefined) || [],
+				keywords: ((document.metadata as Record<string, unknown>)?.keywords as string[] | undefined) || [],
+				references: ((document.metadata as Record<string, unknown>)?.references as string[] | undefined) || [],
 				file: undefined,
-				language: (document.metadata as Record<string, unknown>)?.language || 'en',
-				version: (document.metadata as Record<string, unknown>)?.version || '1.0',
-				license: (document.metadata as Record<string, unknown>)?.license || 'copyright',
+				language: ((document.metadata as Record<string, unknown>)?.language as string | undefined) || 'en',
+				version: ((document.metadata as Record<string, unknown>)?.version as string | undefined) || '1.0',
+				license: ((document.metadata as Record<string, unknown>)?.license as string | undefined) || 'copyright',
 				metadata: document.metadata || {}
 			})
 			setErrors({})
@@ -100,7 +102,7 @@ export const EditDocumentModal: React.FC<EditDocumentModalProps> = ({
 		if (!form.description.trim()) {
 			newErrors.description = 'Mô tả là bắt buộc'
 		}
-		if (!form.author.trim()) {
+		if (!form.author?.trim()) {
 			newErrors.author = 'Tác giả là bắt buộc'
 		}
 		if (!form.category.trim()) {
@@ -256,7 +258,7 @@ export const EditDocumentModal: React.FC<EditDocumentModalProps> = ({
 								<input
 									id="keywords"
 									type="text"
-									value={form.keywords.join(', ')}
+									value={form.keywords?.join(', ') || ''}
 									onChange={(e) => handleKeywordsChange(e.target.value)}
 									placeholder="Nhập từ khóa, phân cách bằng dấu phẩy"
 									disabled={isSubmitting}

@@ -18,6 +18,13 @@ const DocumentDetailModal: React.FC<DocumentDetailModalProps> = ({
 
 	if (!isOpen) return null
 
+	const metadata = document.metadata as Record<string, unknown>
+	const keywords = Array.isArray(metadata?.keywords) ? metadata.keywords as string[] : []
+	const licenseValue = String(metadata?.license || 'N/A')
+	const languageValue = String(metadata?.language || 'N/A')
+	const versionValue = String(metadata?.version || '1.0')
+	const categoryValue = String(metadata?.category || 'N/A')
+
 	return (
 		<div className="modal-overlay-modern">
 			<div className="modal-container-modern document-detail-modal">
@@ -125,33 +132,33 @@ const DocumentDetailModal: React.FC<DocumentDetailModalProps> = ({
 								<Tag />
 								<h4>Metadata</h4>
 							</div>
-						<div className="modal-info-pairs">
-							<div className="modal-info-pair">
-								<div className="info-label">Danh mục</div>
-								<div className="info-value">{String((document.metadata as Record<string, unknown>)?.category || 'N/A')}</div>
-							</div>
-							<div className="modal-info-pair">
-								<div className="info-label">Ngôn ngữ</div>
-								<div className="info-value">{String((document.metadata as Record<string, unknown>)?.language || 'N/A')}</div>
-							</div>
-							<div className="modal-info-pair">
-								<div className="info-label">Phiên bản</div>
-								<div className="info-value">{String((document.metadata as Record<string, unknown>)?.version || '1.0')}</div>
-							</div>
-							<div className="modal-info-pair">
-								<div className="info-label">Giấy phép</div>
-								<div className="info-value">{String((document.metadata as Record<string, unknown>)?.license || 'N/A')}</div>
-							</div>
-						</div>
-						{(document.metadata as Record<string, unknown>)?.keywords && Array.isArray((document.metadata as Record<string, unknown>)?.keywords) && (document.metadata as Record<string, unknown>)?.keywords.length > 0 && (
-							<div style={{ marginTop: '16px' }}>
-								<div style={{ fontSize: '13px', fontWeight: '600', color: '#667eea', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
-									Từ khóa
+							<div className="modal-info-pairs">
+								<div className="modal-info-pair">
+									<div className="info-label">Danh mục</div>
+									<div className="info-value">{categoryValue}</div>
 								</div>
-								<div className="modal-tags">
-									{((document.metadata as Record<string, unknown>)?.keywords as string[]).map((keyword: string, index: number) => (
-										<span key={index} className="modal-tag">{keyword}</span>
-									))}
+								<div className="modal-info-pair">
+									<div className="info-label">Ngôn ngữ</div>
+									<div className="info-value">{languageValue}</div>
+								</div>
+								<div className="modal-info-pair">
+									<div className="info-label">Phiên bản</div>
+									<div className="info-value">{versionValue}</div>
+								</div>
+								<div className="modal-info-pair">
+									<div className="info-label">Giấy phép</div>
+									<div className="info-value">{licenseValue}</div>
+								</div>
+							</div>
+							{keywords.length > 0 && (
+								<div style={{ marginTop: '16px' }}>
+									<div style={{ fontSize: '13px', fontWeight: '600', color: '#667eea', marginBottom: '8px', textTransform: 'uppercase', letterSpacing: '0.5px' }}>
+										Từ khóa
+									</div>
+									<div className="modal-tags">
+										{keywords.map((keyword: string, index: number) => (
+											<span key={index} className="modal-tag">{keyword}</span>
+										))}
 									</div>
 								</div>
 							)}

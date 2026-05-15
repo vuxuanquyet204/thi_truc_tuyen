@@ -116,7 +116,7 @@ export const getUserProfile = async (): Promise<AuthResponse['data']['user']> =>
 		const response = await identityClient.get<{ success: boolean; data?: AuthResponse['data']['user'] }>(
 			'/users/profile'
 		)
-		if (response.data.success && response.data.data) {
+		if (response.data?.success && response.data?.data) {
 			return response.data.data
 		}
 		throw new Error('Failed to fetch user profile')
